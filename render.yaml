@@ -5,5 +5,7 @@ services:
     buildCommand: npm run build
     publishPath: ./build
     routes:
+      - source: /assets/*
+        destination: /assets/*
       - source: /*
         destination: /index.html

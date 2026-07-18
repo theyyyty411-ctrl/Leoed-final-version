@@ -3,7 +3,7 @@
   "description": "Demo Leo AI",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "/",
   "scripts": {
     "start": "vite",
     "dev": "vite",
