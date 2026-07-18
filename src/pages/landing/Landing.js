@@ -47,7 +47,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 // Mock icons for the features section if specific ones aren't available
-const FastIcon = () => <Box sx={{ backgroundColor: '#EEEEEE', p: 1, borderRadius: '50%', display: 'inline-flex' }}><LightningIcon sx={{ color: '#757575' }} /></Box>;
+const FastIcon = () => <Box sx={{ backgroundColor: '#F7F2E0', p: 1, borderRadius: '50%', display: 'inline-flex' }}><LightningIcon sx={{ color: '#757575' }} /></Box>;
 const ReliableIcon = () => <Box sx={{ backgroundColor: '#E8F5E9', p: 1, borderRadius: '50%', display: 'inline-flex' }}><TargetIcon sx={{ color: '#4CAF50' }} /></Box>;
 const UnlimitedIcon = () => <Box sx={{ backgroundColor: '#F3E5F5', p: 1, borderRadius: '50%', display: 'inline-flex' }}><InfinityIcon sx={{ color: '#9C27B0' }} /></Box>;
 
@@ -59,9 +59,9 @@ const LandingPage = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: "white", color: "text.primary" }}>
+    <Box sx={{ flexGrow: 1, bgcolor: "#FFFDF5", color: "text.primary" }}>
       {/* Header */}
-      <AppBar position="sticky" elevation={0} sx={{ bgcolor: "white", color: "black", borderBottom: "1px solid #eee" }}>
+      <AppBar position="sticky" elevation={0} sx={{ bgcolor: "#F7F2E0", color: "black", borderBottom: "1px solid #E8E4D8" }}>
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -83,7 +83,7 @@ const LandingPage = () => {
               <Button 
                 variant="outlined" 
                 onClick={handleLogin}
-                sx={{ mr: 2, textTransform: "none", borderRadius: 2, border: "1px solid #e0e0e0", color: "#424242" }}
+                sx={{ mr: 2, textTransform: "none", borderRadius: 2, border: "1px solid #E8E4D8", color: "#424242" }}
               >
                 學校師生登入
               </Button>
@@ -100,12 +100,12 @@ const LandingPage = () => {
       </AppBar>
 
       {/* Hero Section */}
-      <Box sx={{ pt: 10, pb: 15, background: "linear-gradient(180deg, #F5F5F5 0%, #FFFFFF 100%)" }}>
+      <Box sx={{ pt: 10, pb: 15, background: "linear-gradient(180deg, #FFFDF5 0%, #F7F2E0 100%)" }}>
         <Container maxWidth="lg">
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
               <Box sx={{ mb: 2 }}>
-                <Typography component="span" sx={{ bgcolor: "#EEEEEE", color: "#424242", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
+                <Typography component="span" sx={{ bgcolor: "#F7F2E0", color: "#424242", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
                   DSE • TSA • HKAT • IELTS 評核對標
                 </Typography>
               </Box>
@@ -149,7 +149,7 @@ const LandingPage = () => {
                   width: "100%", 
                   maxWidth: 500, 
                   height: 350, 
-                  bgcolor: "#EEEEEE", 
+                  bgcolor: "#F7F2E0", 
                   borderRadius: 4, 
                   display: "flex", 
                   alignItems: "center", 
@@ -164,7 +164,7 @@ const LandingPage = () => {
                   </Box>
                   <Card sx={{ position: "absolute", top: -20, right: -20, p: 2, borderRadius: 2, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                       <Box sx={{ width: 40, height: 40, bgcolor: "#EEEEEE", borderRadius: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>🏆</Box>
+                       <Box sx={{ width: 40, height: 40, bgcolor: "#F7F2E0", borderRadius: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>🏆</Box>
                        <Box>
                          <Typography variant="caption" sx={{ color: "text.secondary" }}>備受信任</Typography>
                          <Typography variant="body2" sx={{ fontWeight: "bold" }}>190+ 間香港學校</Typography>
@@ -235,7 +235,7 @@ const LandingPage = () => {
       </Container>
 
       {/* Ecosystem Section */}
-      <Box sx={{ py: 15, bgcolor: "#F5F5F5" }}>
+      <Box sx={{ py: 15, bgcolor: "#FFFDF5" }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: "center", mb: 8 }}>
             <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
@@ -319,7 +319,7 @@ const LandingPage = () => {
                 ))}
               </List>
               <Box sx={{ mt: "auto", pt: 2 }}>
-                <Button fullWidth variant="contained" sx={{ bgcolor: "#EEEEEE", color: "#424242", py: 1.5, "&:hover": { bgcolor: "#E0E0E0" }, boxShadow: "none", textTransform: "none" }} endIcon={<ArrowForwardIcon />}>
+                <Button fullWidth variant="contained" sx={{ bgcolor: "#F7F2E0", color: "#424242", py: 1.5, "&:hover": { bgcolor: "#E8E4D8" }, boxShadow: "none", textTransform: "none" }} endIcon={<ArrowForwardIcon />}>
                   探索英文方案
                 </Button>
               </Box>
@@ -354,7 +354,7 @@ const LandingPage = () => {
           </Grid>
           <Grid item xs={12} md={4}>
             <Card sx={{ height: "100%", p: 4, borderRadius: 4 }}>
-              <Box sx={{ position: "absolute", top: 10, right: 10, bgcolor: "#EEEEEE", color: "#424242", px: 1, py: 0.2, borderRadius: 1, fontSize: "0.7rem", fontWeight: "bold" }}>
+              <Box sx={{ position: "absolute", top: 10, right: 10, bgcolor: "#F7F2E0", color: "#424242", px: 1, py: 0.2, borderRadius: 1, fontSize: "0.7rem", fontWeight: "bold" }}>
                 下月發佈
               </Box>
               <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>數學科 AI</Typography>
@@ -383,10 +383,10 @@ const LandingPage = () => {
       </Container>
 
       {/* Partners Section */}
-      <Box sx={{ py: 10, bgcolor: "white", textAlign: "center" }}>
+      <Box sx={{ py: 10, bgcolor: "#FFFDF5", textAlign: "center" }}>
         <Container maxWidth="lg">
           <Typography component="div" sx={{ mb: 2 }}>
-             <Box component="span" sx={{ bgcolor: "#EEEEEE", color: "#424242", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
+             <Box component="span" sx={{ bgcolor: "#F7F2E0", color: "#424242", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
                ⭐ 獲 190+ 所學校採用
              </Box>
           </Typography>
@@ -415,10 +415,10 @@ const LandingPage = () => {
       </Box>
 
       {/* Pricing Table Section */}
-      <Box sx={{ py: 15, bgcolor: "#F5F5F5" }}>
+      <Box sx={{ py: 15, bgcolor: "#FFFDF5" }}>
         <Container maxWidth="lg">
           <Box sx={{ display: "flex", justifyContent: "center", mb: 6 }}>
-            <Box sx={{ bgcolor: "white", p: 1, borderRadius: 10, display: "flex", gap: 1, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}>
+            <Box sx={{ bgcolor: "#F7F2E0", p: 1, borderRadius: 10, display: "flex", gap: 1, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}>
               <Button variant="contained" sx={{ borderRadius: 10, px: 6, boxShadow: "none" }}>英文科</Button>
               <Button variant="text" sx={{ borderRadius: 10, px: 6, color: "text.secondary" }}>中文科</Button>
             </Box>
@@ -427,7 +427,7 @@ const LandingPage = () => {
           <TableContainer component={Paper} sx={{ borderRadius: 4, boxShadow: "0 20px 50px rgba(0,0,0,0.05)", overflow: "hidden" }}>
             <Table>
               <TableHead>
-                <TableRow sx={{ bgcolor: "#F5F5F5" }}>
+                <TableRow sx={{ bgcolor: "#F7F2E0" }}>
                   <TableCell></TableCell>
                   {["方案 A", "方案 B", "方案 C", "方案 D"].map((p) => (
                     <TableCell key={p} align="center" sx={{ fontWeight: "bold", fontSize: "1.1rem" }}>{p}</TableCell>
@@ -538,7 +538,7 @@ const LandingPage = () => {
       </Container>
 
       {/* Team Section */}
-      <Box sx={{ py: 15, bgcolor: "white" }}>
+      <Box sx={{ py: 15, bgcolor: "#FFFDF5" }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: "center", mb: 8 }}>
             <Typography variant="h3" sx={{ fontWeight: "bold" }}>核心研發成員</Typography>
@@ -551,8 +551,8 @@ const LandingPage = () => {
             ].map((member) => (
               <Grid item xs={12} md={4} key={member.name}>
                 <Box sx={{ textAlign: "center" }}>
-                  <Avatar sx={{ width: 150, height: 150, mx: "auto", mb: 3, bgcolor: "#eee" }}>
-                    <PersonIcon sx={{ fontSize: 80, color: "#ccc" }} />
+                  <Avatar sx={{ width: 150, height: 150, mx: "auto", mb: 3, bgcolor: "#F7F2E0" }}>
+                    <PersonIcon sx={{ fontSize: 80, color: "#D8D4C8" }} />
                   </Avatar>
                   <Typography variant="h5" sx={{ fontWeight: "bold" }}>{member.name}</Typography>
                   <Typography variant="body2" sx={{ color: "#424242", mt: 1 }}>{member.title}</Typography>

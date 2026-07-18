@@ -26,7 +26,7 @@ export default makeStyles((theme) => ({
     marginBottom: 24,
   },
   tabPanel: {
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#FFFDF5",
     padding: theme.spacing(2),
   },
   tabsAppBar: {

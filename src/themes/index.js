@@ -30,13 +30,13 @@ const overrides = {
     MuiCard: {
       root: {
         boxShadow:
-          "0px 3px 11px 0px #E0E0E0, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
+          "0px 3px 11px 0px #E8E4D8, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
       },
     },
     MUIDataTable: {
       paper: {
         boxShadow:
-          "0px 3px 11px 0px #E0E0E0, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
+          "0px 3px 11px 0px #E8E4D8, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
       },
     },
     MuiBackdrop: {
@@ -47,7 +47,7 @@ const overrides = {
     MuiMenu: {
       paper: {
         boxShadow:
-          "0px 3px 11px 0px #E0E0E0, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
+          "0px 3px 11px 0px #E8E4D8, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
       },
     },
     MuiSelect: {
@@ -58,15 +58,15 @@ const overrides = {
     MuiListItem: {
       root: {
         "&$selected": {
-          backgroundColor: "#EEEEEE !important",
+          backgroundColor: "#F7F2E0 !important",
           "&:focus": {
-            backgroundColor: "#EEEEEE",
+            backgroundColor: "#F7F2E0",
           },
         },
       },
       button: {
         "&:hover, &:focus": {
-          backgroundColor: "#EEEEEE",
+          backgroundColor: "#F7F2E0",
         },
       },
     },
