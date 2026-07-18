@@ -13,6 +13,7 @@ import Layout from "./Layout";
 import Documentation from "./Documentation/Documentation";
 
 // pages
+import Landing from "../pages/landing/Landing";
 import Error from "../pages/error";
 import Login from "../pages/login";
 import Verify from "../pages/verify";
@@ -34,7 +35,7 @@ export default function App() {
         <BrowserRouter basename={routerBase}>
           <RouterNavigatorSync />
           <Routes>
-            <Route path="/" element={<Navigate to="/app/profile" replace />} />
+            <Route path="/" element={isAuth ? <Navigate to="/app" replace /> : <Landing />} />
             <Route
               path="/app"
               element={<Navigate to="/app/profile" replace />}

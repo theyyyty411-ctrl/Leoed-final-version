@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import config from "../../src/config";
+import config from "../config";
 import { showSnackbar } from "../components/Snackbar";
 import {
   createMockUser,

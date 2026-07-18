@@ -7,7 +7,7 @@ import { mockUser } from "./mock";
 import { useFieldsState, getFieldsRequest } from "./AdminContext";
 
 //config
-import config from "../../src/config";
+import config from "../config";
 import { showSnackbar } from "../components/Snackbar";
 
 let UserStateContext = React.createContext();

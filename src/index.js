@@ -11,7 +11,7 @@ import {
   ThemeStateContext,
 } from "./context/ThemeContext";
 import CssBaseline from "@mui/material/CssBaseline";
-import config from "../src/config";
+import config from "./config";
 import "leaflet/dist/leaflet.css";
 import Sortable from "sortablejs";
 window.Sortable = Sortable;

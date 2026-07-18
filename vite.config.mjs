@@ -37,6 +37,21 @@ export default defineConfig(({ mode }) => ({
   ],
   build: {
     outDir: 'build',
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('@mui')) {
+              return 'vendor_mui';
+            }
+            if (id.includes('apexcharts') || id.includes('recharts')) {
+              return 'vendor_charts';
+            }
+            return 'vendor';
+          }
+        },
+      },
+    },
   },
   css: {
     preprocessorOptions: {},
