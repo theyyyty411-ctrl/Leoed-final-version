@@ -1,0 +1,6 @@
+{
+  "name": "Questions",
+  "version": "1.0.0",
+  "main": "QuestionsList.js",
+  "license": "MIT"
+}
