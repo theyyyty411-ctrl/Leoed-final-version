@@ -7,6 +7,7 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
+    "build": "vite build",
     "lint": "cross-env NODE_ENV=development eslint src --ext .js,.jsx",
     "lint:fix": "cross-env NODE_ENV=development eslint src --ext .js,.jsx --fix",
     "test": "vitest run",
