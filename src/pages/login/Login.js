@@ -98,7 +98,7 @@ function Login() {
       <div className={classes.logotypeContainer}>
         <img src={logo} alt="logo" className={classes.logotypeImage} />
         {/* <Typography className={classes.logotypeText}>
-          LeoEd AI
+          LeoEd
         </Typography> */}
       </div>
       <div

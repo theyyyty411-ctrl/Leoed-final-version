@@ -45,6 +45,7 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../images/logo.jpeg";
 
 // Mock icons for the features section if specific ones aren't available
 const FastIcon = () => <Box sx={{ backgroundColor: '#F7F2E0', p: 1, borderRadius: '50%', display: 'inline-flex' }}><LightningIcon sx={{ color: '#757575' }} /></Box>;
@@ -65,8 +66,9 @@ const LandingPage = () => {
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box component="img" src={logo} sx={{ height: 40, mr: 1 }} />
               <Typography variant="h6" component="div" sx={{ fontWeight: "bold", color: "#424242", display: "flex", alignItems: "center" }}>
-                <Box component="span" sx={{ mr: 1 }}>🎓</Box> LingoTask
+                LeoEd
               </Typography>
               <Box sx={{ display: { xs: "none", md: "flex" }, ml: 4 }}>
                 {["首頁", "各科 AI", "合作學校", "收費方案", "智啟學教與eLAFP", "聯繫我們"].map((text) => (
@@ -178,11 +180,11 @@ const LandingPage = () => {
         </Container>
       </Box>
 
-      {/* Why LingoTask Section */}
+      {/* Why LeoEd Section */}
       <Container maxWidth="lg" sx={{ py: 15 }}>
         <Box sx={{ textAlign: "center", mb: 8 }}>
           <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
-            為何選擇 LingoTask ?
+            為何選擇 LeoEd ?
           </Typography>
           <Typography variant="body1" sx={{ color: "text.secondary" }}>
             緊貼 DSE、TSA、HKAT 及 IELTS 評核標準。
@@ -511,7 +513,7 @@ const LandingPage = () => {
               </Box>
               <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>優質教育基金 eLAFP 綠色通道<br/>(100% 毋需報價)</Typography>
               <Typography variant="body2" sx={{ color: "text.secondary", mb: 4, lineHeight: 1.8 }}>
-                LingoTask 已通過 QEF 委員會審核，eLAFP 資助撥款已直接預存於學校的香港教育城 (EdCity) 採購員帳戶中。前線毋需繁瑣報價，即可直接在 EdCity 系統內申請撥核銷，流程最簡化，相當於 0 成本引進。
+                LeoEd 已通過 QEF 委員會審核，eLAFP 資助撥款已直接預存於學校的香港教育城 (EdCity) 採購員帳戶中。前線毋需繁瑣報價，即可直接在 EdCity 系統內申請撥核銷，流程最簡化，相當於 0 成本引進。
               </Typography>
               <Button fullWidth variant="contained" sx={{ bgcolor: "#4CAF50", py: 1.5, textTransform: "none", boxShadow: "none" }} endIcon={<ArrowForwardIcon />}>
                 立即核銷 eLAFP 資助
@@ -523,7 +525,7 @@ const LandingPage = () => {
                <Box sx={{ width: 40, height: 40, bgcolor: "#E3F2FD", borderRadius: 1, display: "flex", alignItems: "center", justifyContent: "center", mb: 3 }}>💰</Box>
                <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>「智啟學教」計劃 AI 方案<br/>(全套合規報價支援)</Typography>
                <Typography variant="body2" sx={{ color: "text.secondary", mb: 4, lineHeight: 1.8 }}>
-                針對教育局 50 萬大額全科 AI 智能學與教資助，LingoTask 團隊為本港學校提供全套合規報價、計劃書草擬及行政採購配合，協助學校高效完成校內審批程序。
+                針對教育局 50 萬大額全科 AI 智能學與教資助，LeoEd 團隊為本港學校提供全套合規報價、計劃書草擬及行政採購配合，協助學校高效完成校內審批程序。
                </Typography>
                <Button fullWidth variant="contained" sx={{ bgcolor: "#424242", py: 1.5, textTransform: "none", boxShadow: "none" }} endIcon={<ArrowForwardIcon />}>
                 了解「智啟學教」通告
@@ -571,7 +573,7 @@ const LandingPage = () => {
           <Grid container spacing={8}>
             <Grid item xs={12} md={4}>
               <Typography variant="h6" sx={{ fontWeight: "bold", mb: 3, display: "flex", alignItems: "center" }}>
-                🎓 LingoTask
+                🎓 LeoEd
               </Typography>
               <Typography variant="body2" sx={{ opacity: 0.7, mb: 4, lineHeight: 1.8 }}>
                 Smarter marking for teachers. Deeper learning for students.
@@ -609,7 +611,7 @@ const LandingPage = () => {
               </Box>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 4 }}>
                 <EmailIcon sx={{ opacity: 0.7 }} />
-                <Typography variant="body2" sx={{ opacity: 0.7 }}>Hello@lingotask.com</Typography>
+                <Typography variant="body2" sx={{ opacity: 0.7 }}>Hello@leoed.ai</Typography>
               </Box>
               <Button variant="contained" fullWidth sx={{ bgcolor: "#424242", py: 1.5, mb: 4, textTransform: "none" }} startIcon={<LocationIcon />}>預約到校示範</Button>
               <Box sx={{ mb: 2 }}>
@@ -625,7 +627,7 @@ const LandingPage = () => {
           <Divider sx={{ my: 6, borderColor: "rgba(255,255,255,0.1)" }} />
           <Box sx={{ textAlign: "center" }}>
             <Typography variant="caption" sx={{ opacity: 0.5 }}>
-              © 2026 SpeechX Limited. 版權所有。LingoTask® 是 SpeechX Limited 旗下的 AI 學與教平台。 | 粵ICP備17014234號-6
+              © 2026 LeoEd. 版權所有。LeoEd® 是 LeoEd 旗下的 AI 學與教平台。 | 粵ICP備17014234號-6
             </Typography>
           </Box>
         </Container>
