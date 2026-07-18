@@ -48,9 +48,9 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo.jpeg";
 
 // Mock icons for the features section if specific ones aren't available
-const FastIcon = () => <Box sx={{ backgroundColor: '#F7F2E0', p: 1, borderRadius: '50%', display: 'inline-flex' }}><LightningIcon sx={{ color: '#757575' }} /></Box>;
-const ReliableIcon = () => <Box sx={{ backgroundColor: '#E8F5E9', p: 1, borderRadius: '50%', display: 'inline-flex' }}><TargetIcon sx={{ color: '#4CAF50' }} /></Box>;
-const UnlimitedIcon = () => <Box sx={{ backgroundColor: '#F3E5F5', p: 1, borderRadius: '50%', display: 'inline-flex' }}><InfinityIcon sx={{ color: '#9C27B0' }} /></Box>;
+const FastIcon = () => <Box sx={{ backgroundColor: '#F5F5F5', p: 1, borderRadius: '50%', display: 'inline-flex' }}><LightningIcon sx={{ color: '#000000' }} /></Box>;
+const ReliableIcon = () => <Box sx={{ backgroundColor: '#F5F5F5', p: 1, borderRadius: '50%', display: 'inline-flex' }}><TargetIcon sx={{ color: '#000000' }} /></Box>;
+const UnlimitedIcon = () => <Box sx={{ backgroundColor: '#F5F5F5', p: 1, borderRadius: '50%', display: 'inline-flex' }}><InfinityIcon sx={{ color: '#000000' }} /></Box>;
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -60,14 +60,14 @@ const LandingPage = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: "#FFFDF5", color: "text.primary" }}>
+    <Box sx={{ flexGrow: 1, bgcolor: "#FFFFFF", color: "text.primary" }}>
       {/* Header */}
-      <AppBar position="sticky" elevation={0} sx={{ bgcolor: "#F7F2E0", color: "black", borderBottom: "1px solid #E8E4D8" }}>
+      <AppBar position="sticky" elevation={0} sx={{ bgcolor: "#FFFFFF", color: "black", borderBottom: "1px solid #EEEEEE" }}>
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Box component="img" src={logo} sx={{ height: 40, mr: 1 }} />
-              <Typography variant="h6" component="div" sx={{ fontWeight: "bold", color: "#424242", display: "flex", alignItems: "center" }}>
+              <Typography variant="h6" component="div" sx={{ fontWeight: "bold", color: "#000000", display: "flex", alignItems: "center" }}>
                 LeoEd
               </Typography>
               <Box sx={{ display: { xs: "none", md: "flex" }, ml: 4 }}>
@@ -83,16 +83,16 @@ const LandingPage = () => {
                 繁體
               </Button>
               <Button 
-                variant="outlined" 
+                variant="contained" 
                 onClick={handleLogin}
-                sx={{ mr: 2, textTransform: "none", borderRadius: 2, border: "1px solid #E8E4D8", color: "#424242" }}
+                sx={{ mr: 2, textTransform: "none", borderRadius: 2, bgcolor: "#2196f3", color: "white", '&:hover': { bgcolor: '#1976d2' } }}
               >
                 學校師生登入
               </Button>
               <Button 
                 variant="contained" 
                 color="primary" 
-                sx={{ textTransform: "none", borderRadius: 2, boxShadow: "none" }}
+                sx={{ textTransform: "none", borderRadius: 2, boxShadow: "none", bgcolor: "#000000", color: "#FFFFFF", '&:hover': { bgcolor: '#333333' } }}
               >
                 立即免費試用
               </Button>
@@ -102,36 +102,36 @@ const LandingPage = () => {
       </AppBar>
 
       {/* Hero Section */}
-      <Box sx={{ pt: 10, pb: 15, background: "linear-gradient(180deg, #FFFDF5 0%, #F7F2E0 100%)" }}>
+      <Box sx={{ pt: 10, pb: 15, background: "linear-gradient(180deg, #FFFFFF 0%, #F5F5F5 100%)" }}>
         <Container maxWidth="lg">
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
               <Box sx={{ mb: 2 }}>
-                <Typography component="span" sx={{ bgcolor: "#F7F2E0", color: "#424242", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
+                <Typography component="span" sx={{ bgcolor: "#000000", color: "#FFFFFF", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
                   DSE • TSA • HKAT • IELTS 評核對標
                 </Typography>
               </Box>
               <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, lineHeight: 1.2 }}>
                 AI 極速批改<br />
-                <Box component="span" sx={{ color: "#424242" }}>學習化繁為簡</Box>
+                <Box component="span" sx={{ color: "#000000" }}>學習化繁為簡</Box>
               </Typography>
               <Typography variant="body1" sx={{ color: "text.secondary", mb: 4, fontSize: "1.1rem" }}>
                 15 分鐘批改 100 份作文，服務全港 190+ 所中小學。一站式涵蓋中英文寫作批改、英粵普説話評測、數學步驟診斷及歷史資料題拆解，讓教師因材施教，引導學生自主學習。
               </Typography>
               <Box sx={{ mb: 4, display: "flex", alignItems: "center", gap: 2 }}>
-                <Typography sx={{ color: "#424242", fontWeight: "bold", borderBottom: "2px solid #424242" }}>
+                <Typography sx={{ color: "#000000", fontWeight: "bold", borderBottom: "2px solid #000000" }}>
                   與香港中文大學聯合研發
                 </Typography>
                 <Divider orientation="vertical" flexItem />
-                <Typography sx={{ color: "#424242", fontWeight: "bold", borderBottom: "2px solid #424242" }}>
+                <Typography sx={{ color: "#000000", fontWeight: "bold", borderBottom: "2px solid #000000" }}>
                   優質教育基金 (QEF eLAFP) 獲批方案
                 </Typography>
               </Box>
               <Box sx={{ display: "flex", gap: 2 }}>
-                <Button variant="contained" size="large" sx={{ px: 4, py: 1.5, borderRadius: 2, boxShadow: "none", textTransform: "none" }}>
+                <Button variant="contained" size="large" sx={{ px: 4, py: 1.5, borderRadius: 2, boxShadow: "none", textTransform: "none", bgcolor: "#000000", color: "#FFFFFF", '&:hover': { bgcolor: '#333333' } }}>
                   立即免費試用 🚀
                 </Button>
-                <Button variant="outlined" size="large" onClick={handleLogin} sx={{ px: 4, py: 1.5, borderRadius: 2, textTransform: "none", bgcolor: "white" }}>
+                <Button variant="contained" size="large" onClick={handleLogin} sx={{ px: 4, py: 1.5, borderRadius: 2, textTransform: "none", bgcolor: "#2196f3", color: "white", '&:hover': { bgcolor: '#1976d2' } }}>
                   學校師生登入 🎓
                 </Button>
               </Box>
@@ -151,7 +151,7 @@ const LandingPage = () => {
                   width: "100%", 
                   maxWidth: 500, 
                   height: 350, 
-                  bgcolor: "#F7F2E0", 
+                  bgcolor: "#F5F5F5", 
                   borderRadius: 4, 
                   display: "flex", 
                   alignItems: "center", 
@@ -160,13 +160,13 @@ const LandingPage = () => {
                   position: "relative"
                 }}>
                   <Box sx={{ width: "80%", height: "80%", bgcolor: "white", borderRadius: 2, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                     <IconButton color="primary" sx={{ width: 80, height: 80, bgcolor: "rgba(66, 66, 66, 0.1)" }}>
-                       <PlayArrowIcon sx={{ fontSize: 50, color: "#424242" }} />
+                     <IconButton color="primary" sx={{ width: 80, height: 80, bgcolor: "rgba(0, 0, 0, 0.05)" }}>
+                       <PlayArrowIcon sx={{ fontSize: 50, color: "#000000" }} />
                      </IconButton>
                   </Box>
                   <Card sx={{ position: "absolute", top: -20, right: -20, p: 2, borderRadius: 2, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                       <Box sx={{ width: 40, height: 40, bgcolor: "#F7F2E0", borderRadius: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>🏆</Box>
+                       <Box sx={{ width: 40, height: 40, bgcolor: "#F5F5F5", borderRadius: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>🏆</Box>
                        <Box>
                          <Typography variant="caption" sx={{ color: "text.secondary" }}>備受信任</Typography>
                          <Typography variant="body2" sx={{ fontWeight: "bold" }}>190+ 間香港學校</Typography>
@@ -237,7 +237,7 @@ const LandingPage = () => {
       </Container>
 
       {/* Ecosystem Section */}
-      <Box sx={{ py: 15, bgcolor: "#FFFDF5" }}>
+      <Box sx={{ py: 15, bgcolor: "#FFFFFF" }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: "center", mb: 8 }}>
             <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
@@ -250,15 +250,15 @@ const LandingPage = () => {
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
               <Card sx={{ height: "100%", p: 4, borderRadius: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <AnalyticsIcon sx={{ fontSize: 48, color: "#424242", mb: 2 }} />
+                <AnalyticsIcon sx={{ fontSize: 48, color: "#000000", mb: 2 }} />
                 <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>學校管理層</Typography>
                 <List dense>
                   <ListItem disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#424242", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#424242", borderRadius: "50%" }} /></Box></ListItemIcon>
+                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#000000", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#000000", borderRadius: "50%" }} /></Box></ListItemIcon>
                     <ListItemText primary="提供學習分析報告，全面監測全科進度。" />
                   </ListItem>
                   <ListItem disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#424242", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#424242", borderRadius: "50%" }} /></Box></ListItemIcon>
+                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#000000", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#000000", borderRadius: "50%" }} /></Box></ListItemIcon>
                     <ListItemText primary="固定成本，無限次批改。" />
                   </ListItem>
                 </List>
@@ -306,7 +306,7 @@ const LandingPage = () => {
           <Grid item xs={12} md={4}>
             <Card sx={{ height: "100%", p: 4, borderRadius: 4, position: "relative" }}>
               <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>英文科 AI</Typography>
-              <Typography variant="body2" sx={{ color: "#424242", mb: 3 }}>智能學與教：寫作批改與聽說評測</Typography>
+              <Typography variant="body2" sx={{ color: "#000000", mb: 3 }}>智能學與教：寫作批改與聽說評測</Typography>
               <List dense>
                 {[
                   "考評對標：支援 DSE、TSA、HKAT、IELTS 及校本標準。",
@@ -315,13 +315,13 @@ const LandingPage = () => {
                   "閱讀及聆聽：支援 PDF、網頁、YouTube 及影音檔案，一鍵自動出題、批改與分析。"
                 ].map((item) => (
                   <ListItem key={item} disableGutters sx={{ alignItems: "flex-start" }}>
-                    <ListItemIcon sx={{ minWidth: 30, mt: 0.5 }}><CheckCircleIcon sx={{ color: "#424242", fontSize: 20 }} /></ListItemIcon>
+                    <ListItemIcon sx={{ minWidth: 30, mt: 0.5 }}><CheckCircleIcon sx={{ color: "#000000", fontSize: 20 }} /></ListItemIcon>
                     <ListItemText primary={item} />
                   </ListItem>
                 ))}
               </List>
               <Box sx={{ mt: "auto", pt: 2 }}>
-                <Button fullWidth variant="contained" sx={{ bgcolor: "#F7F2E0", color: "#424242", py: 1.5, "&:hover": { bgcolor: "#E8E4D8" }, boxShadow: "none", textTransform: "none" }} endIcon={<ArrowForwardIcon />}>
+                <Button fullWidth variant="contained" sx={{ bgcolor: "#F5F5F5", color: "#000000", py: 1.5, "&:hover": { bgcolor: "#EEEEEE" }, boxShadow: "none", textTransform: "none" }} endIcon={<ArrowForwardIcon />}>
                   探索英文方案
                 </Button>
               </Box>
@@ -356,11 +356,11 @@ const LandingPage = () => {
           </Grid>
           <Grid item xs={12} md={4}>
             <Card sx={{ height: "100%", p: 4, borderRadius: 4 }}>
-              <Box sx={{ position: "absolute", top: 10, right: 10, bgcolor: "#F7F2E0", color: "#424242", px: 1, py: 0.2, borderRadius: 1, fontSize: "0.7rem", fontWeight: "bold" }}>
+              <Box sx={{ position: "absolute", top: 10, right: 10, bgcolor: "#000000", color: "#FFFFFF", px: 1, py: 0.2, borderRadius: 1, fontSize: "0.7rem", fontWeight: "bold" }}>
                 下月發佈
               </Box>
               <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>數學科 AI</Typography>
-              <Typography variant="body2" sx={{ color: "#424242", mb: 3 }}>算式步驟診斷：錯題追蹤與自適應練習</Typography>
+              <Typography variant="body2" sx={{ color: "#000000", mb: 3 }}>算式步驟診斷：錯題追蹤與自適應練習</Typography>
               <List dense>
                 {[
                   "圖像識別：支援手機拍照，具備手寫算式 OCR 識別技術。",
@@ -385,10 +385,10 @@ const LandingPage = () => {
       </Container>
 
       {/* Partners Section */}
-      <Box sx={{ py: 10, bgcolor: "#FFFDF5", textAlign: "center" }}>
+      <Box sx={{ py: 10, bgcolor: "#FFFFFF", textAlign: "center" }}>
         <Container maxWidth="lg">
           <Typography component="div" sx={{ mb: 2 }}>
-             <Box component="span" sx={{ bgcolor: "#F7F2E0", color: "#424242", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
+             <Box component="span" sx={{ bgcolor: "#F5F5F5", color: "#000000", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
                ⭐ 獲 190+ 所學校採用
              </Box>
           </Typography>
@@ -417,11 +417,11 @@ const LandingPage = () => {
       </Box>
 
       {/* Pricing Table Section */}
-      <Box sx={{ py: 15, bgcolor: "#FFFDF5" }}>
+      <Box sx={{ py: 15, bgcolor: "#FFFFFF" }}>
         <Container maxWidth="lg">
           <Box sx={{ display: "flex", justifyContent: "center", mb: 6 }}>
-            <Box sx={{ bgcolor: "#F7F2E0", p: 1, borderRadius: 10, display: "flex", gap: 1, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}>
-              <Button variant="contained" sx={{ borderRadius: 10, px: 6, boxShadow: "none" }}>英文科</Button>
+            <Box sx={{ bgcolor: "#F5F5F5", p: 1, borderRadius: 10, display: "flex", gap: 1, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}>
+              <Button variant="contained" sx={{ borderRadius: 10, px: 6, boxShadow: "none", bgcolor: "#000000", "&:hover": { bgcolor: "#333333" } }}>英文科</Button>
               <Button variant="text" sx={{ borderRadius: 10, px: 6, color: "text.secondary" }}>中文科</Button>
             </Box>
           </Box>
@@ -429,7 +429,7 @@ const LandingPage = () => {
           <TableContainer component={Paper} sx={{ borderRadius: 4, boxShadow: "0 20px 50px rgba(0,0,0,0.05)", overflow: "hidden" }}>
             <Table>
               <TableHead>
-                <TableRow sx={{ bgcolor: "#F7F2E0" }}>
+                <TableRow sx={{ bgcolor: "#F5F5F5" }}>
                   <TableCell></TableCell>
                   {["方案 A", "方案 B", "方案 C", "方案 D"].map((p) => (
                     <TableCell key={p} align="center" sx={{ fontWeight: "bold", fontSize: "1.1rem" }}>{p}</TableCell>
@@ -540,7 +540,7 @@ const LandingPage = () => {
       </Container>
 
       {/* Team Section */}
-      <Box sx={{ py: 15, bgcolor: "#FFFDF5" }}>
+      <Box sx={{ py: 15, bgcolor: "#FFFFFF" }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: "center", mb: 8 }}>
             <Typography variant="h3" sx={{ fontWeight: "bold" }}>核心研發成員</Typography>
@@ -553,8 +553,8 @@ const LandingPage = () => {
             ].map((member) => (
               <Grid item xs={12} md={4} key={member.name}>
                 <Box sx={{ textAlign: "center" }}>
-                  <Avatar sx={{ width: 150, height: 150, mx: "auto", mb: 3, bgcolor: "#F7F2E0" }}>
-                    <PersonIcon sx={{ fontSize: 80, color: "#D8D4C8" }} />
+                  <Avatar sx={{ width: 150, height: 150, mx: "auto", mb: 3, bgcolor: "#F5F5F5" }}>
+                    <PersonIcon sx={{ fontSize: 80, color: "#CCCCCC" }} />
                   </Avatar>
                   <Typography variant="h5" sx={{ fontWeight: "bold" }}>{member.name}</Typography>
                   <Typography variant="body2" sx={{ color: "#424242", mt: 1 }}>{member.title}</Typography>
@@ -613,7 +613,7 @@ const LandingPage = () => {
                 <EmailIcon sx={{ opacity: 0.7 }} />
                 <Typography variant="body2" sx={{ opacity: 0.7 }}>Hello@leoed.ai</Typography>
               </Box>
-              <Button variant="contained" fullWidth sx={{ bgcolor: "#424242", py: 1.5, mb: 4, textTransform: "none" }} startIcon={<LocationIcon />}>預約到校示範</Button>
+              <Button variant="contained" fullWidth sx={{ bgcolor: "#F5F5F5", color: "#000000", py: 1.5, mb: 4, textTransform: "none", "&:hover": { bgcolor: "#EEEEEE" } }} startIcon={<LocationIcon />}>預約到校示範</Button>
               <Box sx={{ mb: 2 }}>
                 <Typography variant="caption" sx={{ opacity: 0.5 }}>香港科學園辦公室</Typography>
                 <Typography variant="body2" sx={{ opacity: 0.7 }}>Unit 218, 2/F, Building 19W, HK Science Park, Shatin, N.T., HK</Typography>

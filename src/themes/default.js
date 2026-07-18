@@ -1,6 +1,6 @@
 import tinycolor from "tinycolor2";
 
-const primary = "#757575";
+const primary = "#2196f3";
 const secondary = "#FF5C93";
 const warning = "#FFC260";
 const success = "#3CD4A0";
@@ -38,18 +38,18 @@ const defaultThemeConfig = {
       dark: tinycolor(info).darken(darkenRate).toHexString(),
     },
     text: {
-      primary: "#4A4A4A",
+      primary: "#000000",
       secondary: "#6E6E6E",
       hint: "#B9B9B9",
     },
     background: {
-      default: "#FFFDF5",
-      light: "#F7F2E0",
+      default: "#FFFFFF",
+      light: "#F5F5F5",
     },
   },
   customShadows: {
     widget:
-      "0px 12px 33px 0px #E8E4D8, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
+      "0px 12px 33px 0px #EEEEEE, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
   },
 };
 
