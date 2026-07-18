@@ -52,7 +52,7 @@ const styles = (theme) => ({
   newsHeader: {
     textDecoration: "none",
     textTransform: "uppercase",
-    color: "#536DFE",
+    color: "#757575",
   },
   timeBlock: {
     marginTop: 10,

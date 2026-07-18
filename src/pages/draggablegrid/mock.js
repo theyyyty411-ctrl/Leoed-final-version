@@ -52,7 +52,7 @@ const draggableGridMock = {
         date: "Mar 20, 18:46",
       },
       {
-        background: "#536DFE",
+        background: "#757575",
         icon: "microphone",
         title: "Light Blue reached $300",
         description:

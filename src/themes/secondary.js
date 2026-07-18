@@ -1,7 +1,7 @@
 import tinycolor from "tinycolor2";
 
 const primary = "#FF5C93";
-const secondary = "#536DFE";
+const secondary = "#757575";
 const warning = "#FFC260";
 const success = "#3CD4A0";
 const info = "#9013FE";
@@ -43,17 +43,17 @@ const secondaryTheme = {
       hint: "#B9B9B9",
     },
     background: {
-      default: "#F6F7FF",
-      light: "#F3F5FF",
+      default: "#F5F5F5",
+      light: "#EEEEEE",
     },
   },
   customShadows: {
     widget:
-      "0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
+      "0px 3px 11px 0px #E0E0E0, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
     widgetDark:
       "0px 3px 18px 0px #4558A3B3, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
     widgetWide:
-      "0px 12px 33px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
+      "0px 12px 33px 0px #E0E0E0, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
   },
 };
 

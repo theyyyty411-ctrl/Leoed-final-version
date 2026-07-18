@@ -391,7 +391,7 @@ const UserList = () => {
                                 alt={row.name}
                                 style={{
                                   marginRight: 15,
-                                  backgroundColor: "#536DFE",
+                                  backgroundColor: "#757575",
                                 }}
                               >
                                 {row.email.charAt(0).toUpperCase()}

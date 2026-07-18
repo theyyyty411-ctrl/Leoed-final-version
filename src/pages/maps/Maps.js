@@ -21,7 +21,7 @@ export default function Maps() {
         <CircleMarker
           center={[40.7128, -74.006]}
           radius={8}
-          pathOptions={{ color: "#536DFE" }}
+          pathOptions={{ color: "#757575" }}
         >
           <Popup>New York</Popup>
         </CircleMarker>

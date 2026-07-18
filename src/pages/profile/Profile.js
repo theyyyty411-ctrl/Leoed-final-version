@@ -38,11 +38,11 @@ const taskList = [
     submitted: true,
   },
   { color: "#FFC35F", date: "2026-07-03", title: "Quiz 3", submitted: false },
-  { color: "#536DFE", date: "2026-07-05", title: "Exam 12", submitted: false },
+  { color: "#757575", date: "2026-07-05", title: "Exam 12", submitted: false },
 ];
 
 const taskSum = [
-  { name: "To do", value: 400, color: "#536DFE" },
+  { name: "To do", value: 400, color: "#757575" },
   { name: "In Progress", value: 300, color: "#FFC35F" },
   { name: "Submitted", value: 300, color: "#3CD4A0" },
   { name: "Overdue", value: 200, color: "#FF5C93" },
