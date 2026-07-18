@@ -1,0 +1,9 @@
+services:
+  - type: static
+    name: leo-ai
+    env: static
+    buildCommand: npm run build
+    publishPath: ./build
+    routes:
+      - source: /*
+        destination: /index.html
