@@ -236,6 +236,17 @@ const LandingPage = () => {
                   </Box>
                 ))}
               </Box>
+              
+              <Box sx={{ mt: 4, width: "100%", maxWidth: { xs: "100%", sm: 560 }, borderRadius: 4, overflow: "hidden", boxShadow: "0 10px 30px rgba(0,0,0,0.1)", border: "1px solid #EEE" }}>
+                <Box
+                  component="iframe"
+                  sx={{ width: "100%", aspectRatio: "16/9", border: "none", display: "block" }}
+                  src="https://www.youtube.com/embed/_75n1GeAUsQ"
+                  title="LeoEd Intro Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </Box>
             </Grid>
             <Grid item xs={12} md={5}>
               <Box sx={{ position: "relative" }}>
