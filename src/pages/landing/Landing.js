@@ -46,6 +46,9 @@ import {
 } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo.jpeg";
+import profFung from "../../images/prof_fung.jpg";
+import profWilliam from "../../images/prof_william.jpg";
+import drLam from "../../images/dr_lam.jpg";
 
 // Mock icons for the features section if specific ones aren't available
 const FastIcon = () => <Box sx={{ backgroundColor: '#F5F5F5', p: 1, borderRadius: '50%', display: 'inline-flex' }}><LightningIcon sx={{ color: '#000000' }} /></Box>;
@@ -479,18 +482,21 @@ const LandingPage = () => {
           </Box>
           <Grid container spacing={6} justifyContent="center">
             {[
-              { name: "Dr. Lam Yat Ming Eddie (林一鳴)", title: "香港都會大學", desc: "核心研發團隊", sub: "" },
-              { name: "Professor Fung Kwun Wing Joseph", title: "香港都會大學", desc: "核心研發團隊", sub: "" },
-              { name: "Professor William YEOH Ging-sun", title: "學術顧問", desc: "香港都會大學", sub: "" }
+              { name: "Dr. Lam Yat Ming Eddie (林一鳴)", title: "香港都會大學", desc: "核心研發團隊", sub: "", image: drLam },
+              { name: "Professor Fung Kwun Wing Joseph", title: "香港都會大學", desc: "核心研發團隊", sub: "", image: profFung },
+              { name: "Professor William YEOH Ging-sun", title: "學術顧問", desc: "香港都會大學", sub: "", image: profWilliam }
             ].map((member) => (
               <Grid item xs={12} md={4} key={member.name}>
                 <Box sx={{ textAlign: "center" }}>
-                  <Avatar sx={{ 
-                    width: 160, height: 160, mx: "auto", mb: 4, bgcolor: "#FFF", 
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
-                    border: "4px solid #FFF"
-                  }}>
-                    <PersonIcon sx={{ fontSize: 90, color: "#EEE" }} />
+                  <Avatar 
+                    src={member.image}
+                    sx={{ 
+                      width: 160, height: 160, mx: "auto", mb: 4, bgcolor: "#FFF", 
+                      boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+                      border: "4px solid #FFF"
+                    }}
+                  >
+                    {!member.image && <PersonIcon sx={{ fontSize: 90, color: "#EEE" }} />}
                   </Avatar>
                   <Typography variant="h5" sx={{ fontWeight: 800 }}>{member.name}</Typography>
                   <Typography variant="subtitle1" sx={{ color: "#2196f3", fontWeight: 700, mt: 1 }}>{member.title}</Typography>
