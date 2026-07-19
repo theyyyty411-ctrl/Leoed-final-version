@@ -33,9 +33,9 @@ export default makeStyles((theme) => ({
     textDecoration: "none",
   },
   defaultRadio: {
-    color: "#757575",
+    color: "#2196f3",
     "&.MuiRadio-colorSecondary.Mui-checked": {
-      color: "#757575",
+      color: "#2196f3",
     },
   },
   successRadio: {

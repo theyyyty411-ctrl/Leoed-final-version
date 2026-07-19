@@ -21,7 +21,7 @@ function SharesWidget() {
       img: a2,
       name: "Ianus Arendse",
       comment: "about 42 mins ago",
-      type: "#757575",
+      type: "#536DFE",
     },
     {
       img: a3,
