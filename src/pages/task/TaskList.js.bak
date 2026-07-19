@@ -24,10 +24,13 @@ import config from "../../config";
 
 // Material UI icons
 import {
+  Star as StarIcon,
   Delete as DeleteIcon,
   FilterList as FilterListIcon,
+  Close as CloseIcon,
   Search as SearchIcon,
 } from "@mui/icons-material";
+import { yellow } from "@mui/material/colors";
 import { lighten } from "@mui/material/styles";
 import { makeStyles } from "styles/mui";
 import PropTypes from "prop-types";
@@ -121,7 +124,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align="center"
+            align={headCell.numeric ? "left" : "right"}
             padding={headCell.disablePadding ? "none" : null}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -208,8 +211,8 @@ const EnhancedTableToolbar = ({ numSelected, selected, onDeleteSelected }) => {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton aria-label="delete" onClick={(e) => onDeleteSelected(selected, e)}>
-            <DeleteIcon />
+          <IconButton aria-label="delete">
+            <DeleteIcon onClick={(e) => onDeleteSelected(selected, e)} />
           </IconButton>
         </Tooltip>
       ) : (
@@ -225,8 +228,6 @@ const EnhancedTableToolbar = ({ numSelected, selected, onDeleteSelected }) => {
 
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
-  selected: PropTypes.array.isRequired,
-  onDeleteSelected: PropTypes.func.isRequired,
 };
 
 function QuestionPage() {
@@ -240,7 +241,7 @@ function QuestionPage() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(50);
   const [backQuestions, setBackQuestions] = React.useState(
-    context.questions.questions || [],
+    context.questions.questions,
   );
 
   useEffect(() => {
@@ -249,10 +250,8 @@ function QuestionPage() {
   }, []);
 
   useEffect(() => {
-    if (context.questions.questions) {
-      setBackQuestions(context.questions.questions);
-    }
-  }, [context.questions.questions]);
+    setBackQuestions(context.questions.questions);
+  }, [context]);
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === "desc";
@@ -261,10 +260,13 @@ function QuestionPage() {
   };
 
   const searchQuestions = (e) => {
-    const questionsList = context.questions.questions || [];
-    const questions = questionsList.filter((c) =>
-      c.question.includes(e.currentTarget.value),
-    );
+    let questions = [];
+    context.questions.questions.forEach((c) => {
+      if (c.question.includes(e.currentTarget.value)) {
+        questions.push(c);
+      }
+      return;
+    });
     setBackQuestions(questions);
   };
 
@@ -341,15 +343,12 @@ function QuestionPage() {
   //   );
   // }
 
-  const deleteQuestion = (ids, event) => {
-    const idArray = Array.isArray(ids) ? ids : [ids];
-    idArray.forEach((id) => {
-      deleteQuestionRequest({
-        id,
-        navigate,
-        pathname: location.pathname,
-        dispatch: context.setQuestions,
-      });
+  const deleteQuestion = (id, event) => {
+    deleteQuestionRequest({
+      id,
+      navigate,
+      pathname: location.pathname,
+      dispatch: context.setQuestions,
     });
     event.stopPropagation();
   };
@@ -492,14 +491,13 @@ function QuestionPage() {
                               id={labelId}
                               scope="row"
                               padding="none"
-                              align="center"
                             >
                               {row.id}
                             </TableCell>
-                            <TableCell align="center">{row.subject}</TableCell>
-                            <TableCell align="center">{row.topic}</TableCell>
+                            <TableCell>{row.subject}</TableCell>
+                            <TableCell>{row.topic}</TableCell>
                             {/* <TableCell>{row.grade}</TableCell> */}
-                            <TableCell align="center">{row.type}</TableCell>
+                            <TableCell>{row.type}</TableCell>
                             <TableCell padding="none">
                               <Link
                                 component={"button"}
@@ -514,7 +512,7 @@ function QuestionPage() {
                                 />
                               </Link>
                             </TableCell>
-                            <TableCell align="center">{row.difficulty}/10</TableCell>
+                            <TableCell>{row.difficulty}/10</TableCell>
                             {/* <TableCell>
                                 <Box display={"flex"} alignItems={"center"}>
                                   <Typography
@@ -606,9 +604,11 @@ function QuestionPage() {
               count={backQuestions.length}
               rowsPerPage={rowsPerPage}
               page={page}
-              slotProps={{
-                previousButton: { "aria-label": "previous page" },
-                nextButton: { "aria-label": "next page" },
+              backIconButtonProps={{
+                "aria-label": "previous page",
+              }}
+              nextIconButtonProps={{
+                "aria-label": "next page",
               }}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
@@ -620,5 +620,9 @@ function QuestionPage() {
   );
 }
 
+// eslint-disable-next-line no-unused-vars
+function CloseButton({ closeToast, className }) {
+  return <CloseIcon className={className} onClick={closeToast} />;
+}
 
 export default QuestionPage;

@@ -108,13 +108,12 @@ export default function Header() {
             />
           )}
         </IconButton>
-        <img src={profile} alt="logo" className={classes.logotypeImage} style={{ height: 40, marginRight: 10 }} />
         <Typography
           variant="h6"
           weight="medium"
           // className={classes.logotype}
         >
-          LeoEd
+          LeoEd AI
         </Typography>
         <div className={classes.grow} />
         <IconButton

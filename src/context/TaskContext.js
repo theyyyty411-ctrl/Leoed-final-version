@@ -99,10 +99,11 @@ export function deleteTaskRequest({ id, navigate, pathname, dispatch }) {
 export function getTaskInfo(id) {
   // We check if app runs with backend mode
   if (config.isBackend) {
-    axios.get("/tasks/" + id).then((res) => {
+    return axios.get("/tasks/" + id).then((res) => {
       return res.data;
     });
   }
+  return Promise.resolve(null);
 }
 
 export function updateTask(task, dispatch) {
@@ -121,6 +122,14 @@ export function createTask(task, dispatch) {
   axios.post("/tasks", task).then((res) => {
     dispatch({ type: "CREATE_TASK", payload: res.data });
   });
+}
+
+export function createQuickTask(dispatch) {
+  if (config.isBackend) {
+    return axios.post("/tasks/quick").then((res) => {
+      dispatch({ type: "CREATE_TASK", payload: res.data });
+    });
+  }
 }
 
 export { TasksProvider, TasksContext, useTasksState };

@@ -16,6 +16,7 @@ import {
   Description as DocumentationIcon,
   Person as PersonIcon,
   AccountCircle as ProfileIcon,
+  ListAlt as ListAltIcon,
 } from "@mui/icons-material";
 import ChatIcon from "@mui/icons-material/Chat";
 import ViewCompactRoundedIcon from "@mui/icons-material/ViewCompactRounded";
@@ -104,7 +105,7 @@ export function getStructure() {
           link: "/app/learning",
           icon: <UIElementsIcon />,
           children: [
-            { label: "Task", link: "/app/learning/task" },
+            { label: "Task List", link: "/app/learning/tasks" },
             {
               label: "Recommended",
               // link: '/app/learning/recommended'
@@ -187,7 +188,7 @@ export function getStructure() {
           link: "/app/learning",
           icon: <UIElementsIcon />,
           children: [
-            { label: "Task", link: "/app/learning/task" },
+            { label: "Task List", link: "/app/learning/tasks" },
             {
               label: "Recommended",
               // link: '/app/learning/recommended'

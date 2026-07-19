@@ -39,7 +39,7 @@ export default function Error({ code }) {
       <div className={classes.logotype}>
         <img className={classes.logotypeIcon} src={logo} alt="logo" />
         <Typography variant="h3" className={classes.logotypeText}>
-          LeoEd
+          LeoEd AI
         </Typography>
       </div>
       <Paper classes={{ root: classes.paperRoot }}>

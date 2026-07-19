@@ -1,4 +1,5 @@
 build/
+_SYNCAPP/
 
 # Logs
 logs
@@ -68,9 +69,9 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-# .env
-# .env.*
-# !.env.example
+.env
+.env.*
+!.env.example
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

@@ -57,6 +57,7 @@ import QuestionsGrid from "../../pages/question/QuestionsGrid";
 import CreateQuestion from "../../pages/question/CreateQuestion";
 
 import Task from "../../pages/task/Task";
+import TaskList from "../../pages/task/TaskList";
 
 import FormsElements from "../../pages/forms/elements";
 import FormValidation from "../../pages/forms/validation";
@@ -275,6 +276,22 @@ function Layout() {
             element={
               <TasksProvider>
                 <Task />
+              </TasksProvider>
+            }
+          />
+          <Route
+            path="learning/task/:id"
+            element={
+              <TasksProvider>
+                <Task />
+              </TasksProvider>
+            }
+          />
+          <Route
+            path="learning/tasks"
+            element={
+              <TasksProvider>
+                <TaskList />
               </TasksProvider>
             }
           />

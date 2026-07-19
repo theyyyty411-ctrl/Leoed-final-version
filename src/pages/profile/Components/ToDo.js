@@ -105,7 +105,7 @@ function CustomizedTabs() {
     { color: "#FFC35F", time: "12.40", title: "Sales Presentation" },
     { color: "#3CD4A0", time: "13.20", title: "Call conference in New-York" },
     { color: "#FFC35F", time: "15.20", title: "Development of the new Widget" },
-    { color: "#757575", time: "16.00", title: "Code review and refactoring" },
+    { color: "#536DFE", time: "16.00", title: "Code review and refactoring" },
   ];
 
   return (

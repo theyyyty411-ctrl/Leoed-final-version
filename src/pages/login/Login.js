@@ -72,7 +72,8 @@ function Login() {
     Number.isFinite(parsedTab) ? parsedTab : 0,
   );
   let [nameValue, setNameValue] = useState("");
-  let [loginValue, setLoginValue] = useState("admin@test.com");
+  let [studentValue, setStudentValue] = useState("student@leoedai.com");
+  let [loginValue, setLoginValue] = useState("admin@leoedai.com");
   let [passwordValue, setPasswordValue] = useState("password");
   let [forgotEmail, setForgotEmail] = useState("");
   let [isForgot, setIsForgot] = useState(false);
@@ -98,7 +99,7 @@ function Login() {
       <div className={classes.logotypeContainer}>
         <img src={logo} alt="logo" className={classes.logotypeImage} />
         {/* <Typography className={classes.logotypeText}>
-          LeoEd
+          LeoEd AI
         </Typography> */}
       </div>
       <div
@@ -162,8 +163,9 @@ function Login() {
                 textColor="primary"
                 centered
               >
-                <Tab label="Login" classes={{ root: classes.tab }} />
-                <Tab label="New User" classes={{ root: classes.tab }} />
+                <Tab label="Student" classes={{ root: classes.tab }} />
+                <Tab label="Teacher" classes={{ root: classes.tab }} />
+                <Tab label="New" classes={{ root: classes.tab }} />
               </Tabs>
               {activeTabId === 0 && (
                 <React.Fragment>
@@ -173,7 +175,106 @@ function Login() {
                       inheritHeight
                       style={{ marginTop: 32 }}
                     >
-                      <Typography
+                      {/* <Typography
+                        variant={"body2"}
+                        component="div"
+                        style={{ textAlign: "center" }}
+                      >
+                        This is a real app with Node.js backend - use
+                        <Typography variant={"body2"} weight={"bold"}>
+                          "student@test.com / password"
+                        </Typography>{" "}
+                        to login!
+                      </Typography> */}
+                    </Widget>
+                  ) : null}
+                  <Grow
+                    in={error}
+                    style={
+                      !error ? { display: "none" } : { display: "inline-block" }
+                    }
+                  >
+                    <Typography className={classes.errorMessage}>
+                      Something is wrong with your login or password :(
+                    </Typography>
+                  </Grow>
+                  <Input
+                    id="email"
+                    InputProps={{
+                      classes: {
+                        underline: classes.InputUnderline,
+                        input: classes.Input,
+                      },
+                    }}
+                    value={studentValue}
+                    onChange={(e) => setStudentValue(e.target.value)}
+                    margin="normal"
+                    placeholder="Email Adress"
+                    type="email"
+                    fullWidth
+                    onKeyDown={(e) => loginOnEnterKey(e)}
+                  />
+                  <Input
+                    id="password"
+                    InputProps={{
+                      classes: {
+                        underline: classes.InputUnderline,
+                        input: classes.Input,
+                      },
+                    }}
+                    value={passwordValue}
+                    onChange={(e) => setPasswordValue(e.target.value)}
+                    margin="normal"
+                    placeholder="Password"
+                    type="password"
+                    fullWidth
+                    onKeyDown={(e) => loginOnEnterKey(e)}
+                  />
+                  <div className={classes.formButtons}>
+                    {isLoading ? (
+                      <CircularProgress
+                        size={26}
+                        className={classes.loginLoader}
+                      />
+                    ) : (
+                      <Button
+                        disabled={!isLoginFormValid()}
+                        onClick={() =>
+                          loginUser(
+                            userDispatch,
+                            studentValue,
+                            passwordValue,
+                            setIsLoading,
+                            setError,
+                          )
+                        }
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                      >
+                        Login
+                      </Button>
+                    )}
+                    <Button
+                      color="primary"
+                      size="large"
+                      onClick={() => setIsForgot(!isForgot)}
+                      className={classes.forgetButton}
+                    >
+                      Forgot Password?
+                    </Button>
+                  </div>
+                </React.Fragment>
+              )}
+              {activeTabId === 1 && (
+                <React.Fragment>
+                  {config.isBackend ? (
+                    <Widget
+                      disableWidgetMenu
+                      inheritHeight
+                      style={{ marginTop: 32 }}
+                    >
+                      {/* <Typography
                         variant={"body2"}
                         component="div"
                         style={{ textAlign: "center" }}
@@ -192,40 +293,9 @@ function Login() {
                           "teacher@test.com / password"
                         </Typography>{" "}
                         to login!
-                      </Typography>
+                      </Typography> */}
                     </Widget>
                   ) : null}
-                  {/* <Typography variant='h1' className={classes.greeting}>
-                    {getGreeting()}, User
-                  </Typography>
-                  <Button
-                    size='large'
-                    className={classes.googleButton}
-                    onClick={() =>
-                      loginUser(
-                        userDispatch,
-                        loginValue,
-                        passwordValue,
-                        setIsLoading,
-                        setError,
-                        'google',
-                      )
-                    }
-                  >
-                    <img
-                      src={google}
-                      alt='google'
-                      className={classes.googleIcon}
-                    />
-                    &nbsp;Sign in with Google
-                  </Button>
-                  <div className={classes.formDividerContainer}>
-                    <div className={classes.formDivider} />
-                    <Typography className={classes.formDividerWord}>
-                      or
-                    </Typography>
-                    <div className={classes.formDivider} />
-                  </div> */}
                   <Grow
                     in={error}
                     style={
@@ -304,7 +374,7 @@ function Login() {
                   </div>
                 </React.Fragment>
               )}
-              {activeTabId === 1 && (
+              {activeTabId === 2 && (
                 <React.Fragment>
                   {/* <Typography variant='h1' className={classes.greeting}>
                     Welcome!
@@ -313,7 +383,7 @@ function Login() {
                   <Typography variant="h2" className={classes.subGreeting}>
                     Create your account
                   </Typography>
-                  <Widget
+                  {/* <Widget
                     disableWidgetMenu
                     inheritHeight
                     style={{ marginTop: 32 }}
@@ -325,7 +395,7 @@ function Login() {
                     >
                       New account will be created as "student"
                     </Typography>
-                  </Widget>
+                  </Widget> */}
                   <Grow
                     in={error}
                     style={
@@ -451,13 +521,13 @@ function Login() {
           2026-{new Date().getFullYear()}{" "}
           <a
             style={{ textDecoration: "none", color: "inherit" }}
-            href="https://localhost"
+            href="https://leoedai.com"
             rel="noopener noreferrer"
             target="_blank"
           >
-            Test
+            LeoEdAI
           </a>
-          , LLC. All rights reserved.
+          . All rights reserved.
         </Typography>
       </div>
     </Grid>

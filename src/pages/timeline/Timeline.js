@@ -76,25 +76,6 @@ export default function TimelineComp() {
                         </Box>
                       </Typography>
                     </Box>
-                    {/*<Box height={200} width={"100%"} mx={"-24px"} mt={2}>*/}
-                    {/*  <BasicMap*/}
-                    {/*    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg"*/}
-                    {/*    loadingElement={*/}
-                    {/*      <div*/}
-                    {/*        style={{ height: "inherit", width: "inherit" }}*/}
-                    {/*      />*/}
-                    {/*    }*/}
-                    {/*    containerElement={*/}
-                    {/*      <div*/}
-                    {/*        style={{*/}
-                    {/*          height: "100%",*/}
-                    {/*          width: "calc(100% + 48px)"*/}
-                    {/*        }}*/}
-                    {/*      />*/}
-                    {/*    }*/}
-                    {/*    mapElement={<div style={{ height: "100%" }} />}*/}
-                    {/*  />*/}
-                    {/*</Box>*/}
                     <Box display="flex" ml={"-12px"} my={1}>
                       <IconButton aria-label="like">
                         <LikeIcon />

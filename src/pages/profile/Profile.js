@@ -1,24 +1,10 @@
-import { useState } from "react";
 import { Grid, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useTheme } from "styles/mui";
 import ReactApexChart from "react-apexcharts";
 
-import { Badge, Chip, Button } from "../../components/Wrappers";
-import Tabs from "./Components/Tabs";
 import Donut from "./Components/DonutChart";
-// import RNSWidget from './Components/RNSWIdget';
-import ToDo from "./Components/ToDo";
 import Calendar from "./Components/Calendar/Calendar";
-import MediaBlock from "./Components/MediaBlock";
-import ViewsWidget from "./Components/ViewsWidget";
-import ProfileIcon from "../../images/logo.png";
-import BehanceIcon from "../../images/profile/BehanceIcon.svg";
-import MediumIcon from "../../images/profile/MediumIcon.svg";
-import FacebookIcon from "../../images/profile/FacebookIcon.svg";
-import DribbleIcon from "../../images/profile/DribbleIcon.svg";
-import InstagramIcon from "../../images/profile/InstagramIcon.svg";
-import CloudIcon from "./Icons/CloudIcon";
 
 // styles
 import useStyles from "./styles";
@@ -38,11 +24,11 @@ const taskList = [
     submitted: true,
   },
   { color: "#FFC35F", date: "2026-07-03", title: "Quiz 3", submitted: false },
-  { color: "#757575", date: "2026-07-05", title: "Exam 12", submitted: false },
+  { color: "#536DFE", date: "2026-07-05", title: "Exam 12", submitted: false },
 ];
 
 const taskSum = [
-  { name: "To do", value: 400, color: "#757575" },
+  { name: "To do", value: 400, color: "#536DFE" },
   { name: "In Progress", value: 300, color: "#FFC35F" },
   { name: "Submitted", value: 300, color: "#3CD4A0" },
   { name: "Overdue", value: 200, color: "#FF5C93" },
@@ -160,9 +146,8 @@ const columns = [
 
 function Profile() {
   const theme = useTheme();
-  const [state] = useState(values);
+  const state = values;
   const classes = useStyles();
-  // let theme = useTheme();
 
   const forgetRisk = state.forgetRisk.map((item, index) => ({
     id: index + 1,
@@ -300,11 +285,6 @@ function Profile() {
             </Widget>
           </Grid>
 
-          {/* <Grid size={{ xs: 12, sm: 4, md: 4, lg: 12 }}>
-            <Widget>
-              <RNSWidget/>
-            </Widget>
-          </Grid> */}
         </Grid>
       </Grid>
     </Grid>
