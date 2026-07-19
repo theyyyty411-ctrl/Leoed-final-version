@@ -107,7 +107,7 @@ const LandingPage = () => {
                 LeoEd
               </Typography>
               <Box sx={{ display: { xs: "none", lg: "flex" }, ml: 6 }}>
-                {["首頁", "各科 AI", "合作學校", "收費方案", "智啟學教", "聯繫我們"].map((text) => (
+                {["首頁", "各科 AI", "智啟學教", "聯繫我們"].map((text) => (
                   <Button key={text} sx={{ color: "text.secondary", px: 2, fontWeight: 600, fontSize: "0.95rem", textTransform: "none", "&:hover": { color: "#000000" } }}>
                     {text} {text === "各科 AI" && <ExpandMoreIcon fontSize="small" sx={{ ml: 0.5 }} />}
                   </Button>
@@ -426,107 +426,8 @@ const LandingPage = () => {
         </Container>
       </Box>
 
-      {/* Partners Section */}
-      <Box sx={{ ...sectionStyles, bgcolor: "#FFFFFF" }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: "center", mb: 8 }}>
-            <Box component="span" sx={{ bgcolor: "rgba(33,150,243,0.1)", color: "#2196f3", px: 2.5, py: 0.8, borderRadius: 10, fontSize: "0.85rem", fontWeight: 800, mb: 3, display: "inline-block" }}>
-              TRUSTED BY LEADERS
-            </Box>
-            <Typography variant="h2" sx={titleStyles}>我們的合作學校</Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary" }}>服務全港 190+ 所學校，深獲教育界信任與肯定。</Typography>
-          </Box>
-          
-          <Box sx={{ display: "flex", justifyContent: "center", gap: 1, mb: 8, flexWrap: "wrap" }}>
-            {["新界西", "新界東", "九龍", "香港島"].map((region, index) => (
-              <Button key={region} variant={index === 0 ? "contained" : "outlined"} sx={{ 
-                px: 4, py: 1, borderRadius: 10, textTransform: "none", fontWeight: 700,
-                bgcolor: index === 0 ? "#000" : "transparent",
-                color: index === 0 ? "#FFF" : "text.secondary",
-                borderColor: index === 0 ? "#000" : "#EEE",
-                "&:hover": { bgcolor: index === 0 ? "#222" : "rgba(0,0,0,0.02)", borderColor: "#CCC" }
-              }}>
-                {region}
-              </Button>
-            ))}
-          </Box>
-          
-          <Grid container spacing={3}>
-             {[
-               "佛教善德英文中學", "天主教母佑會蕭明中學", "中華傳道會安柱中學", "荃灣公立何傳耀紀念中學", "屯門官立中學", "南屯門官立中學",
-               "獅子會蔣翠琼中學", "元朗公立中學校友會鄧兆棠中學", "靈糧堂怡文中學", "恩平工商會李琳明中學", "香港管理專業協會羅桂祥中學", "伊利沙伯中學舊生會湯國華中學"
-             ].map((school) => (
-                <Grid item xs={6} md={3} key={school}>
-                  <Box sx={{ p: 2, borderRadius: 2, border: "1px solid #F5F5F5", "&:hover": { bgcolor: "#FBFBFC" } }}>
-                    <Typography variant="body2" sx={{ fontWeight: 600, color: "text.secondary" }}>{school}</Typography>
-                  </Box>
-                </Grid>
-             ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Pricing Section - Modernized */}
-      <Box sx={{ ...sectionStyles, bgcolor: "#FBFBFC" }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: "center", mb: 10 }}>
-            <Typography variant="overline" sx={{ color: "#2196f3", fontWeight: 800, letterSpacing: 2 }}>PRICING REVOLUTION</Typography>
-            <Typography variant="h2" sx={titleStyles}>透明、靈活的收費方案</Typography>
-            <Box sx={{ mt: 4, display: "inline-flex", p: 0.8, bgcolor: "#EEE", borderRadius: 4 }}>
-              <Button variant="contained" sx={{ borderRadius: 3, px: 6, bgcolor: "#FFF", color: "#000", fontWeight: 700, boxShadow: "0 2px 10px rgba(0,0,0,0.1)", "&:hover": { bgcolor: "#FFF" } }}>英文科</Button>
-              <Button sx={{ borderRadius: 3, px: 6, color: "text.secondary", fontWeight: 700 }}>中文科</Button>
-            </Box>
-          </Box>
-          
-          <TableContainer component={Paper} elevation={0} sx={{ borderRadius: 6, border: "1px solid #EEE", overflow: "hidden" }}>
-            <Table>
-              <TableHead>
-                <TableRow sx={{ bgcolor: "#FBFBFC" }}>
-                  <TableCell sx={{ py: 4, borderRight: "1px solid #EEE" }}></TableCell>
-                  {["方案 A", "方案 B", "方案 C", "方案 D"].map((p, idx) => (
-                    <TableCell key={p} align="center" sx={{ py: 4, px: 3, borderRight: idx < 3 ? "1px solid #EEE" : "none" }}>
-                      <Typography variant="h6" sx={{ fontWeight: 800 }}>{p}</Typography>
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {[
-                  { label: "年費 (HKD)", values: ["29,500", "49,500", "49,500", "49,500"], bold: true },
-                  { label: "半年費 (HKD)", values: ["19,000", "32,000", "32,000", "32,000"] },
-                  { label: "適用科目", values: ["英文", "英及中", "英文", "英及中 (口試)"] },
-                  { label: "教師帳號", values: ["12", "25", "12", "12"] },
-                  { label: "學生範圍", values: ["12 班", "全校", "全校", "全校"] },
-                  { label: "自動批改", values: ["無限", "無限", "無限", "×"], x: 3 },
-                  { label: "AI 助手", values: ["無限", "無限", "無限", "無限"] },
-                  { label: "首次培訓", values: [true, true, true, true], icon: true }
-                ].map((row, idx) => (
-                  <TableRow key={idx} sx={{ "&:nth-of-type(even)": { bgcolor: "#FAFAFA" } }}>
-                    <TableCell sx={{ fontWeight: 700, color: "text.secondary", py: 2.5, borderRight: "1px solid #EEE" }}>{row.label}</TableCell>
-                    {row.values.map((val, vIdx) => (
-                      <TableCell key={vIdx} align="center" sx={{ borderRight: vIdx < 3 ? "1px solid #EEE" : "none" }}>
-                        {row.icon ? (
-                          <CheckCircleIcon sx={{ color: "#4CAF50" }} />
-                        ) : (
-                          <Typography sx={{ 
-                            fontWeight: row.bold ? 800 : 500, 
-                            fontSize: row.bold ? "1.2rem" : "0.95rem",
-                            color: (row.x === vIdx) ? "error.main" : "inherit"
-                          }}>
-                            {val}
-                          </Typography>
-                        )}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Container>
-      </Box>
-
       {/* Funding Support Section */}
+      {/* Educator & Institution Section */}
       {/* Educator & Institution Section */}
       <Box sx={sectionStyles}>
         <Container maxWidth="lg">
@@ -635,7 +536,7 @@ const LandingPage = () => {
             </Grid>
             <Grid item xs={6} md={2}>
               <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 4, textTransform: "uppercase", letterSpacing: 1 }}>資源與連結</Typography>
-              {["免費示範", "平台登入", "收費方案", "資助申請"].map((item) => (
+              {["免費示範", "平台登入", "資助申請"].map((item) => (
                 <Typography key={item} variant="body2" sx={{ color: "text.secondary", mb: 2, cursor: "pointer", "&:hover": { color: "#000" } }}>{item}</Typography>
               ))}
             </Grid>
