@@ -479,9 +479,9 @@ const LandingPage = () => {
           </Box>
           <Grid container spacing={6} justifyContent="center">
             {[
-              { name: "Prof. Helen MENG", title: "香港都會大學 講座教授", desc: "SpeechX 首席科學家", sub: "麻省理工學院 (B.S., M.S., Ph.D.)" },
-              { name: "Prof. Xixin WU", title: "香港都會大學 助理教授", desc: "清華大學 (M.S.), 都大 (Ph.D.)" },
-              { name: "Dr. Bruce LI", title: "SpeechX 執行長", desc: "香港都會大學 榮譽副研究員", sub: "都大 (Ph.D.)" }
+              { name: "Dr. Lam Yat Ming Eddie (林一鳴)", title: "香港都會大學", desc: "核心研發團隊", sub: "" },
+              { name: "Professor Fung Kwun Wing Joseph", title: "香港都會大學", desc: "核心研發團隊", sub: "" },
+              { name: "Professor William YEOH Ging-sun", title: "學術顧問", desc: "香港都會大學", sub: "" }
             ].map((member) => (
               <Grid item xs={12} md={4} key={member.name}>
                 <Box sx={{ textAlign: "center" }}>
