@@ -59,42 +59,98 @@ const LandingPage = () => {
     navigate("/login");
   };
 
+  const sectionStyles = {
+    py: { xs: 8, md: 15 },
+    px: { xs: 2, md: 0 }
+  };
+
+  const cardStyles = {
+    height: "100%",
+    p: 4,
+    borderRadius: 4,
+    border: "1px solid #EEEEEE",
+    boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
+      transform: "translateY(-5px)",
+      borderColor: "transparent"
+    }
+  };
+
+  const titleStyles = {
+    fontWeight: 800,
+    mb: 2,
+    letterSpacing: "-0.02em",
+    lineHeight: 1.2
+  };
+
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: "#FFFFFF", color: "text.primary" }}>
+    <Box sx={{ flexGrow: 1, bgcolor: "#FFFFFF", color: "#1A1A1A", fontFamily: "'Inter', sans-serif" }}>
       {/* Header */}
-      <AppBar position="sticky" elevation={0} sx={{ bgcolor: "#FFFFFF", color: "black", borderBottom: "1px solid #EEEEEE" }}>
+      <AppBar 
+        position="sticky" 
+        elevation={0} 
+        sx={{ 
+          bgcolor: "rgba(255, 255, 255, 0.8)", 
+          backdropFilter: "blur(20px)",
+          color: "black", 
+          borderBottom: "1px solid rgba(0,0,0,0.05)",
+          zIndex: 1100
+        }}
+      >
         <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+          <Toolbar disableGutters sx={{ justifyContent: "space-between", height: { xs: 70, md: 80 } }}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Box component="img" src={logo} sx={{ height: 40, mr: 1 }} />
-              <Typography variant="h6" component="div" sx={{ fontWeight: "bold", color: "#000000", display: "flex", alignItems: "center" }}>
+              <Box component="img" src={logo} sx={{ height: 32, mr: 1.5, borderRadius: 1 }} />
+              <Typography variant="h5" component="div" sx={{ fontWeight: 800, color: "#000000", letterSpacing: "-0.5px" }}>
                 LeoEd
               </Typography>
-              <Box sx={{ display: { xs: "none", md: "flex" }, ml: 4 }}>
-                {["首頁", "各科 AI", "合作學校", "收費方案", "智啟學教與eLAFP", "聯繫我們"].map((text) => (
-                  <Button key={text} sx={{ color: "text.secondary", mx: 1, fontWeight: 500 }}>
-                    {text} {text === "各科 AI" && <ExpandMoreIcon fontSize="small" />}
+              <Box sx={{ display: { xs: "none", lg: "flex" }, ml: 6 }}>
+                {["首頁", "各科 AI", "合作學校", "收費方案", "智啟學教", "聯繫我們"].map((text) => (
+                  <Button key={text} sx={{ color: "text.secondary", px: 2, fontWeight: 600, fontSize: "0.95rem", textTransform: "none", "&:hover": { color: "#000000" } }}>
+                    {text} {text === "各科 AI" && <ExpandMoreIcon fontSize="small" sx={{ ml: 0.5 }} />}
                   </Button>
                 ))}
               </Box>
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Button startIcon={<LanguageIcon />} sx={{ color: "text.secondary", mr: 2, display: { xs: "none", sm: "flex" } }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <Button startIcon={<LanguageIcon />} sx={{ color: "text.secondary", mr: 1, display: { xs: "none", sm: "flex" }, fontWeight: 600 }}>
                 繁體
               </Button>
               <Button 
                 variant="contained" 
                 onClick={handleLogin}
-                sx={{ mr: 2, textTransform: "none", borderRadius: 2, bgcolor: "#2196f3", color: "white", '&:hover': { bgcolor: '#1976d2' } }}
+                sx={{ 
+                  textTransform: "none", 
+                  borderRadius: "12px", 
+                  bgcolor: "#2196f3", 
+                  color: "white", 
+                  fontWeight: 700,
+                  px: 3,
+                  py: 1,
+                  boxShadow: "0 4px 14px 0 rgba(33,150,243,0.39)",
+                  '&:hover': { bgcolor: '#1976d2', boxShadow: "0 6px 20px rgba(33,150,243,0.23)" } 
+                }}
               >
                 學校師生登入
               </Button>
               <Button 
                 variant="contained" 
-                color="primary" 
-                sx={{ textTransform: "none", borderRadius: 2, boxShadow: "none", bgcolor: "#000000", color: "#FFFFFF", '&:hover': { bgcolor: '#333333' } }}
+                sx={{ 
+                  display: { xs: "none", md: "flex" },
+                  textTransform: "none", 
+                  borderRadius: "12px", 
+                  bgcolor: "#000000", 
+                  color: "#FFFFFF", 
+                  fontWeight: 700,
+                  px: 3,
+                  py: 1,
+                  boxShadow: "0 4px 14px 0 rgba(0,0,0,0.1)",
+                  '&:hover': { bgcolor: '#222222' } 
+                }}
               >
-                立即免費試用
+                立即試用
               </Button>
             </Box>
           </Toolbar>
@@ -102,78 +158,135 @@ const LandingPage = () => {
       </AppBar>
 
       {/* Hero Section */}
-      <Box sx={{ pt: 10, pb: 15, background: "linear-gradient(180deg, #FFFFFF 0%, #F5F5F5 100%)" }}>
+      <Box sx={{ 
+        pt: { xs: 10, md: 15 }, 
+        pb: { xs: 10, md: 20 }, 
+        position: "relative",
+        overflow: "hidden",
+        background: "radial-gradient(circle at 70% 30%, rgba(33,150,243,0.05) 0%, rgba(255,255,255,0) 60%)"
+      }}>
         <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <Box sx={{ mb: 2 }}>
-                <Typography component="span" sx={{ bgcolor: "#000000", color: "#FFFFFF", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
-                  DSE • TSA • HKAT • IELTS 評核對標
+          <Grid container spacing={8} alignItems="center">
+            <Grid item xs={12} md={7}>
+              <Box sx={{ mb: 3 }}>
+                <Typography component="span" sx={{ 
+                  bgcolor: "rgba(0,0,0,0.05)", 
+                  color: "#000000", 
+                  px: 2, 
+                  py: 1, 
+                  borderRadius: "50px", 
+                  fontSize: "0.85rem", 
+                  fontWeight: 700,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 1
+                }}>
+                  <Box sx={{ width: 8, height: 8, bgcolor: "#4CAF50", borderRadius: "50%" }} />
+                  DSE • TSA • HKAT • IELTS 專業評核對標
                 </Typography>
               </Box>
-              <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, lineHeight: 1.2 }}>
+              <Typography variant="h1" sx={{ ...titleStyles, fontSize: { xs: "2.5rem", md: "3.75rem" } }}>
                 AI 極速批改<br />
-                <Box component="span" sx={{ color: "#000000" }}>學習化繁為簡</Box>
+                <Box component="span" sx={{ 
+                  background: "linear-gradient(90deg, #000000 0%, #2196f3 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent"
+                }}>學習化繁為簡</Box>
               </Typography>
-              <Typography variant="body1" sx={{ color: "text.secondary", mb: 4, fontSize: "1.1rem" }}>
-                15 分鐘批改 100 份作文，服務全港 190+ 所中小學。一站式涵蓋中英文寫作批改、英粵普説話評測、數學步驟診斷及歷史資料題拆解，讓教師因材施教，引導學生自主學習。
+              <Typography variant="body1" sx={{ color: "text.secondary", mb: 5, fontSize: "1.2rem", lineHeight: 1.6, maxWidth: "90%" }}>
+                15 分鐘批改 100 份作文。一站式涵蓋中英文寫作、說話評測、數學診斷及歷史拆解，讓教師專注因材施教。
               </Typography>
-              <Box sx={{ mb: 4, display: "flex", alignItems: "center", gap: 2 }}>
-                <Typography sx={{ color: "#000000", fontWeight: "bold", borderBottom: "2px solid #000000" }}>
-                  與香港中文大學聯合研發
-                </Typography>
-                <Divider orientation="vertical" flexItem />
-                <Typography sx={{ color: "#000000", fontWeight: "bold", borderBottom: "2px solid #000000" }}>
-                  優質教育基金 (QEF eLAFP) 獲批方案
-                </Typography>
+              <Box sx={{ mb: 6, display: "flex", flexWrap: "wrap", gap: 3 }}>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                  <Typography sx={{ color: "#000000", fontWeight: 700, fontSize: "0.95rem" }}>
+                    與香港中文大學聯合研發
+                  </Typography>
+                </Box>
+                <Divider orientation="vertical" flexItem sx={{ display: { xs: "none", sm: "block" } }} />
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                  <Typography sx={{ color: "#000000", fontWeight: 700, fontSize: "0.95rem" }}>
+                    QEF eLAFP 獲批方案
+                  </Typography>
+                </Box>
               </Box>
-              <Box sx={{ display: "flex", gap: 2 }}>
-                <Button variant="contained" size="large" sx={{ px: 4, py: 1.5, borderRadius: 2, boxShadow: "none", textTransform: "none", bgcolor: "#000000", color: "#FFFFFF", '&:hover': { bgcolor: '#333333' } }}>
-                  立即免費試用 🚀
+              <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" } }}>
+                <Button variant="contained" size="large" sx={{ 
+                  px: 5, py: 2, borderRadius: "14px", bgcolor: "#000000", color: "#FFFFFF", fontWeight: 700, textTransform: "none",
+                  fontSize: "1.1rem",
+                  boxShadow: "0 10px 20px rgba(0,0,0,0.15)",
+                  '&:hover': { bgcolor: '#222222', transform: "translateY(-2px)" }
+                }}>
+                  立即聯絡示範 🚀
                 </Button>
-                <Button variant="contained" size="large" onClick={handleLogin} sx={{ px: 4, py: 1.5, borderRadius: 2, textTransform: "none", bgcolor: "#2196f3", color: "white", '&:hover': { bgcolor: '#1976d2' } }}>
+                <Button variant="contained" size="large" onClick={handleLogin} sx={{ 
+                  px: 5, py: 2, borderRadius: "14px", bgcolor: "#2196f3", color: "white", fontWeight: 700, textTransform: "none",
+                  fontSize: "1.1rem",
+                  boxShadow: "0 10px 20px rgba(33,150,243,0.2)",
+                  '&:hover': { bgcolor: '#1976d2', transform: "translateY(-2px)" }
+                }}>
                   學校師生登入 🎓
                 </Button>
               </Box>
-              <Box sx={{ mt: 4, display: "flex", alignItems: "center", gap: 3 }}>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>支援科目:</Typography>
-                {["英文科", "中文科", "普通話科", "數學科", "歷史科"].map((subject) => (
-                  <Box key={subject} sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                    <CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 18 }} />
-                    <Typography variant="body2">{subject}</Typography>
+              <Box sx={{ mt: 6, display: "flex", flexWrap: "wrap", alignItems: "center", gap: 3 }}>
+                <Typography variant="subtitle2" sx={{ color: "text.secondary", fontWeight: 700 }}>支援科目:</Typography>
+                {["英文", "中文", "數學", "歷史"].map((subject) => (
+                  <Box key={subject} sx={{ display: "flex", alignItems: "center", gap: 0.5, bgcolor: "rgba(0,0,0,0.03)", px: 1.5, py: 0.5, borderRadius: 2 }}>
+                    <CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 16 }} />
+                    <Typography variant="caption" sx={{ fontWeight: 600 }}>{subject}</Typography>
                   </Box>
                 ))}
               </Box>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ position: "relative", display: "flex", justifyContent: "center" }}>
+            <Grid item xs={12} md={5}>
+              <Box sx={{ position: "relative" }}>
                 <Box sx={{ 
                   width: "100%", 
-                  maxWidth: 500, 
-                  height: 350, 
-                  bgcolor: "#F5F5F5", 
-                  borderRadius: 4, 
+                  aspectRatio: "1/1",
+                  bgcolor: "#f8f9fa", 
+                  borderRadius: "32px", 
                   display: "flex", 
                   alignItems: "center", 
                   justifyContent: "center",
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                  position: "relative"
+                  boxShadow: "0 30px 60px rgba(0,0,0,0.12)",
+                  border: "8px solid #FFFFFF",
+                  overflow: "hidden"
                 }}>
-                  <Box sx={{ width: "80%", height: "80%", bgcolor: "white", borderRadius: 2, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                     <IconButton color="primary" sx={{ width: 80, height: 80, bgcolor: "rgba(0, 0, 0, 0.05)" }}>
-                       <PlayArrowIcon sx={{ fontSize: 50, color: "#000000" }} />
-                     </IconButton>
-                  </Box>
-                  <Card sx={{ position: "absolute", top: -20, right: -20, p: 2, borderRadius: 2, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                       <Box sx={{ width: 40, height: 40, bgcolor: "#F5F5F5", borderRadius: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>🏆</Box>
-                       <Box>
-                         <Typography variant="caption" sx={{ color: "text.secondary" }}>備受信任</Typography>
-                         <Typography variant="body2" sx={{ fontWeight: "bold" }}>190+ 間香港學校</Typography>
-                       </Box>
-                    </Box>
-                  </Card>
+                   <Box sx={{ position: "relative", width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <PlayArrowIcon sx={{ fontSize: 100, color: "rgba(0,0,0,0.1)" }} />
+                   </Box>
                 </Box>
+                <Card sx={{ 
+                  position: "absolute", 
+                  top: -30, 
+                  right: -20, 
+                  p: 2, 
+                  borderRadius: 3, 
+                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
+                  border: "none"
+                }}>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                     <Box sx={{ width: 44, height: 44, bgcolor: "#E3F2FD", borderRadius: 2, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem" }}>🏫</Box>
+                     <Box>
+                       <Typography variant="body2" sx={{ fontWeight: 800 }}>190+ 所香港學校</Typography>
+                       <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 600 }}>正在使用 LeoEd</Typography>
+                     </Box>
+                  </Box>
+                </Card>
+                <Card sx={{ 
+                  position: "absolute", 
+                  bottom: 20, 
+                  left: -30, 
+                  p: 2, 
+                  borderRadius: 3, 
+                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
+                  border: "none",
+                  display: { xs: "none", sm: "block" }
+                }}>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                     <Box sx={{ width: 44, height: 44, bgcolor: "#E8F5E9", borderRadius: 2, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem" }}>⚡</Box>
+                     <Typography variant="body2" sx={{ fontWeight: 800 }}>批改效率提升 80%</Typography>
+                  </Box>
+                </Card>
               </Box>
             </Grid>
           </Grid>
@@ -181,318 +294,280 @@ const LandingPage = () => {
       </Box>
 
       {/* Why LeoEd Section */}
-      <Container maxWidth="lg" sx={{ py: 15 }}>
-        <Box sx={{ textAlign: "center", mb: 8 }}>
-          <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
-            為何選擇 LeoEd ?
-          </Typography>
-          <Typography variant="body1" sx={{ color: "text.secondary" }}>
-            緊貼 DSE、TSA、HKAT 及 IELTS 評核標準。
-          </Typography>
-        </Box>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: "100%", textAlign: "center", p: 4, border: "none", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
-              <FastIcon />
-              <Typography variant="h5" sx={{ fontWeight: "bold", mt: 3, mb: 2 }}>快速高效</Typography>
-              <List dense>
-                {["1 分鐘批改一篇作文", "15 分鐘批改 100 篇", "手寫 OCR 掃描，紙本即時批改"].map((item) => (
-                  <ListItem key={item} disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 20 }} /></ListItemIcon>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                ))}
-              </List>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: "100%", textAlign: "center", p: 4, border: "none", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
-              <ReliableIcon />
-              <Typography variant="h5" sx={{ fontWeight: "bold", mt: 3, mb: 2 }}>精準可靠</Typography>
-              <List dense>
-                {["英繁簡手寫 OCR 識別率高達 99%", "支援港式口音，語音識別率達 99%", "中英文寫作批改，與真人契合度達 90%"].map((item) => (
-                  <ListItem key={item} disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 20 }} /></ListItemIcon>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                ))}
-              </List>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: "100%", textAlign: "center", p: 4, border: "none", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
-              <UnlimitedIcon />
-              <Typography variant="h5" sx={{ fontWeight: "bold", mt: 3, mb: 2 }}>無限次</Typography>
-              <List dense>
-                {["不限次數使用，成本固定可控", "全球適用，無地域限制", "支援全科全題型"].map((item) => (
-                  <ListItem key={item} disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 20 }} /></ListItemIcon>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                ))}
-              </List>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
-
-      {/* Ecosystem Section */}
-      <Box sx={{ py: 15, bgcolor: "#FFFFFF" }}>
+      <Box sx={{ ...sectionStyles, bgcolor: "#FBFBFC" }}>
         <Container maxWidth="lg">
-          <Box sx={{ textAlign: "center", mb: 8 }}>
-            <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
-              打造智慧校園生態系統
-            </Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary" }}>
-              全面支援管理層、教師與學生的核心需求。
+          <Box sx={{ textAlign: "center", mb: 10 }}>
+            <Typography variant="overline" sx={{ color: "#2196f3", fontWeight: 800, letterSpacing: 2 }}>CORE VALUES</Typography>
+            <Typography variant="h2" sx={{ ...titleStyles, mt: 1 }}>為何選擇 LeoEd ?</Typography>
+            <Typography variant="body1" sx={{ color: "text.secondary", maxWidth: 600, mx: "auto", fontSize: "1.1rem" }}>
+              專為香港教育體系設計，緊貼本地核心評核標準。
             </Typography>
           </Box>
           <Grid container spacing={4}>
-            <Grid item xs={12} md={4}>
-              <Card sx={{ height: "100%", p: 4, borderRadius: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <AnalyticsIcon sx={{ fontSize: 48, color: "#000000", mb: 2 }} />
-                <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>學校管理層</Typography>
-                <List dense>
-                  <ListItem disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#000000", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#000000", borderRadius: "50%" }} /></Box></ListItemIcon>
-                    <ListItemText primary="提供學習分析報告，全面監測全科進度。" />
-                  </ListItem>
-                  <ListItem disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#000000", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#000000", borderRadius: "50%" }} /></Box></ListItemIcon>
-                    <ListItemText primary="固定成本，無限次批改。" />
-                  </ListItem>
-                </List>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Card sx={{ height: "100%", p: 4, borderRadius: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <PersonIcon sx={{ fontSize: 48, color: "#4CAF50", mb: 2 }} />
-                <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>教師團隊</Typography>
-                <List dense>
-                  <ListItem disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#4CAF50", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#4CAF50", borderRadius: "50%" }} /></Box></ListItemIcon>
-                    <ListItemText primary="大幅節省批改時間，15 分鐘處理 100 份試卷。" />
-                  </ListItem>
-                  <ListItem disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#4CAF50", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#4CAF50", borderRadius: "50%" }} /></Box></ListItemIcon>
-                    <ListItemText primary="學習數據一目了然，精準掌握班級進度。" />
-                  </ListItem>
-                </List>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Card sx={{ height: "100%", p: 4, borderRadius: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <SchoolIcon sx={{ fontSize: 48, color: "#9C27B0", mb: 2 }} />
-                <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>學生個人</Typography>
-                <List dense>
-                  <ListItem disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#9C27B0", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#9C27B0", borderRadius: "50%" }} /></Box></ListItemIcon>
-                    <ListItemText primary="適配學生水平，提供漸進或典範模式。" />
-                  </ListItem>
-                  <ListItem disableGutters>
-                    <ListItemIcon sx={{ minWidth: 30 }}><Box sx={{ width: 16, height: 16, bgcolor: "#9C27B0", borderRadius: "50%", opacity: 0.2, display: "flex", alignItems: "center", justifyContent: "center" }}><Box sx={{ width: 8, height: 8, bgcolor: "#9C27B0", borderRadius: "50%" }} /></Box></ListItemIcon>
-                    <ListItemText primary="自主學習 (SRL) 的理想配套工具。" />
-                  </ListItem>
-                </List>
-              </Card>
-            </Grid>
+            {[
+              { icon: <FastIcon />, title: "快速高效", items: ["1 分鐘批改一篇作文", "15 分鐘批改 100 份", "OCR 掃描，紙本即時批改"] },
+              { icon: <ReliableIcon />, title: "精準可靠", items: ["OCR 識別率高達 99%", "支援港式口音識別", "AI 與真人評分契合度 90%+"] },
+              { icon: <UnlimitedIcon />, title: "無限次使用", items: ["成本固定可控", "24/7 全天候支援", "支援全科多樣題型"] }
+            ].map((feature, idx) => (
+              <Grid item xs={12} md={4} key={idx}>
+                <Card sx={cardStyles}>
+                  <Box sx={{ mb: 3 }}>{feature.icon}</Box>
+                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 3 }}>{feature.title}</Typography>
+                  <List spacing={2}>
+                    {feature.items.map((item) => (
+                      <ListItem key={item} disableGutters sx={{ py: 0.5 }}>
+                        <ListItemIcon sx={{ minWidth: 32 }}><CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 20 }} /></ListItemIcon>
+                        <ListItemText primary={item} primaryTypographyProps={{ fontWeight: 600, color: "#4A4A4A" }} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Ecosystem Section */}
+      <Box sx={sectionStyles}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: "center", mb: 10 }}>
+            <Typography variant="h2" sx={titleStyles}>打造智慧校園生態系統</Typography>
+            <Typography variant="body1" sx={{ color: "text.secondary", maxWidth: 700, mx: "auto", fontSize: "1.1rem" }}>
+              平衡管理層的數據洞察、教師的行政負擔與學生的個人化進度。
+            </Typography>
+          </Box>
+          <Grid container spacing={4}>
+            {[
+              { icon: <AnalyticsIcon />, title: "學校管理層", color: "#000", bg: "rgba(0,0,0,0.03)", items: ["全科進度監測", "大數據分析報告", "預算精確控制"] },
+              { icon: <PersonIcon />, title: "教師團隊", color: "#2196f3", bg: "rgba(33,150,243,0.05)", items: ["解放批改壓力", "快速掌握弱項", "自動生成評語"] },
+              { icon: <SchoolIcon />, title: "學生個人", color: "#9C27B0", bg: "rgba(156,39,176,0.05)", items: ["即時回饋學習", "自主提升動機", "自適應練習路徑"] }
+            ].map((role, idx) => (
+              <Grid item xs={12} md={4} key={idx}>
+                <Box sx={{ 
+                  p: 6, 
+                  borderRadius: 6, 
+                  bgcolor: role.bg, 
+                  height: "100%",
+                  display: "flex", 
+                  flexDirection: "column", 
+                  alignItems: "center",
+                  textAlign: "center"
+                }}>
+                  <Box sx={{ 
+                    width: 70, height: 70, bgcolor: "#FFF", borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center", mb: 4,
+                    boxShadow: "0 10px 20px rgba(0,0,0,0.05)"
+                  }}>
+                    {React.cloneElement(role.icon, { sx: { fontSize: 32, color: role.color } })}
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 3 }}>{role.title}</Typography>
+                  <List dense>
+                    {role.items.map((text) => (
+                      <ListItem key={text} disableGutters sx={{ justifyContent: "center" }}>
+                        <Typography variant="body2" sx={{ fontWeight: 600, color: "#4A4A4A" }}>{text}</Typography>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Box>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Box>
 
       {/* AI Subjects Section */}
-      <Container maxWidth="lg" sx={{ py: 15 }}>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: "100%", p: 4, borderRadius: 4, position: "relative" }}>
-              <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>英文科 AI</Typography>
-              <Typography variant="body2" sx={{ color: "#000000", mb: 3 }}>智能學與教：寫作批改與聽說評測</Typography>
-              <List dense>
-                {[
+      <Box sx={{ ...sectionStyles, bgcolor: "#FBFBFC" }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: "center", mb: 8 }}>
+            <Typography variant="overline" sx={{ color: "#2196f3", fontWeight: 800, letterSpacing: 2 }}>SOLUTIONS</Typography>
+            <Typography variant="h2" sx={{ ...titleStyles, mt: 1 }}>全科輔助 · 智能提效</Typography>
+          </Box>
+          <Grid container spacing={4}>
+            {[
+              { 
+                subject: "英文科 AI", 
+                subtitle: "智能學與教：寫作批改與聽說評測", 
+                color: "#1A1A1A", 
+                bg: "rgba(0,0,0,0.02)",
+                features: [
                   "考評對標：支援 DSE、TSA、HKAT、IELTS 及校本標準。",
-                  "寫作批改：OCR 精準識別手寫內容；提供焦點文法改正、詞句升級建議、標準評語及個人化範文。",
-                  "說話評測：支援朗讀、看圖說話、個人短講、場景對話及小組討論等 DSE/TSA 題型。",
-                  "閱讀及聆聽：支援 PDF、網頁、YouTube 及影音檔案，一鍵自動出題、批改與分析。"
-                ].map((item) => (
-                  <ListItem key={item} disableGutters sx={{ alignItems: "flex-start" }}>
-                    <ListItemIcon sx={{ minWidth: 30, mt: 0.5 }}><CheckCircleIcon sx={{ color: "#000000", fontSize: 20 }} /></ListItemIcon>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                ))}
-              </List>
-              <Box sx={{ mt: "auto", pt: 2 }}>
-                <Button fullWidth variant="contained" sx={{ bgcolor: "#F5F5F5", color: "#000000", py: 1.5, "&:hover": { bgcolor: "#EEEEEE" }, boxShadow: "none", textTransform: "none" }} endIcon={<ArrowForwardIcon />}>
-                  探索英文方案
-                </Button>
-              </Box>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={4}>
-             <Card sx={{ height: "100%", p: 4, borderRadius: 4, border: "2px solid #4CAF50" }}>
-              <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>中文科 AI</Typography>
-              <Typography variant="body2" sx={{ color: "#4CAF50", mb: 3 }}>以評促學：寫作自動批改與粵普聽說評測</Typography>
-              <List dense>
-                {[
+                  "寫作批改：OCR 精準識別手寫內容；提供文法改正、詞句升級及個人化範文。",
+                  "說話評測：支援朗讀、看圖說話、個人短講及小組討論等題型。",
+                  "自動出題：支援 PDF/YouTube 一鍵生成閱讀及聆聽練習。"
+                ]
+              },
+              { 
+                subject: "中文科 AI", 
+                subtitle: "以評促學：寫作自動批改與粵普聽說評測", 
+                color: "#4CAF50", 
+                bg: "rgba(76,175,80,0.04)",
+                secondaryColor: "#EF6C00",
+                features: [
                   "考評標準：對標 DSE、TSA、HKAT 及校本標準。",
-                  "寫作批改：精準識別繁簡手寫字；涵蓋命題作文與實用文，生成高層次引導性評語，啟發自主優化。",
-                  "說話評測：支援粵普雙語，涵蓋看圖說話、個人短講及小組討論等口試題型評測。",
-                  "閱讀及聆聽：涵蓋文言與白話文理解；支援普粵影音一鍵自動出題、批改及數據分析。"
-                ].map((item) => (
-                  <ListItem key={item} disableGutters sx={{ alignItems: "flex-start" }}>
-                    <ListItemIcon sx={{ minWidth: 30, mt: 0.5 }}><CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 20 }} /></ListItemIcon>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                ))}
-              </List>
-              <Box sx={{ mt: "auto", pt: 2 }}>
-                <Button fullWidth variant="contained" sx={{ bgcolor: "#E8F5E9", color: "#4CAF50", py: 1.5, mb: 1, "&:hover": { bgcolor: "#C8E6C9" }, boxShadow: "none", textTransform: "none" }} endIcon={<ArrowForwardIcon />}>
-                  探索中文方案
-                </Button>
-                <Button fullWidth variant="contained" sx={{ bgcolor: "#FFF3E0", color: "#EF6C00", py: 1.5, "&:hover": { bgcolor: "#FFE0B2" }, boxShadow: "none", textTransform: "none" }} endIcon={<ArrowForwardIcon />}>
-                  探索普通話方案
-                </Button>
-              </Box>
-            </Card>
+                  "寫作批改：精準識別繁簡手寫字；生成高層次引導性評語。",
+                  "說話評測：支援粵普雙語口試評測。",
+                  "文言白話：涵蓋理解及普粵影音出題分析。"
+                ]
+              },
+              { 
+                subject: "數學科 AI", 
+                subtitle: "算式步驟診斷：錯題追蹤與自適應練習", 
+                color: "#2196f3", 
+                bg: "rgba(33,150,243,0.04)",
+                badge: "下月發佈",
+                features: [
+                  "圖像識別：具備手寫算式 OCR 識別技術。",
+                  "步驟診斷：追蹤解題邏輯，精準指出步驟錯誤。",
+                  "數據統計：即時統計班級答題表現與錯題分佈。",
+                  "自主學習：推薦個人化弱項鞏固練習。"
+                ]
+              }
+            ].map((item, idx) => (
+              <Grid item xs={12} md={4} key={idx}>
+                <Card sx={{ 
+                  ...cardStyles, 
+                  bgcolor: "#FFF", 
+                  position: "relative",
+                  overflow: "hidden",
+                  border: item.badge ? "2px solid #2196f3" : "1px solid #EEEEEE"
+                }}>
+                  {item.badge && (
+                    <Box sx={{ 
+                      position: "absolute", top: 15, right: -30, bgcolor: "#2196f3", color: "white", px: 4, py: 0.5, 
+                      transform: "rotate(45deg)", fontSize: "0.7rem", fontWeight: 800 
+                    }}>
+                      {item.badge}
+                    </Box>
+                  )}
+                  <Typography variant="h4" sx={{ fontWeight: 800, color: item.color, mb: 1 }}>{item.subject}</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 600, color: "text.secondary", mb: 4 }}>{item.subtitle}</Typography>
+                  <List spacing={1.5} sx={{ mb: 4 }}>
+                    {item.features.map((f) => (
+                      <ListItem key={f} disableGutters sx={{ alignItems: "flex-start", py: 0.5 }}>
+                        <ListItemIcon sx={{ minWidth: 28, mt: 0.5 }}>
+                          <CheckCircleIcon sx={{ color: item.color, fontSize: 18, opacity: 0.7 }} />
+                        </ListItemIcon>
+                        <ListItemText primary={f} primaryTypographyProps={{ fontSize: "0.9rem", fontWeight: 500, lineHeight: 1.5 }} />
+                      </ListItem>
+                    ))}
+                  </List>
+                  <Box sx={{ mt: "auto" }}>
+                    <Button fullWidth variant="contained" sx={{ 
+                      bgcolor: item.color, color: "white", py: 1.5, borderRadius: 3, textTransform: "none", fontWeight: 700,
+                      "&:hover": { bgcolor: item.color, opacity: 0.9 }, boxShadow: "none"
+                    }}>
+                      了解更多方案
+                    </Button>
+                    {item.secondaryColor && (
+                      <Button fullWidth variant="outlined" sx={{ 
+                        mt: 1.5, borderColor: item.secondaryColor, color: item.secondaryColor, py: 1.5, borderRadius: 3, textTransform: "none", fontWeight: 700,
+                        "&:hover": { borderColor: item.secondaryColor, bgcolor: "rgba(239,108,0,0.04)" }
+                      }}>
+                        探索普通話方案
+                      </Button>
+                    )}
+                  </Box>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: "100%", p: 4, borderRadius: 4 }}>
-              <Box sx={{ position: "absolute", top: 10, right: 10, bgcolor: "#000000", color: "#FFFFFF", px: 1, py: 0.2, borderRadius: 1, fontSize: "0.7rem", fontWeight: "bold" }}>
-                下月發佈
-              </Box>
-              <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>數學科 AI</Typography>
-              <Typography variant="body2" sx={{ color: "#000000", mb: 3 }}>算式步驟診斷：錯題追蹤與自適應練習</Typography>
-              <List dense>
-                {[
-                  "圖像識別：支援手機拍照，具備手寫算式 OCR 識別技術。",
-                  "步驟診斷：追蹤完整解題邏輯，精準指出步驟錯誤。",
-                  "數據統計：即時統計班級答題表現與錯題分佈，大幅節省卷時間。",
-                  "自主學習：推薦個人化弱項鞏固練習，落實自適應學與教。"
-                ].map((item) => (
-                  <ListItem key={item} disableGutters sx={{ alignItems: "flex-start" }}>
-                    <ListItemIcon sx={{ minWidth: 30, mt: 0.5 }}><CheckCircleIcon sx={{ color: "#424242", fontSize: 20 }} /></ListItemIcon>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                ))}
-              </List>
-              <Box sx={{ mt: "auto", pt: 2 }}>
-                <Button fullWidth variant="outlined" sx={{ py: 1.5, borderRadius: 2, textTransform: "none" }} endIcon={<ArrowForwardIcon />}>
-                  查看數學預熱方案
-                </Button>
-              </Box>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </Box>
 
       {/* Partners Section */}
-      <Box sx={{ py: 10, bgcolor: "#FFFFFF", textAlign: "center" }}>
+      <Box sx={{ ...sectionStyles, bgcolor: "#FFFFFF" }}>
         <Container maxWidth="lg">
-          <Typography component="div" sx={{ mb: 2 }}>
-             <Box component="span" sx={{ bgcolor: "#F5F5F5", color: "#000000", px: 2, py: 0.5, borderRadius: 10, fontSize: "0.875rem", fontWeight: "bold" }}>
-               ⭐ 獲 190+ 所學校採用
-             </Box>
-          </Typography>
-          <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>我們的合作學校</Typography>
-          <Typography variant="body1" sx={{ color: "text.secondary", mb: 6 }}>服務全港學校，深獲教育界信任與肯定。</Typography>
+          <Box sx={{ textAlign: "center", mb: 8 }}>
+            <Box component="span" sx={{ bgcolor: "rgba(33,150,243,0.1)", color: "#2196f3", px: 2.5, py: 0.8, borderRadius: 10, fontSize: "0.85rem", fontWeight: 800, mb: 3, display: "inline-block" }}>
+              TRUSTED BY LEADERS
+            </Box>
+            <Typography variant="h2" sx={titleStyles}>我們的合作學校</Typography>
+            <Typography variant="body1" sx={{ color: "text.secondary" }}>服務全港 190+ 所學校，深獲教育界信任與肯定。</Typography>
+          </Box>
           
-          <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 6 }}>
+          <Box sx={{ display: "flex", justifyContent: "center", gap: 1, mb: 8, flexWrap: "wrap" }}>
             {["新界西", "新界東", "九龍", "香港島"].map((region, index) => (
-              <Button key={region} variant={index === 0 ? "contained" : "outlined"} sx={{ px: 4, borderRadius: 10, textTransform: "none", boxShadow: index === 0 ? "none" : "inherit" }}>
+              <Button key={region} variant={index === 0 ? "contained" : "outlined"} sx={{ 
+                px: 4, py: 1, borderRadius: 10, textTransform: "none", fontWeight: 700,
+                bgcolor: index === 0 ? "#000" : "transparent",
+                color: index === 0 ? "#FFF" : "text.secondary",
+                borderColor: index === 0 ? "#000" : "#EEE",
+                "&:hover": { bgcolor: index === 0 ? "#222" : "rgba(0,0,0,0.02)", borderColor: "#CCC" }
+              }}>
                 {region}
               </Button>
             ))}
           </Box>
           
-          <Grid container spacing={2}>
+          <Grid container spacing={3}>
              {[
                "佛教善德英文中學", "天主教母佑會蕭明中學", "中華傳道會安柱中學", "荃灣公立何傳耀紀念中學", "屯門官立中學", "南屯門官立中學",
                "獅子會蔣翠琼中學", "元朗公立中學校友會鄧兆棠中學", "靈糧堂怡文中學", "恩平工商會李琳明中學", "香港管理專業協會羅桂祥中學", "伊利沙伯中學舊生會湯國華中學"
              ].map((school) => (
                 <Grid item xs={6} md={3} key={school}>
-                  <Typography variant="body2" sx={{ textAlign: "left", color: "text.secondary" }}>{school}</Typography>
+                  <Box sx={{ p: 2, borderRadius: 2, border: "1px solid #F5F5F5", "&:hover": { bgcolor: "#FBFBFC" } }}>
+                    <Typography variant="body2" sx={{ fontWeight: 600, color: "text.secondary" }}>{school}</Typography>
+                  </Box>
                 </Grid>
              ))}
           </Grid>
         </Container>
       </Box>
 
-      {/* Pricing Table Section */}
-      <Box sx={{ py: 15, bgcolor: "#FFFFFF" }}>
+      {/* Pricing Section - Modernized */}
+      <Box sx={{ ...sectionStyles, bgcolor: "#FBFBFC" }}>
         <Container maxWidth="lg">
-          <Box sx={{ display: "flex", justifyContent: "center", mb: 6 }}>
-            <Box sx={{ bgcolor: "#F5F5F5", p: 1, borderRadius: 10, display: "flex", gap: 1, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}>
-              <Button variant="contained" sx={{ borderRadius: 10, px: 6, boxShadow: "none", bgcolor: "#000000", "&:hover": { bgcolor: "#333333" } }}>英文科</Button>
-              <Button variant="text" sx={{ borderRadius: 10, px: 6, color: "text.secondary" }}>中文科</Button>
+          <Box sx={{ textAlign: "center", mb: 10 }}>
+            <Typography variant="overline" sx={{ color: "#2196f3", fontWeight: 800, letterSpacing: 2 }}>PRICING REVOLUTION</Typography>
+            <Typography variant="h2" sx={titleStyles}>透明、靈活的收費方案</Typography>
+            <Box sx={{ mt: 4, display: "inline-flex", p: 0.8, bgcolor: "#EEE", borderRadius: 4 }}>
+              <Button variant="contained" sx={{ borderRadius: 3, px: 6, bgcolor: "#FFF", color: "#000", fontWeight: 700, boxShadow: "0 2px 10px rgba(0,0,0,0.1)", "&:hover": { bgcolor: "#FFF" } }}>英文科</Button>
+              <Button sx={{ borderRadius: 3, px: 6, color: "text.secondary", fontWeight: 700 }}>中文科</Button>
             </Box>
           </Box>
           
-          <TableContainer component={Paper} sx={{ borderRadius: 4, boxShadow: "0 20px 50px rgba(0,0,0,0.05)", overflow: "hidden" }}>
+          <TableContainer component={Paper} elevation={0} sx={{ borderRadius: 6, border: "1px solid #EEE", overflow: "hidden" }}>
             <Table>
               <TableHead>
-                <TableRow sx={{ bgcolor: "#F5F5F5" }}>
-                  <TableCell></TableCell>
-                  {["方案 A", "方案 B", "方案 C", "方案 D"].map((p) => (
-                    <TableCell key={p} align="center" sx={{ fontWeight: "bold", fontSize: "1.1rem" }}>{p}</TableCell>
+                <TableRow sx={{ bgcolor: "#FBFBFC" }}>
+                  <TableCell sx={{ py: 4, borderRight: "1px solid #EEE" }}></TableCell>
+                  {["方案 A", "方案 B", "方案 C", "方案 D"].map((p, idx) => (
+                    <TableCell key={p} align="center" sx={{ py: 4, px: 3, borderRight: idx < 3 ? "1px solid #EEE" : "none" }}>
+                      <Typography variant="h6" sx={{ fontWeight: 800 }}>{p}</Typography>
+                    </TableCell>
                   ))}
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow>
-                  <TableCell sx={{ color: "text.secondary" }}>年費 (HKD)</TableCell>
-                  <TableCell align="center" sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>29,500</TableCell>
-                  <TableCell align="center" sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>49,500</TableCell>
-                  <TableCell align="center" sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>49,500</TableCell>
-                  <TableCell align="center" sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>49,500</TableCell>
-                </TableRow>
-                <TableRow>
-                   <TableCell sx={{ color: "text.secondary" }}>半年費 (HKD)</TableCell>
-                   <TableCell align="center">19,000</TableCell>
-                   <TableCell align="center">32,000</TableCell>
-                   <TableCell align="center">32,000</TableCell>
-                   <TableCell align="center">32,000</TableCell>
-                </TableRow>
-                <TableRow>
-                   <TableCell sx={{ color: "text.secondary" }}>適用科目</TableCell>
-                   <TableCell align="center">英文科</TableCell>
-                   <TableCell align="center">英文科及中文科</TableCell>
-                   <TableCell align="center">英文科</TableCell>
-                   <TableCell align="center">英文科及中文科 (專注口試)</TableCell>
-                </TableRow>
-                <TableRow>
-                   <TableCell sx={{ color: "text.secondary" }}>教師帳號數量</TableCell>
-                   <TableCell align="center">12</TableCell>
-                   <TableCell align="center">25</TableCell>
-                   <TableCell align="center">12</TableCell>
-                   <TableCell align="center">12</TableCell>
-                </TableRow>
-                <TableRow>
-                   <TableCell sx={{ color: "text.secondary" }}>學生帳號範圍</TableCell>
-                   <TableCell align="center">3 個年級 或 12 個班級</TableCell>
-                   <TableCell align="center">全校學生</TableCell>
-                   <TableCell align="center">全校學生</TableCell>
-                   <TableCell align="center">全校學生</TableCell>
-                </TableRow>
-                <TableRow>
-                   <TableCell sx={{ color: "text.secondary" }}>寫作自動批改</TableCell>
-                   <TableCell align="center">無限次</TableCell>
-                   <TableCell align="center">無限次</TableCell>
-                   <TableCell align="center">無限次</TableCell>
-                   <TableCell align="center" sx={{ color: "error.main" }}>×</TableCell>
-                </TableRow>
-                <TableRow>
-                   <TableCell sx={{ color: "text.secondary" }}>Ask AI (GPT/Gemini/DeepSeek)</TableCell>
-                   <TableCell align="center">無限次</TableCell>
-                   <TableCell align="center">無限次</TableCell>
-                   <TableCell align="center">無限次</TableCell>
-                   <TableCell align="center">無限次</TableCell>
-                </TableRow>
-                <TableRow>
-                   <TableCell sx={{ color: "text.secondary" }}>首次教師培訓</TableCell>
-                   <TableCell align="center"><CheckCircleIcon sx={{ color: "#4CAF50" }} /></TableCell>
-                   <TableCell align="center"><CheckCircleIcon sx={{ color: "#4CAF50" }} /></TableCell>
-                   <TableCell align="center"><CheckCircleIcon sx={{ color: "#4CAF50" }} /></TableCell>
-                   <TableCell align="center"><CheckCircleIcon sx={{ color: "#4CAF50" }} /></TableCell>
-                </TableRow>
+                {[
+                  { label: "年費 (HKD)", values: ["29,500", "49,500", "49,500", "49,500"], bold: true },
+                  { label: "半年費 (HKD)", values: ["19,000", "32,000", "32,000", "32,000"] },
+                  { label: "適用科目", values: ["英文", "英及中", "英文", "英及中 (口試)"] },
+                  { label: "教師帳號", values: ["12", "25", "12", "12"] },
+                  { label: "學生範圍", values: ["12 班", "全校", "全校", "全校"] },
+                  { label: "自動批改", values: ["無限", "無限", "無限", "×"], x: 3 },
+                  { label: "AI 助手", values: ["無限", "無限", "無限", "無限"] },
+                  { label: "首次培訓", values: [true, true, true, true], icon: true }
+                ].map((row, idx) => (
+                  <TableRow key={idx} sx={{ "&:nth-of-type(even)": { bgcolor: "#FAFAFA" } }}>
+                    <TableCell sx={{ fontWeight: 700, color: "text.secondary", py: 2.5, borderRight: "1px solid #EEE" }}>{row.label}</TableCell>
+                    {row.values.map((val, vIdx) => (
+                      <TableCell key={vIdx} align="center" sx={{ borderRight: vIdx < 3 ? "1px solid #EEE" : "none" }}>
+                        {row.icon ? (
+                          <CheckCircleIcon sx={{ color: "#4CAF50" }} />
+                        ) : (
+                          <Typography sx={{ 
+                            fontWeight: row.bold ? 800 : 500, 
+                            fontSize: row.bold ? "1.2rem" : "0.95rem",
+                            color: (row.x === vIdx) ? "error.main" : "inherit"
+                          }}>
+                            {val}
+                          </Typography>
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>
@@ -500,66 +575,94 @@ const LandingPage = () => {
       </Box>
 
       {/* Funding Support Section */}
-      <Container maxWidth="lg" sx={{ py: 15 }}>
-        <Box sx={{ textAlign: "center", mb: 8 }}>
-          <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>雙軌資助支援，靈活對接學校採購</Typography>
-        </Box>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Card sx={{ p: 4, height: "100%", borderRadius: 4, bgcolor: "#F1FAFD", border: "1px solid #E1F5FE" }}>
-              <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
-                <Box sx={{ width: 40, height: 40, bgcolor: "#E8F5E9", borderRadius: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>🛡️</Box>
-                <Box sx={{ bgcolor: "#4CAF50", color: "white", px: 2, py: 0.5, borderRadius: 1, fontSize: "0.8rem" }}>受 QEF eLAFP 資助 (09/2025 - 08/2028)</Box>
-              </Box>
-              <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>優質教育基金 eLAFP 綠色通道<br/>(100% 毋需報價)</Typography>
-              <Typography variant="body2" sx={{ color: "text.secondary", mb: 4, lineHeight: 1.8 }}>
-                LeoEd 已通過 QEF 委員會審核，eLAFP 資助撥款已直接預存於學校的香港教育城 (EdCity) 採購員帳戶中。前線毋需繁瑣報價，即可直接在 EdCity 系統內申請撥核銷，流程最簡化，相當於 0 成本引進。
-              </Typography>
-              <Button fullWidth variant="contained" sx={{ bgcolor: "#4CAF50", py: 1.5, textTransform: "none", boxShadow: "none" }} endIcon={<ArrowForwardIcon />}>
-                立即核銷 eLAFP 資助
-              </Button>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card sx={{ p: 4, height: "100%", borderRadius: 4, bgcolor: "#F5F6FF", border: "1px solid #E8EAF6" }}>
-               <Box sx={{ width: 40, height: 40, bgcolor: "#E3F2FD", borderRadius: 1, display: "flex", alignItems: "center", justifyContent: "center", mb: 3 }}>💰</Box>
-               <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>「智啟學教」計劃 AI 方案<br/>(全套合規報價支援)</Typography>
-               <Typography variant="body2" sx={{ color: "text.secondary", mb: 4, lineHeight: 1.8 }}>
-                針對教育局 50 萬大額全科 AI 智能學與教資助，LeoEd 團隊為本港學校提供全套合規報價、計劃書草擬及行政採購配合，協助學校高效完成校內審批程序。
-               </Typography>
-               <Button fullWidth variant="contained" sx={{ bgcolor: "#424242", py: 1.5, textTransform: "none", boxShadow: "none" }} endIcon={<ArrowForwardIcon />}>
-                了解「智啟學教」通告
-               </Button>
-               <Box sx={{ mt: 3, display: "flex", alignItems: "center", gap: 1 }}>
-                 <CheckCircleIcon sx={{ color: "#424242", fontSize: 20 }} />
-                 <Typography variant="caption">推廣自主語文學習 (英語或普通話) 一筆過津貼</Typography>
-               </Box>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
-
-      {/* Team Section */}
-      <Box sx={{ py: 15, bgcolor: "#FFFFFF" }}>
+      <Box sx={sectionStyles}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: "center", mb: 8 }}>
-            <Typography variant="h3" sx={{ fontWeight: "bold" }}>核心研發成員</Typography>
+            <Typography variant="h3" sx={titleStyles}>雙軌資助支援，靈活對接學校採購</Typography>
           </Box>
-          <Grid container spacing={4} justifyContent="center">
+          <Grid container spacing={4}>
+            {[
+              { 
+                title: "優質教育基金 eLAFP 綠色通道", 
+                subtitle: "(100% 毋需報價)", 
+                desc: "LeoEd 已通過 QEF 委員會審核，eLAFP 資助撥款已直接預存於學校的 EdCity 帳戶中。流程極簡化，相當於 0 成本引進。",
+                tag: "受 QEF eLAFP 資助",
+                tagColor: "#4CAF50",
+                btnColor: "#4CAF50",
+                bg: "rgba(76,175,80,0.03)",
+                icon: "🛡️"
+              },
+              { 
+                title: "「智啟學教」計劃 AI 方案", 
+                subtitle: "(全套合規報價支援)", 
+                desc: "針對教育局 50 萬大額全科 AI 資助，我們提供全套合規報價、計劃書草擬及行政配合，協助高效率完成校內審批。",
+                tag: "合規報價支援",
+                tagColor: "#1A1A1A",
+                btnColor: "#1A1A1A",
+                bg: "rgba(0,0,0,0.03)",
+                icon: "💰",
+                extra: "推廣自主語文學習一筆過津貼"
+              }
+            ].map((card, idx) => (
+              <Grid item xs={12} md={6} key={idx}>
+                <Box sx={{ 
+                  p: 6, borderRadius: 6, bgcolor: card.bg, height: "100%", display: "flex", flexDirection: "column",
+                  border: `1px solid ${card.tagColor}15`
+                }}>
+                  <Box sx={{ display: "flex", justifyContent: "space-between", mb: 4, alignItems: "flex-start" }}>
+                    <Box sx={{ fontSize: "2.5rem" }}>{card.icon}</Box>
+                    <Typography sx={{ bgcolor: card.tagColor, color: "#FFF", px: 2, py: 0.5, borderRadius: 2, fontSize: "0.75rem", fontWeight: 800 }}>{card.tag}</Typography>
+                  </Box>
+                  <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>{card.title}</Typography>
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: card.tagColor, mb: 3 }}>{card.subtitle}</Typography>
+                  <Typography variant="body1" sx={{ color: "text.secondary", mb: 5, lineHeight: 1.8 }}>{card.desc}</Typography>
+                  <Box sx={{ mt: "auto" }}>
+                    <Button fullWidth variant="contained" sx={{ 
+                      bgcolor: card.btnColor, color: "white", py: 2, borderRadius: 3, textTransform: "none", fontWeight: 700,
+                      "&:hover": { bgcolor: card.btnColor, opacity: 0.9 }
+                    }}>
+                      了解詳細申請流程
+                    </Button>
+                    {card.extra && (
+                      <Box sx={{ mt: 3, display: "flex", alignItems: "center", gap: 1 }}>
+                        <CheckCircleIcon sx={{ color: card.tagColor, fontSize: 18, opacity: 0.6 }} />
+                        <Typography variant="caption" sx={{ fontWeight: 600, color: "text.secondary" }}>{card.extra}</Typography>
+                      </Box>
+                    )}
+                  </Box>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Team Section */}
+      <Box sx={{ ...sectionStyles, bgcolor: "#FBFBFC" }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: "center", mb: 10 }}>
+            <Typography variant="h2" sx={titleStyles}>核心研發團隊</Typography>
+            <Typography variant="body1" sx={{ color: "text.secondary" }}>源自香港中文大學，深耕語音及自然語言處理技術。</Typography>
+          </Box>
+          <Grid container spacing={6} justifyContent="center">
             {[
               { name: "Prof. Helen MENG", title: "香港中文大學 講座教授", desc: "SpeechX 首席科學家", sub: "麻省理工學院 (B.S., M.S., Ph.D.)" },
-              { name: "Prof. Xixin WU", title: "香港中文大學 助理教授", desc: "清華大學 (M.S.), 香港中文大學 (Ph.D.)" },
-              { name: "Dr. Bruce LI", title: "SpeechX 聯合創始人及行政總裁", desc: "香港中文大學 榮譽副研究員", sub: "浙江大學 (B.S.), 清華大學 (M.S.), 香港中文大學 (Ph.D.)" }
+              { name: "Prof. Xixin WU", title: "香港中文大學 助理教授", desc: "清華大學 (M.S.), 中大 (Ph.D.)" },
+              { name: "Dr. Bruce LI", title: "SpeechX 執行長", desc: "香港中文大學 榮譽副研究員", sub: "中大 (Ph.D.)" }
             ].map((member) => (
               <Grid item xs={12} md={4} key={member.name}>
                 <Box sx={{ textAlign: "center" }}>
-                  <Avatar sx={{ width: 150, height: 150, mx: "auto", mb: 3, bgcolor: "#F5F5F5" }}>
-                    <PersonIcon sx={{ fontSize: 80, color: "#CCCCCC" }} />
+                  <Avatar sx={{ 
+                    width: 160, height: 160, mx: "auto", mb: 4, bgcolor: "#FFF", 
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+                    border: "4px solid #FFF"
+                  }}>
+                    <PersonIcon sx={{ fontSize: 90, color: "#EEE" }} />
                   </Avatar>
-                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>{member.name}</Typography>
-                  <Typography variant="body2" sx={{ color: "#424242", mt: 1 }}>{member.title}</Typography>
-                  <Typography variant="body2" sx={{ color: "#424242" }}>{member.desc}</Typography>
-                  <Typography variant="caption" display="block" sx={{ color: "text.secondary", mt: 1 }}>{member.sub}</Typography>
+                  <Typography variant="h5" sx={{ fontWeight: 800 }}>{member.name}</Typography>
+                  <Typography variant="subtitle1" sx={{ color: "#2196f3", fontWeight: 700, mt: 1 }}>{member.title}</Typography>
+                  <Typography variant="body2" sx={{ color: "text.secondary", mt: 1, fontWeight: 500 }}>{member.desc}</Typography>
+                  <Typography variant="caption" sx={{ color: "text.disabled", display: "block", mt: 1 }}>{member.sub}</Typography>
                 </Box>
               </Grid>
             ))}
@@ -568,67 +671,64 @@ const LandingPage = () => {
       </Box>
 
       {/* Footer */}
-      <Box sx={{ bgcolor: "#0D1B2A", color: "white", py: 10 }}>
+      <Box sx={{ bgcolor: "#FBFBFC", color: "#1A1A1A", pt: 15, pb: 10, borderTop: "1px solid #EEE" }}>
         <Container maxWidth="lg">
           <Grid container spacing={8}>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" sx={{ fontWeight: "bold", mb: 3, display: "flex", alignItems: "center" }}>
-                🎓 LeoEd
-              </Typography>
-              <Typography variant="body2" sx={{ opacity: 0.7, mb: 4, lineHeight: 1.8 }}>
-                Smarter marking for teachers. Deeper learning for students.
-                AI 賦能教學，讓批改無憂，讓學習簡單。
+              <Box sx={{ display: "flex", alignItems: "center", mb: 4 }}>
+                <Box component="img" src={logo} sx={{ height: 32, mr: 1.5, borderRadius: 1 }} />
+                <Typography variant="h5" sx={{ fontWeight: 800, letterSpacing: -0.5 }}>LeoEd</Typography>
+              </Box>
+              <Typography variant="body2" sx={{ color: "text.secondary", mb: 4, lineHeight: 2, maxWidth: 300 }}>
+                Smarter marking for teachers.<br/>Deeper learning for students.<br/>
+                AI 賦能教學，讓教學不再負擔。
               </Typography>
               <Box sx={{ display: "flex", gap: 2 }}>
-                <IconButton sx={{ color: "white", border: "1px solid rgba(255,255,255,0.2)" }}><VideoLibraryIcon /></IconButton>
-                <IconButton sx={{ color: "white", border: "1px solid rgba(255,255,255,0.2)" }}>f</IconButton>
+                {[<LanguageIcon />, <LanguageIcon />].map((icon, i) => (
+                  <IconButton key={i} sx={{ border: "1px solid #EEE", "&:hover": { bgcolor: "rgba(0,0,0,0.02)" } }}>
+                    {icon}
+                  </IconButton>
+                ))}
               </Box>
-              <Button variant="outlined" sx={{ color: "white", borderColor: "rgba(255,255,255,0.2)", mt: 4, textTransform: "none" }} startIcon={<PhoneIcon />}>
-                下載應用程式
-              </Button>
             </Grid>
             <Grid item xs={6} md={2}>
-              <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 3 }}>AI 學與教專區</Typography>
-              {["英文科 AI", "中文科 AI", "普通話科 AI", "數學科 AI", "歷史科 AI"].map((item) => (
-                <Typography key={item} variant="body2" sx={{ opacity: 0.7, mb: 2, cursor: "pointer" }}>{item}</Typography>
+              <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 4, textTransform: "uppercase", letterSpacing: 1 }}>AI 專區</Typography>
+              {["英文科 AI", "中文科 AI", "數學科 AI", "歷史科 AI"].map((item) => (
+                <Typography key={item} variant="body2" sx={{ color: "text.secondary", mb: 2, cursor: "pointer", "&:hover": { color: "#000" } }}>{item}</Typography>
               ))}
             </Grid>
             <Grid item xs={6} md={2}>
-              <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 3 }}>快速連結</Typography>
-              {["申請免費到校示範", "平台登入", "合作學校", "收費方案", "QEF-eLAFP 全額資助"].map((item) => (
-                <Typography key={item} variant="body2" sx={{ opacity: 0.7, mb: 2, cursor: "pointer" }}>{item}</Typography>
+              <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 4, textTransform: "uppercase", letterSpacing: 1 }}>資源與連結</Typography>
+              {["免費示範", "平台登入", "收費方案", "資助申請"].map((item) => (
+                <Typography key={item} variant="body2" sx={{ color: "text.secondary", mb: 2, cursor: "pointer", "&:hover": { color: "#000" } }}>{item}</Typography>
               ))}
             </Grid>
             <Grid item xs={12} md={4}>
-              <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 3 }}>聯繫我們</Typography>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2, bgcolor: "rgba(255,255,255,0.05)", p: 1, borderRadius: 2 }}>
-                <WhatsAppIcon sx={{ color: "#4CAF50" }} />
-                <Typography variant="body2">(852) 5601 0992</Typography>
+              <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 4, textTransform: "uppercase", letterSpacing: 1 }}>聯繫我們</Typography>
+              <Box sx={{ mb: 4 }}>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                  <WhatsAppIcon sx={{ color: "#4CAF50" }} />
+                  <Typography variant="body2" sx={{ fontWeight: 700 }}>(852) 5601 0992</Typography>
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                   <EmailIcon sx={{ color: "text.secondary", fontSize: 20 }} />
+                   <Typography variant="body2" sx={{ color: "text.secondary" }}>Hello@leoed.ai</Typography>
+                </Box>
               </Box>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
-                <PhoneIcon sx={{ opacity: 0.7 }} />
-                <Typography variant="body2" sx={{ opacity: 0.7 }}>(852) 3943 9594</Typography>
-              </Box>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 4 }}>
-                <EmailIcon sx={{ opacity: 0.7 }} />
-                <Typography variant="body2" sx={{ opacity: 0.7 }}>Hello@leoed.ai</Typography>
-              </Box>
-              <Button variant="contained" fullWidth sx={{ bgcolor: "#F5F5F5", color: "#000000", py: 1.5, mb: 4, textTransform: "none", "&:hover": { bgcolor: "#EEEEEE" } }} startIcon={<LocationIcon />}>預約到校示範</Button>
-              <Box sx={{ mb: 2 }}>
-                <Typography variant="caption" sx={{ opacity: 0.5 }}>香港科學園辦公室</Typography>
-                <Typography variant="body2" sx={{ opacity: 0.7 }}>Unit 218, 2/F, Building 19W, HK Science Park, Shatin, N.T., HK</Typography>
-              </Box>
-              <Box>
-                <Typography variant="caption" sx={{ opacity: 0.5 }}>香港中文大學辦公室</Typography>
-                <Typography variant="body2" sx={{ opacity: 0.7 }}>Rm 1142, Cheng Yu Tung Building, CUHK, Shatin, N.T., HK</Typography>
-              </Box>
+              <Button fullWidth variant="contained" sx={{ bgcolor: "#000", color: "#FFF", py: 2, borderRadius: 3, fontWeight: 700, textTransform: "none", "&:hover": { bgcolor: "#222" } }}>
+                預約到校交流
+              </Button>
             </Grid>
           </Grid>
-          <Divider sx={{ my: 6, borderColor: "rgba(255,255,255,0.1)" }} />
-          <Box sx={{ textAlign: "center" }}>
-            <Typography variant="caption" sx={{ opacity: 0.5 }}>
-              © 2026 LeoEd. 版權所有。LeoEd® 是 LeoEd 旗下的 AI 學與教平台。 | 粵ICP備17014234號-6
-            </Typography>
+          <Divider sx={{ my: 8, borderColor: "#EEE" }} />
+          <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, justifyContent: "space-between", alignItems: "center", gap: 2 }}>
+             <Typography variant="caption" sx={{ color: "text.disabled" }}>
+               © 2026 LeoEd. 版權所有。香港中文大學聯合研發項目。
+             </Typography>
+             <Box sx={{ display: "flex", gap: 4 }}>
+               <Typography variant="caption" sx={{ color: "text.disabled", cursor: "pointer" }}>私隱政策</Typography>
+               <Typography variant="caption" sx={{ color: "text.disabled", cursor: "pointer" }}>服務條款</Typography>
+             </Box>
           </Box>
         </Container>
       </Box>
