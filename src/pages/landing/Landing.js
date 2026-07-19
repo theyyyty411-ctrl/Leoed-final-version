@@ -107,7 +107,7 @@ const LandingPage = () => {
                 LeoEd
               </Typography>
               <Box sx={{ display: { xs: "none", lg: "flex" }, ml: 6 }}>
-                {["首頁", "各科 AI", "智啟學教", "聯繫我們"].map((text) => (
+                {["首頁", "各科 AI", "合作學校", "收費方案", "智啟學教", "聯繫我們"].map((text) => (
                   <Button key={text} sx={{ color: "text.secondary", px: 2, fontWeight: 600, fontSize: "0.95rem", textTransform: "none", "&:hover": { color: "#000000" } }}>
                     {text} {text === "各科 AI" && <ExpandMoreIcon fontSize="small" sx={{ ml: 0.5 }} />}
                   </Button>
@@ -426,7 +426,35 @@ const LandingPage = () => {
         </Container>
       </Box>
 
-      {/* Funding Support Section */}
+      {/* Partners Section */}
+      <Box sx={{ ...sectionStyles, bgcolor: "#FFFFFF" }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: "center", mb: 8 }}>
+            <Box component="span" sx={{ bgcolor: "rgba(33,150,243,0.1)", color: "#2196f3", px: 2.5, py: 0.8, borderRadius: 10, fontSize: "0.85rem", fontWeight: 800, mb: 3, display: "inline-block" }}>
+              TRUSTED BY LEADERS
+            </Box>
+            <Typography variant="h2" sx={titleStyles}>我們的合作學校</Typography>
+            <Typography variant="body1" sx={{ color: "text.secondary" }}>服務全港 190+ 所學校，深獲教育界信任與肯定。</Typography>
+          </Box>
+          <Box sx={{ height: "200px", border: "1px dashed #EEE", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
+             <Typography sx={{ color: "text.disabled", fontWeight: 600 }}>合作學校資訊更新中</Typography>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Pricing Section */}
+      <Box sx={{ ...sectionStyles, bgcolor: "#FBFBFC" }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: "center", mb: 10 }}>
+            <Typography variant="overline" sx={{ color: "#2196f3", fontWeight: 800, letterSpacing: 2 }}>PRICING REVOLUTION</Typography>
+            <Typography variant="h2" sx={titleStyles}>透明、靈活的收費方案</Typography>
+          </Box>
+          <Box sx={{ height: "300px", border: "1px dashed #EEE", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
+             <Typography sx={{ color: "text.disabled", fontWeight: 600 }}>價格方案調整中，敬請期待</Typography>
+          </Box>
+        </Container>
+      </Box>
+
       {/* Educator & Institution Section */}
       {/* Educator & Institution Section */}
       <Box sx={sectionStyles}>
@@ -479,13 +507,13 @@ const LandingPage = () => {
         <Container maxWidth="lg">
           <Box sx={{ textAlign: "center", mb: 10 }}>
             <Typography variant="h2" sx={titleStyles}>核心研發團隊</Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary" }}>源自香港中文大學，深耕語音及自然語言處理技術。</Typography>
+            <Typography variant="body1" sx={{ color: "text.secondary" }}>源自香港都會大學，深耕語音及自然語言處理技術。</Typography>
           </Box>
           <Grid container spacing={6} justifyContent="center">
             {[
-              { name: "Prof. Helen MENG", title: "香港中文大學 講座教授", desc: "SpeechX 首席科學家", sub: "麻省理工學院 (B.S., M.S., Ph.D.)" },
-              { name: "Prof. Xixin WU", title: "香港中文大學 助理教授", desc: "清華大學 (M.S.), 中大 (Ph.D.)" },
-              { name: "Dr. Bruce LI", title: "SpeechX 執行長", desc: "香港中文大學 榮譽副研究員", sub: "中大 (Ph.D.)" }
+              { name: "Prof. Helen MENG", title: "香港都會大學 講座教授", desc: "SpeechX 首席科學家", sub: "麻省理工學院 (B.S., M.S., Ph.D.)" },
+              { name: "Prof. Xixin WU", title: "香港都會大學 助理教授", desc: "清華大學 (M.S.), 都大 (Ph.D.)" },
+              { name: "Dr. Bruce LI", title: "SpeechX 執行長", desc: "香港都會大學 榮譽副研究員", sub: "都大 (Ph.D.)" }
             ].map((member) => (
               <Grid item xs={12} md={4} key={member.name}>
                 <Box sx={{ textAlign: "center" }}>
@@ -536,7 +564,7 @@ const LandingPage = () => {
             </Grid>
             <Grid item xs={6} md={2}>
               <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 4, textTransform: "uppercase", letterSpacing: 1 }}>資源與連結</Typography>
-              {["免費示範", "平台登入", "資助申請"].map((item) => (
+              {["免費示範", "平台登入", "收費方案", "資助申請"].map((item) => (
                 <Typography key={item} variant="body2" sx={{ color: "text.secondary", mb: 2, cursor: "pointer", "&:hover": { color: "#000" } }}>{item}</Typography>
               ))}
             </Grid>
