@@ -43,6 +43,9 @@ import {
   LocationOn as LocationIcon,
   ArrowForward as ArrowForwardIcon,
   ExpandMore as ExpandMoreIcon,
+  Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
+  LinkedIn as LinkedInIcon,
 } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo.jpeg";
@@ -60,6 +63,22 @@ const LandingPage = () => {
 
   const handleLogin = () => {
     navigate("/login");
+  };
+
+  const handleExplore = () => {
+    console.log("Navigate to platform exploration");
+  };
+
+  const handleTrial = () => {
+    console.log("Navigate to trial signup");
+  };
+
+  const handleLearnMore = (subject) => {
+    console.log(`Learn more about: ${subject}`);
+  };
+
+  const handleBookAppointment = () => {
+    console.log("Book school visit appointment");
   };
 
   const sectionStyles = {
@@ -110,9 +129,16 @@ const LandingPage = () => {
                 LeoEd
               </Typography>
               <Box sx={{ display: { xs: "none", lg: "flex" }, ml: 6 }}>
-                {["首頁", "各科 AI", "合作學校", "收費方案", "智啟學教", "聯繫我們"].map((text) => (
-                  <Button key={text} sx={{ color: "text.secondary", px: 2, fontWeight: 600, fontSize: "0.95rem", textTransform: "none", "&:hover": { color: "#000000" } }}>
-                    {text} {text === "各科 AI" && <ExpandMoreIcon fontSize="small" sx={{ ml: 0.5 }} />}
+                {[
+                  { text: "首頁", path: "/" },
+                  { text: "各科 AI", path: "/subjects" },
+                  { text: "合作學校", path: "/partners" },
+                  { text: "收費方案", path: "/pricing" },
+                  { text: "智啟學教", path: "/educators" },
+                  { text: "聯繫我們", path: "/contact" }
+                ].map((item) => (
+                  <Button key={item.text} component={Link} to={item.path} sx={{ color: "text.secondary", px: 2, fontWeight: 600, fontSize: "0.95rem", textTransform: "none", "&:hover": { color: "#000000" } }}>
+                    {item.text} {item.text === "各科 AI" && <ExpandMoreIcon fontSize="small" sx={{ ml: 0.5 }} />}
                   </Button>
                 ))}
               </Box>
@@ -140,6 +166,7 @@ const LandingPage = () => {
               </Button>
               <Button 
                 variant="contained" 
+                onClick={handleTrial}
                 sx={{ 
                   display: { xs: "none", md: "flex" },
                   textTransform: "none", 
@@ -213,7 +240,7 @@ const LandingPage = () => {
                 </Box>
               </Box>
               <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", sm: "row" } }}>
-                <Button variant="contained" size="large" sx={{ 
+                <Button variant="contained" size="large" onClick={handleExplore} sx={{ 
                   px: 5, py: 2, borderRadius: "14px", bgcolor: "#000000", color: "#FFFFFF", fontWeight: 700, textTransform: "none",
                   fontSize: "1.1rem",
                   boxShadow: "0 10px 20px rgba(0,0,0,0.15)",
@@ -383,7 +410,7 @@ const LandingPage = () => {
                     {item.desc}
                   </Typography>
                   <Box sx={{ mt: "auto" }}>
-                    <Button fullWidth variant="contained" sx={{ 
+                    <Button fullWidth variant="contained" onClick={() => handleLearnMore(item.subject)} sx={{ 
                       bgcolor: item.color, color: "white", py: 1.5, borderRadius: 3, textTransform: "none", fontWeight: 700,
                       "&:hover": { bgcolor: item.color, opacity: 0.9 }, boxShadow: "none"
                     }}>
@@ -426,7 +453,6 @@ const LandingPage = () => {
         </Container>
       </Box>
 
-      {/* Educator & Institution Section */}
       {/* Educator & Institution Section */}
       <Box sx={sectionStyles}>
         <Container maxWidth="lg">
@@ -523,7 +549,7 @@ const LandingPage = () => {
                 AI 賦能教學，讓教學不再負擔。
               </Typography>
               <Box sx={{ display: "flex", gap: 2 }}>
-                {[<LanguageIcon />, <LanguageIcon />].map((icon, i) => (
+                {[<FacebookIcon />, <InstagramIcon />, <LinkedInIcon />].map((icon, i) => (
                   <IconButton key={i} sx={{ border: "1px solid #EEE", "&:hover": { bgcolor: "rgba(0,0,0,0.02)" } }}>
                     {icon}
                   </IconButton>
@@ -554,7 +580,7 @@ const LandingPage = () => {
                    <Typography variant="body2" sx={{ color: "text.secondary" }}>Hello@leoed.ai</Typography>
                 </Box>
               </Box>
-              <Button fullWidth variant="contained" sx={{ bgcolor: "#000", color: "#FFF", py: 2, borderRadius: 3, fontWeight: 700, textTransform: "none", "&:hover": { bgcolor: "#222" } }}>
+              <Button fullWidth variant="contained" onClick={handleBookAppointment} sx={{ bgcolor: "#000", color: "#FFF", py: 2, borderRadius: 3, fontWeight: 700, textTransform: "none", "&:hover": { bgcolor: "#222" } }}>
                 預約到校交流
               </Button>
             </Grid>
