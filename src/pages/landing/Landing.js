@@ -266,38 +266,6 @@ const LandingPage = () => {
                       <PlayArrowIcon sx={{ fontSize: 100, color: "rgba(0,0,0,0.1)" }} />
                    </Box>
                 </Box>
-                <Card sx={{ 
-                  position: "absolute", 
-                  top: -30, 
-                  right: -20, 
-                  p: 2, 
-                  borderRadius: 3, 
-                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
-                  border: "none"
-                }}>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                     <Box sx={{ width: 44, height: 44, bgcolor: "#E3F2FD", borderRadius: 2, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem" }}>🏫</Box>
-                     <Box>
-                       <Typography variant="body2" sx={{ fontWeight: 800 }}>190+ 所香港學校</Typography>
-                       <Typography variant="caption" sx={{ color: "text.secondary", fontWeight: 600 }}>正在使用 LeoEd</Typography>
-                     </Box>
-                  </Box>
-                </Card>
-                <Card sx={{ 
-                  position: "absolute", 
-                  bottom: 20, 
-                  left: -30, 
-                  p: 2, 
-                  borderRadius: 3, 
-                  boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
-                  border: "none",
-                  display: { xs: "none", sm: "block" }
-                }}>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                     <Box sx={{ width: 44, height: 44, bgcolor: "#E8F5E9", borderRadius: 2, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem" }}>⚡</Box>
-                     <Typography variant="body2" sx={{ fontWeight: 800 }}>批改效率提升 80%</Typography>
-                  </Box>
-                </Card>
               </Box>
             </Grid>
           </Grid>
@@ -434,7 +402,7 @@ const LandingPage = () => {
               TRUSTED BY LEADERS
             </Box>
             <Typography variant="h2" sx={titleStyles}>我們的合作學校</Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary" }}>服務全港 190+ 所學校，深獲教育界信任與肯定。</Typography>
+            <Typography variant="body1" sx={{ color: "text.secondary" }}>深獲教育界信任與肯定。</Typography>
           </Box>
           <Box sx={{ height: "200px", border: "1px dashed #EEE", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
              <Typography sx={{ color: "text.disabled", fontWeight: 600 }}>合作學校資訊更新中</Typography>
