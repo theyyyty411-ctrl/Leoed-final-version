@@ -2,6 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useTheme } from "styles/mui";
 import ReactApexChart from "react-apexcharts";
+import { useTranslation } from "react-i18next";
 
 import Donut from "./Components/DonutChart";
 import Calendar from "./Components/Calendar/Calendar";
@@ -146,6 +147,7 @@ const columns = [
 
 function Profile() {
   const theme = useTheme();
+  const { t } = useTranslation();
   const state = values;
   const classes = useStyles();
 
@@ -172,7 +174,7 @@ function Profile() {
       <Grid size={{ xs: 12, lg: 12 }}>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
-            <Widget title={"Mastery Radar Chart"} noBodyPadding>
+            <Widget title={t("profile.masteryRadar")} noBodyPadding>
               <ReactApexChart
                 options={themeOptions(theme).options_radar}
                 series={state.mastery}
@@ -183,7 +185,7 @@ function Profile() {
           </Grid>
 
           <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
-            <Widget title={"Error Rate by Difficulty"} noBodyPadding>
+            <Widget title={t("profile.errorRate")} noBodyPadding>
               <ReactApexChart
                 options={themeOptions(theme).options_bar}
                 series={state.errorBar}
@@ -194,7 +196,9 @@ function Profile() {
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
             <Widget bodyClass={classes.tableWrapper}>
-              <Typography variant="h6">Forgetting Risk</Typography>
+              <Typography variant="h6">
+                {t("profile.forgettingRisk")}
+              </Typography>
               <div>
                 <DataGrid
                   rows={forgetRisk}
@@ -216,7 +220,7 @@ function Profile() {
               </div>
 
               <Typography variant="h6" sx={{ pt: 1 }}>
-                PrereqNeed
+                {t("profile.prereqNeed")}
               </Typography>
               <div>
                 <DataGrid
@@ -239,7 +243,7 @@ function Profile() {
               </div>
 
               <Typography variant="h6" sx={{ pt: 1 }}>
-                CoverageNeed
+                {t("profile.coverageNeed")}
               </Typography>
               <div>
                 <DataGrid
@@ -263,7 +267,7 @@ function Profile() {
             </Widget>
           </Grid>
           <Grid size={{ xs: 12, sm: 12, md: 8, lg: 8 }}>
-            <Widget title="Tasks" bodyClass={classes.widgetBody}>
+            <Widget title={t("profile.tasks")} bodyClass={classes.widgetBody}>
               <Tasks items={taskList} />
             </Widget>
           </Grid>
@@ -273,18 +277,23 @@ function Profile() {
             </Widget>
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
-            <Widget bodyClass={classes.mediaBlockPadding} title="Achievement">
+            <Widget
+              bodyClass={classes.mediaBlockPadding}
+              title={t("profile.achievement")}
+            >
               <Grid container spacing={1}>
                 <Achievement items={achSum} />
               </Grid>
             </Widget>
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
-            <Widget className={classes.adjustHeight} title="Overview">
+            <Widget
+              className={classes.adjustHeight}
+              title={t("profile.overview")}
+            >
               <Donut items={taskSum} total={100} />
             </Widget>
           </Grid>
-
         </Grid>
       </Grid>
     </Grid>

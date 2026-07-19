@@ -24,49 +24,54 @@ import ViewCompactRoundedIcon from "@mui/icons-material/ViewCompactRounded";
 export function getStructure() {
   const user_role = sessionStorage.getItem("user_role");
   let structure = [
-    { id: 100, label: "Profile", link: "/app/profile", icon: <ProfileIcon /> },
+    {
+      id: 100,
+      labelKey: "sidebar.profile",
+      link: "/app/profile",
+      icon: <ProfileIcon />,
+    },
   ];
   switch (user_role) {
     case "admin":
       structure = [
         {
           id: 100,
-          label: "Profile",
+          labelKey: "sidebar.profile",
           link: "/app/profile",
           icon: <ProfileIcon />,
         },
         {
           id: 0,
-          label: "Dashboard",
+          labelKey: "sidebar.dashboard",
           link: "/app/dashboard",
           icon: <HomeIcon />,
         },
         {
           id: 200,
-          label: "Admin",
+          labelKey: "sidebar.admin",
           link: "/app/admin",
           icon: <TableIcon />,
           children: [
             {
-              label: "Fields",
+              labelKey: "sidebar.fields",
               link: "/app/admin/field",
             },
           ],
         },
         {
           id: 1,
-          label: "Question",
+          labelKey: "sidebar.question",
           // badge: 'NodeJS',
           // badgeColor: 'success',
           link: "/app/question",
           icon: <DocumentationIcon />,
           children: [
             {
-              label: "Question List",
+              labelKey: "sidebar.questionList",
               link: "/app/question",
             },
             {
-              label: "Question Grid",
+              labelKey: "sidebar.questionGrid",
               link: "/app/question/grid",
             },
             // {
@@ -77,50 +82,50 @@ export function getStructure() {
         },
         {
           id: 2,
-          label: "User",
+          labelKey: "sidebar.users",
           link: "/app/user",
           // badge: 'New',
           // badgeColor: 'secondary',
           icon: <PersonIcon />,
           children: [
             {
-              label: "User List",
+              labelKey: "sidebar.userList",
               link: "/app/user",
             },
             {
-              label: "User Add",
+              labelKey: "sidebar.userAdd",
               link: "/app/user/new",
             },
             {
-              label: "User Edit",
+              labelKey: "sidebar.userEdit",
               link: "/app/user/edit",
             },
           ],
         },
         { id: 4, type: "divider" },
-        { id: 5, type: "title", label: "For Students" },
+        { id: 5, type: "title", labelKey: "sidebar.forStudents" },
         {
           id: 6,
-          label: "Learning",
+          labelKey: "sidebar.learning",
           link: "/app/learning",
           icon: <UIElementsIcon />,
           children: [
-            { label: "Task List", link: "/app/learning/tasks" },
+            { labelKey: "sidebar.taskList", link: "/app/learning/tasks" },
             {
-              label: "Recommended",
+              labelKey: "sidebar.recommended",
               // link: '/app/learning/recommended'
             },
             {
-              label: "Re-enforce",
+              labelKey: "sidebar.reEnforce",
               // link: '/app/learning/re-enforce',
             },
           ],
         },
         { id: 7, type: "divider" },
-        { id: 8, type: "title", label: "For Teachers" },
+        { id: 8, type: "title", labelKey: "sidebar.forTeachers" },
         {
           id: 9,
-          label: "Teaching",
+          labelKey: "sidebar.teaching",
           // link: '/app/teaching',
           icon: <CoreIcon />,
         },
@@ -130,24 +135,24 @@ export function getStructure() {
       structure = [
         {
           id: 100,
-          label: "Profile",
+          labelKey: "sidebar.profile",
           link: "/app/profile",
           icon: <ProfileIcon />,
         },
         {
           id: 1,
-          label: "Question",
+          labelKey: "sidebar.question",
           // badge: 'NodeJS',
           // badgeColor: 'success',
           link: "/app/question",
           icon: <DocumentationIcon />,
           children: [
             {
-              label: "Question List",
+              labelKey: "sidebar.questionList",
               link: "/app/question",
             },
             {
-              label: "Question Grid",
+              labelKey: "sidebar.questionGrid",
               link: "/app/question/grid",
             },
             // {
@@ -162,13 +167,13 @@ export function getStructure() {
       structure = [
         {
           id: 100,
-          label: "Profile",
+          labelKey: "sidebar.profile",
           link: "/app/profile",
           icon: <ProfileIcon />,
         },
         {
           id: 9,
-          label: "Teaching",
+          labelKey: "sidebar.teaching",
           // link: '/app/teaching',
           icon: <CoreIcon />,
         },
@@ -178,23 +183,23 @@ export function getStructure() {
       structure = [
         {
           id: 100,
-          label: "Profile",
+          labelKey: "sidebar.profile",
           link: "/app/profile",
           icon: <ProfileIcon />,
         },
         {
           id: 6,
-          label: "Learning",
+          labelKey: "sidebar.learning",
           link: "/app/learning",
           icon: <UIElementsIcon />,
           children: [
-            { label: "Task List", link: "/app/learning/tasks" },
+            { labelKey: "sidebar.taskList", link: "/app/learning/tasks" },
             {
-              label: "Recommended",
+              labelKey: "sidebar.recommended",
               // link: '/app/learning/recommended'
             },
             {
-              label: "Re-enforce",
+              labelKey: "sidebar.reEnforce",
               // link: '/app/learning/re-enforce',
             },
           ],

@@ -172,9 +172,7 @@ const Task = () => {
   const overdueTasks = backTasks.filter(
     (task) => task.due && task.due < dateOnly && !task.submit,
   );
-  const submittedTasks = backTasks.filter(
-    (task) => task.submit,
-  );
+  const submittedTasks = backTasks.filter((task) => task.submit);
 
   const tabItems = [todoTasks, overdueTasks, submittedTasks];
   const tabLabels = ["To do", "Overdue", "Submitted"];

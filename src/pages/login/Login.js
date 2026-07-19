@@ -7,9 +7,12 @@ import {
   Grow,
   TextField as Input,
   Typography,
+  Box,
 } from "@mui/material";
 import classnames from "classnames";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
 
 // styles
 import useStyles from "./styles";
@@ -48,6 +51,7 @@ const getGreeting = () => {
 
 function Login() {
   let classes = useStyles();
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const tab = new URLSearchParams(location.search).get("tab");
@@ -96,11 +100,21 @@ function Login() {
 
   return (
     <Grid container className={classes.container}>
-      <div className={classes.logotypeContainer}>
+      <div
+        className={classes.logotypeContainer}
+        style={{ position: "relative" }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: { xs: 4, md: 8 },
+            right: { xs: 4, md: 8 },
+            zIndex: 1,
+          }}
+        >
+          <LanguageSwitcher />
+        </Box>
         <img src={logo} alt="logo" className={classes.logotypeImage} />
-        {/* <Typography className={classes.logotypeText}>
-          LeoEd AI
-        </Typography> */}
       </div>
       <div
         className={
@@ -163,9 +177,18 @@ function Login() {
                 textColor="primary"
                 centered
               >
-                <Tab label="Student" classes={{ root: classes.tab }} />
-                <Tab label="Teacher" classes={{ root: classes.tab }} />
-                <Tab label="New" classes={{ root: classes.tab }} />
+                <Tab
+                  label={t("login.tab.student")}
+                  classes={{ root: classes.tab }}
+                />
+                <Tab
+                  label={t("login.tab.teacher")}
+                  classes={{ root: classes.tab }}
+                />
+                <Tab
+                  label={t("login.tab.new")}
+                  classes={{ root: classes.tab }}
+                />
               </Tabs>
               {activeTabId === 0 && (
                 <React.Fragment>
@@ -209,7 +232,7 @@ function Login() {
                     value={studentValue}
                     onChange={(e) => setStudentValue(e.target.value)}
                     margin="normal"
-                    placeholder="Email Adress"
+                    placeholder={t("login.placeholder.email")}
                     type="email"
                     fullWidth
                     onKeyDown={(e) => loginOnEnterKey(e)}
@@ -225,7 +248,7 @@ function Login() {
                     value={passwordValue}
                     onChange={(e) => setPasswordValue(e.target.value)}
                     margin="normal"
-                    placeholder="Password"
+                    placeholder={t("login.placeholder.password")}
                     type="password"
                     fullWidth
                     onKeyDown={(e) => loginOnEnterKey(e)}
@@ -252,7 +275,7 @@ function Login() {
                         color="primary"
                         size="large"
                       >
-                        Login
+                        {t("login.button.login")}
                       </Button>
                     )}
                     <Button
@@ -261,7 +284,7 @@ function Login() {
                       onClick={() => setIsForgot(!isForgot)}
                       className={classes.forgetButton}
                     >
-                      Forgot Password?
+                      {t("login.button.forgotPassword")}
                     </Button>
                   </div>
                 </React.Fragment>
@@ -303,7 +326,7 @@ function Login() {
                     }
                   >
                     <Typography className={classes.errorMessage}>
-                      Something is wrong with your login or password :(
+                      {t("login.error.invalidCredentials")}
                     </Typography>
                   </Grow>
                   <Input
@@ -317,7 +340,7 @@ function Login() {
                     value={loginValue}
                     onChange={(e) => setLoginValue(e.target.value)}
                     margin="normal"
-                    placeholder="Email Adress"
+                    placeholder={t("login.placeholder.email")}
                     type="email"
                     fullWidth
                     onKeyDown={(e) => loginOnEnterKey(e)}
@@ -333,7 +356,7 @@ function Login() {
                     value={passwordValue}
                     onChange={(e) => setPasswordValue(e.target.value)}
                     margin="normal"
-                    placeholder="Password"
+                    placeholder={t("login.placeholder.password")}
                     type="password"
                     fullWidth
                     onKeyDown={(e) => loginOnEnterKey(e)}
@@ -360,7 +383,7 @@ function Login() {
                         color="primary"
                         size="large"
                       >
-                        Login
+                        {t("login.button.login")}
                       </Button>
                     )}
                     <Button
@@ -369,7 +392,7 @@ function Login() {
                       onClick={() => setIsForgot(!isForgot)}
                       className={classes.forgetButton}
                     >
-                      Forgot Password?
+                      {t("login.button.forgotPassword")}
                     </Button>
                   </div>
                 </React.Fragment>
@@ -381,7 +404,7 @@ function Login() {
                   </Typography> */}
 
                   <Typography variant="h2" className={classes.subGreeting}>
-                    Create your account
+                    {t("login.register.title")}
                   </Typography>
                   {/* <Widget
                     disableWidgetMenu
@@ -417,7 +440,7 @@ function Login() {
                     value={nameValue}
                     onChange={(e) => setNameValue(e.target.value)}
                     margin="normal"
-                    placeholder="Full Name"
+                    placeholder={t("login.placeholder.fullName")}
                     type="email"
                     fullWidth
                   />
@@ -432,7 +455,7 @@ function Login() {
                     value={loginValue}
                     onChange={(e) => setLoginValue(e.target.value)}
                     margin="normal"
-                    placeholder="Email Adress"
+                    placeholder={t("login.placeholder.email")}
                     type="email"
                     fullWidth
                   />
@@ -447,7 +470,7 @@ function Login() {
                     value={passwordValue}
                     onChange={(e) => setPasswordValue(e.target.value)}
                     margin="normal"
-                    placeholder="Password"
+                    placeholder={t("login.placeholder.password")}
                     type="password"
                     fullWidth
                   />
@@ -477,7 +500,7 @@ function Login() {
                         fullWidth
                         className={classes.createAccountButton}
                       >
-                        Create your account
+                        {t("login.button.createAccount")}
                       </Button>
                     )}
                   </div>

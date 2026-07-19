@@ -14,6 +14,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import config from "./config";
 import "leaflet/dist/leaflet.css";
 import Sortable from "sortablejs";
+import "./i18n";
+
 window.Sortable = Sortable;
 
 axios.defaults.baseURL = config.baseURLApi;

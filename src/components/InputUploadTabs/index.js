@@ -87,7 +87,10 @@ const InputUploadTabs = ({
     const height = Math.round(rect.height);
 
     // Save current drawing before resizing
-    if (preserveDrawing && (canvas.width !== width || canvas.height !== height)) {
+    if (
+      preserveDrawing &&
+      (canvas.width !== width || canvas.height !== height)
+    ) {
       canvasDataRef.current = canvas.toDataURL();
     }
 
@@ -245,7 +248,13 @@ const InputUploadTabs = ({
           style={{ width: "100%" }}
         />
         {textFieldFooter}
-        <Box display="flex" alignItems="center" justifyContent="space-between" mb={1} mt={1}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          mb={1}
+          mt={1}
+        >
           <Typography variant="body2" color="textSecondary">
             Use Drawing
           </Typography>

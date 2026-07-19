@@ -208,7 +208,10 @@ const EnhancedTableToolbar = ({ numSelected, selected, onDeleteSelected }) => {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton aria-label="delete" onClick={(e) => onDeleteSelected(selected, e)}>
+          <IconButton
+            aria-label="delete"
+            onClick={(e) => onDeleteSelected(selected, e)}
+          >
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -514,7 +517,9 @@ function QuestionPage() {
                                 />
                               </Link>
                             </TableCell>
-                            <TableCell align="center">{row.difficulty}/10</TableCell>
+                            <TableCell align="center">
+                              {row.difficulty}/10
+                            </TableCell>
                             {/* <TableCell>
                                 <Box display={"flex"} alignItems={"center"}>
                                   <Typography
@@ -619,6 +624,5 @@ function QuestionPage() {
     </>
   );
 }
-
 
 export default QuestionPage;

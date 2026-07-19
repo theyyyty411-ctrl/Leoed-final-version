@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AppBar, Toolbar, IconButton, Menu, MenuItem } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Menu,
+  MenuItem,
+  Box,
+} from "@mui/material";
 import { useTheme } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -8,6 +15,8 @@ import {
   ArrowBack as ArrowBackIcon,
 } from "@mui/icons-material";
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 //images
 import profile from "../../images/logo.jpeg";
@@ -36,6 +45,7 @@ import { useUserDispatch, signOut } from "../../context/UserContext";
 export default function Header() {
   let classes = useStyles();
   let theme = useTheme();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   // global
@@ -113,9 +123,12 @@ export default function Header() {
           weight="medium"
           // className={classes.logotype}
         >
-          LeoEd AI
+          LeoEd
         </Typography>
         <div className={classes.grow} />
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <LanguageSwitcher textColor="#FFFFFF" />
+        </Box>
         <IconButton
           aria-haspopup="true"
           color="inherit"

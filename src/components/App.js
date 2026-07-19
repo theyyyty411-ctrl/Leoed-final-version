@@ -35,7 +35,10 @@ export default function App() {
         <BrowserRouter basename={routerBase}>
           <RouterNavigatorSync />
           <Routes>
-            <Route path="/" element={isAuth ? <Navigate to="/app" replace /> : <Landing />} />
+            <Route
+              path="/"
+              element={isAuth ? <Navigate to="/app" replace /> : <Landing />}
+            />
             <Route
               path="/app"
               element={<Navigate to="/app/profile" replace />}

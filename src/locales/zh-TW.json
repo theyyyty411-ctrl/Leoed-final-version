@@ -1,0 +1,182 @@
+{
+  "nav": {
+    "home": "首頁",
+    "subjects": "各科 AI",
+    "partners": "合作學校",
+    "pricing": "收費方案",
+    "educators": "智啟學教",
+    "contact": "聯繫我們"
+  },
+  "header": {
+    "language": "繁體",
+    "login": "學校師生登入",
+    "trial": "立即試用"
+  },
+  "hero": {
+    "badge": "DSE • TSA • HKAT • IELTS 專業評核對標",
+    "title": "LeoEd AI：",
+    "titleGradient": "引領自適應學習的未來",
+    "subtitle": "打破傳統「一刀切」的教學模式。LeoEd AI 是一個動態學習環境，透過持續收集學生的表現數據，為學習內容進行個性化定制、調整難度，並提供即時、具針對性的反饋。",
+    "feature1": "可靠的 AI 引航者",
+    "feature2": "個性化學習進程",
+    "explore": "探索平台 🚀",
+    "contact": "聯絡我們 🎓",
+    "subjects": "支援科目:",
+    "subjectsList": ["英文", "中文", "數學", "歷史"]
+  },
+  "philosophy": {
+    "label": "CORE PHILOSOPHY",
+    "title": "學習、進化、優化 (Learn, Evolve, Optimize)",
+    "description": "LeoEd AI 不僅僅是一個靜態的內容庫。我們是一個以 AI 驅動的教育系統，旨在成為可靠的引航者，引領學生完成複雜的學習旅程。",
+    "learn": "學習 (Learn)",
+    "learnDesc": "透過高度個性化的內容和積極參與，讓學生掌握新概念。",
+    "evolve": "進化 (Evolve)",
+    "evolveDesc": "系統會根據您的即時學習進度，動態調整任務、測驗難度和學習節奏。",
+    "optimize": "優化 (Optimize)",
+    "optimizeDesc": "系統不斷完善其推薦內容，填補學習漏洞並鞏固薄弱環節，助您實現真正的精通。"
+  },
+  "features": {
+    "label": "POWERFUL TOOLS",
+    "title": "變革現代教育的 AI 強大工具",
+    "adaptiveQuiz": "自適應測驗生成",
+    "adaptiveQuizDesc": "享受為您量身定制的低風險、高頻率測驗。我們的主題優先級引擎會根據學生的掌握程度、近期錯誤率和遺忘風險，選擇最合適的問題並校準難度。",
+    "aiGrading": "智能 AI 批改",
+    "aiGradingDesc": "獲得的不僅僅是分數。我們的 AI 引擎會根據精確的評分準則評估答案，提供詳細的評語來解釋分數、指出缺失的步驟和概念上的誤解，並提供具體的改進建議。",
+    "multiModal": "多模式答案提交",
+    "multiModalDesc": "以最適合該學科的方式提交作業。學生可以直接在介面輸入文字、使用內置工具繪製圖形和圖表，或在紙上作答後用流動裝置拍照上傳。",
+    "feedbackLoop": "持續反饋循環",
+    "feedbackLoopDesc": "評估結果會直接塑造學生接下來的學習路徑。測驗結果會自動更新學生檔案，以推薦具針對性的複習影片，並調整未來的測驗組合。"
+  },
+  "solutions": {
+    "label": "SOLUTIONS & PIONEER SUBJECTS",
+    "title": "專為核心學科與高風險考試打造",
+    "description": "LeoEd AI 旨在透過分階段實施，支持不同學科領域的高質量教育。",
+    "accounting": {
+      "subject": "大學會計課程",
+      "subtitle": "基於規則的 AI 批改",
+      "desc": "我們的首個試點項目採用基於規則的 AI 批改，針對程序性計算和結構化步驟，旨在支持符合專業認證標準的能力期望。"
+    },
+    "math": {
+      "subject": "HKDSE 數學科",
+      "subtitle": "考試準備與主題精通",
+      "desc": "一個具規模的考試準備環境，旨在幫助香港高中生逐個主題建立精通度，並獲得針對其特定學習水平的反饋。"
+    },
+    "future": {
+      "subject": "未來擴展",
+      "subtitle": "大規模考試市場支援",
+      "desc": "經驗證的系統最終將擴展至支持高度結構化、大規模的考試市場，如內地的全國統一高考。"
+    },
+    "learnMore": "了解更多詳情"
+  },
+  "partners": {
+    "label": "TRUSTED BY LEADERS",
+    "title": "我們的合作學校",
+    "description": "深獲教育界信任與肯定。",
+    "updating": "合作學校資訊更新中"
+  },
+  "pricing": {
+    "label": "PRICING REVOLUTION",
+    "title": "透明、靈活的收費方案",
+    "updating": "價格方案調整中，敬請期待"
+  },
+  "educators": {
+    "label": "FOR EDUCATORS & INSTITUTIONS",
+    "title": "賦能教師，打造智慧校園",
+    "description": "將教學從標準化的傳授模式，轉變為高度響應、以學生為中心的系統。",
+    "insights": "精細化數據洞察",
+    "insightsDesc": "在微觀層面上追蹤學生表現，清晰掌握全班的學習差距。",
+    "timeSaving": "節省寶貴時間",
+    "timeSavingDesc": "減輕繁重的人工批改負擔。我們的 AI 能可靠地評估開放式題目和圖表答案，讓教育工作者能專注於高成效的教學和個性化支援。",
+    "dataDriven": "數據驅動決策",
+    "dataDrivenDesc": "利用可操作的分析數據，在學生最需要時提供針對性的補救措施或替代解釋。"
+  },
+  "team": {
+    "title": "核心研發團隊",
+    "description": "源自香港都會大學，深耕語音及自然語言處理技術。",
+    "institution": "香港都會大學",
+    "role": "核心研發團隊",
+    "advisor": "學術顧問"
+  },
+  "footer": {
+    "tagline": "Smarter marking for teachers.<br/>Deeper learning for students.<br/>AI 賦能教學，讓教學不再負擔。",
+    "aiSection": "AI 專區",
+    "aiLinks": ["英文科 AI", "中文科 AI", "數學科 AI", "歷史科 AI"],
+    "resources": "資源與連結",
+    "resourceLinks": ["免費示範", "平台登入", "收費方案", "資助申請"],
+    "contact": "聯繫我們",
+    "phone": "(852) 5601 0992",
+    "email": "Hello@leoed.ai",
+    "appointment": "預約到校交流",
+    "copyright": "© 2026 LeoEd Limited. 保留所有權利。",
+    "privacy": "私隱政策",
+    "terms": "服務條款"
+  },
+  "login": {
+    "tab": {
+      "student": "學生",
+      "teacher": "教師",
+      "new": "新用戶"
+    },
+    "placeholder": {
+      "email": "電郵地址",
+      "password": "密碼",
+      "fullName": "全名"
+    },
+    "button": {
+      "login": "登入",
+      "forgotPassword": "忘記密碼？",
+      "send": "發送",
+      "backToLogin": "返回登入",
+      "createAccount": "建立帳戶"
+    },
+    "error": {
+      "invalidCredentials": "登入或密碼錯誤 :("
+    },
+    "register": {
+      "title": "建立您的帳戶"
+    },
+    "greeting": {
+      "morning": "早上好",
+      "day": "日安",
+      "evening": "晚上好",
+      "night": "晚安"
+    }
+  },
+  "profile": {
+    "masteryRadar": "精通度雷達圖",
+    "errorRate": "難度錯誤率",
+    "forgettingRisk": "遺忘風險",
+    "prereqNeed": "前置知識需求",
+    "coverageNeed": "覆蓋需求",
+    "tasks": "任務",
+    "achievement": "成就",
+    "overview": "概覽"
+  },
+  "sidebar": {
+    "dashboard": "儀表板",
+    "profile": "個人資料",
+    "settings": "設定",
+    "notifications": "通知",
+    "messages": "訊息",
+    "calendar": "日曆",
+    "tasks": "任務",
+    "reports": "報告",
+    "analytics": "分析",
+    "admin": "管理",
+    "fields": "欄位",
+    "question": "題目",
+    "questionList": "題目列表",
+    "questionGrid": "題目網格",
+    "users": "用戶",
+    "userList": "用戶列表",
+    "userAdd": "新增用戶",
+    "userEdit": "編輯用戶",
+    "forStudents": "學生專區",
+    "learning": "學習",
+    "taskList": "任務列表",
+    "recommended": "推薦",
+    "reEnforce": "強化練習",
+    "forTeachers": "教師專區",
+    "teaching": "教學"
+  }
+}

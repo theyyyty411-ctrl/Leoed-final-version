@@ -37,7 +37,7 @@ export default function Error({ code }) {
   return (
     <Grid container className={classes.container}>
       <div className={classes.logotype}>
-        <img className={classes.logotypeIcon} src={logo} alt="logo" />
+        {/* <img className={classes.logotypeIcon} src={logo} alt="logo" /> */}
         <Typography variant="h3" className={classes.logotypeText}>
           LeoEd AI
         </Typography>

@@ -59,7 +59,7 @@ function Reset() {
   return (
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
-        <img src={logo} alt="logo" className={classes.logotypeImage} />
+        {/* <img src={logo} alt="logo" className={classes.logotypeImage} /> */}
         <Typography className={classes.logotypeText}>LeoEd AI</Typography>
       </div>
       <div className={classes.customFormContainer}>

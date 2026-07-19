@@ -18,6 +18,7 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
+import { useTranslation } from "react-i18next";
 
 // styles
 import useStyles from "./styles";
@@ -32,6 +33,7 @@ export default function SidebarLink({
   ext,
   icon,
   label,
+  labelKey,
   children,
   location,
   isSidebarOpened,
@@ -41,10 +43,15 @@ export default function SidebarLink({
   click,
   ...props
 }) {
+  const { t } = useTranslation();
+
   // local
   let [isOpen, setIsOpen] = useState(false);
   // Add Section Popover state
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  // Use translated label if labelKey is provided, otherwise use label
+  const displayLabel = labelKey ? t(labelKey) : label;
 
   // Login page onClick
   function onLogin() {
@@ -66,7 +73,7 @@ export default function SidebarLink({
           [classes.linkTextHidden]: !isSidebarOpened,
         })}
       >
-        {label}
+        {displayLabel}
       </Typography>
     );
 
@@ -125,7 +132,7 @@ export default function SidebarLink({
                 [classes.linkTextHidden]: !isSidebarOpened,
               }),
             }}
-            primary={label}
+            primary={displayLabel}
           />
         </ListItem>
       </>
@@ -166,7 +173,7 @@ export default function SidebarLink({
                 [classes.linkTextHidden]: !isSidebarOpened,
               }),
             }}
-            primary={label}
+            primary={displayLabel}
           />
         </ListItem>
         <Popover
@@ -238,7 +245,7 @@ export default function SidebarLink({
                   [classes.linkTextHidden]: !isSidebarOpened,
                 }),
               }}
-              primary={label}
+              primary={displayLabel}
             />
           </Badge>
           <ExpandIcon
@@ -276,7 +283,7 @@ export default function SidebarLink({
                 [classes.linkTextHidden]: !isSidebarOpened,
               }),
             }}
-            primary={label}
+            primary={displayLabel}
           />
           <ExpandIcon
             className={classnames(

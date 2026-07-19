@@ -1,10 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import {
-  Grid,
-  Box,
-  Card,
-  CardContent,
-} from "@mui/material";
+import { Grid, Box, Card, CardContent } from "@mui/material";
 import useStyles from "./styles";
 
 import axios from "axios";
@@ -16,9 +11,7 @@ import InputUploadTabs from "../../components/InputUploadTabs";
 import { Typography } from "../../components/Wrappers";
 
 //context
-import {
-  getTaskInfo,
-} from "../../context/TaskContext";
+import { getTaskInfo } from "../../context/TaskContext";
 
 import { useParams } from "react-router-dom";
 

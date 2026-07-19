@@ -1,0 +1,182 @@
+{
+  "nav": {
+    "home": "Home",
+    "subjects": "Subjects AI",
+    "partners": "Partners",
+    "pricing": "Pricing",
+    "educators": "Educators",
+    "contact": "Contact Us"
+  },
+  "header": {
+    "language": "EN",
+    "login": "School Login",
+    "trial": "Free Trial"
+  },
+  "hero": {
+    "badge": "DSE • TSA • HKAT • IELTS Professional Assessment",
+    "title": "LeoEd AI:",
+    "titleGradient": "Leading the Future of Adaptive Learning",
+    "subtitle": "Breaking the traditional 'one-size-fits-all' teaching model. LeoEd AI is a dynamic learning environment that continuously collects student performance data to personalize learning content, adjust difficulty, and provide immediate, targeted feedback.",
+    "feature1": "Reliable AI Navigator",
+    "feature2": "Personalized Learning Journey",
+    "explore": "Explore Platform 🚀",
+    "contact": "Contact Us 🎓",
+    "subjects": "Supported Subjects:",
+    "subjectsList": ["English", "Chinese", "Math", "History"]
+  },
+  "philosophy": {
+    "label": "CORE PHILOSOPHY",
+    "title": "Learn, Evolve, Optimize (學習、進化、優化)",
+    "description": "LeoEd AI is not just a static content library. We are an AI-powered education system designed to be a reliable navigator, guiding students through complex learning journeys.",
+    "learn": "Learn (學習)",
+    "learnDesc": "Through highly personalized content and active engagement, help students master new concepts.",
+    "evolve": "Evolve (進化)",
+    "evolveDesc": "The system dynamically adjusts tasks, quiz difficulty, and learning pace based on your real-time learning progress.",
+    "optimize": "Optimize (優化)",
+    "optimizeDesc": "The system continuously refines its recommendations, fills learning gaps, and consolidates weak areas to help you achieve true mastery."
+  },
+  "features": {
+    "label": "POWERFUL TOOLS",
+    "title": "Powerful AI Tools Transforming Modern Education",
+    "adaptiveQuiz": "Adaptive Quiz Generation",
+    "adaptiveQuizDesc": "Enjoy low-risk, high-frequency quizzes tailored for you. Our topic priority engine selects the most appropriate questions and calibrates difficulty based on student mastery, recent error rates, and forgetting risk.",
+    "aiGrading": "Intelligent AI Grading",
+    "aiGradingDesc": "Get more than just a score. Our AI engine evaluates answers based on precise scoring criteria, providing detailed comments to explain scores, point out missing steps and conceptual misunderstandings, and offer specific improvement suggestions.",
+    "multiModal": "Multi-Modal Answer Submission",
+    "multiModalDesc": "Submit assignments in the way that best suits the subject. Students can type text directly in the interface, use built-in tools to draw graphs and charts, or take photos of handwritten answers on paper and upload them.",
+    "feedbackLoop": "Continuous Feedback Loop",
+    "feedbackLoopDesc": "Assessment results directly shape students' subsequent learning paths. Quiz results automatically update student profiles to recommend targeted review videos and adjust future quiz combinations."
+  },
+  "solutions": {
+    "label": "SOLUTIONS & PIONEER SUBJECTS",
+    "title": "Built for Core Subjects and High-Stakes Exams",
+    "description": "LeoEd AI is designed to support high-quality education across different subject areas through phased implementation.",
+    "accounting": {
+      "subject": "University Accounting",
+      "subtitle": "Rule-Based AI Grading",
+      "desc": "Our first pilot project uses rule-based AI grading for procedural calculations and structured steps, aiming to support competency expectations aligned with professional certification standards."
+    },
+    "math": {
+      "subject": "HKDSE Mathematics",
+      "subtitle": "Exam Preparation and Topic Mastery",
+      "desc": "A scalable exam preparation environment designed to help Hong Kong high school students build topic-by-topic mastery and receive feedback tailored to their specific learning levels."
+    },
+    "future": {
+      "subject": "Future Expansion",
+      "subtitle": "Large-Scale Exam Market Support",
+      "desc": "The proven system will eventually expand to support highly structured, large-scale exam markets such as China's National College Entrance Examination."
+    },
+    "learnMore": "Learn More"
+  },
+  "partners": {
+    "label": "TRUSTED BY LEADERS",
+    "title": "Our Partner Schools",
+    "description": "Highly trusted and recognized by the education community.",
+    "updating": "Partner school information updating"
+  },
+  "pricing": {
+    "label": "PRICING REVOLUTION",
+    "title": "Transparent, Flexible Pricing Plans",
+    "updating": "Pricing plans being adjusted, stay tuned"
+  },
+  "educators": {
+    "label": "FOR EDUCATORS & INSTITUTIONS",
+    "title": "Empowering Teachers, Building Smart Schools",
+    "description": "Transform teaching from standardized instruction to a highly responsive, student-centered system.",
+    "insights": "Granular Data Insights",
+    "insightsDesc": "Track student performance at the micro level and clearly understand learning gaps across the class.",
+    "timeSaving": "Save Precious Time",
+    "timeSavingDesc": "Reduce the burden of heavy manual grading. Our AI can reliably assess open-ended questions and chart answers, allowing educators to focus on high-impact teaching and personalized support.",
+    "dataDriven": "Data-Driven Decisions",
+    "dataDrivenDesc": "Use actionable analytics data to provide targeted remediation or alternative explanations when students need them most."
+  },
+  "team": {
+    "title": "Core R&D Team",
+    "description": "From Hong Kong Metropolitan University, specializing in speech and natural language processing technology.",
+    "institution": "Hong Kong Metropolitan University",
+    "role": "Core R&D Team",
+    "advisor": "Academic Advisor"
+  },
+  "footer": {
+    "tagline": "Smarter marking for teachers.<br/>Deeper learning for students.<br/>AI-powered teaching, making education a joy.",
+    "aiSection": "AI Zone",
+    "aiLinks": ["English AI", "Chinese AI", "Math AI", "History AI"],
+    "resources": "Resources",
+    "resourceLinks": ["Free Demo", "Platform Login", "Pricing", "Funding"],
+    "contact": "Contact Us",
+    "phone": "(852) 5601 0992",
+    "email": "Hello@leoed.ai",
+    "appointment": "Book School Visit",
+    "copyright": "© 2026 LeoEd Limited. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "login": {
+    "tab": {
+      "student": "Student",
+      "teacher": "Teacher",
+      "new": "New User"
+    },
+    "placeholder": {
+      "email": "Email Address",
+      "password": "Password",
+      "fullName": "Full Name"
+    },
+    "button": {
+      "login": "Login",
+      "forgotPassword": "Forgot Password?",
+      "send": "Send",
+      "backToLogin": "Back to login",
+      "createAccount": "Create your account"
+    },
+    "error": {
+      "invalidCredentials": "Something is wrong with your login or password :("
+    },
+    "register": {
+      "title": "Create your account"
+    },
+    "greeting": {
+      "morning": "Good Morning",
+      "day": "Good Day",
+      "evening": "Good Evening",
+      "night": "Good Night"
+    }
+  },
+  "profile": {
+    "masteryRadar": "Mastery Radar Chart",
+    "errorRate": "Error Rate by Difficulty",
+    "forgettingRisk": "Forgetting Risk",
+    "prereqNeed": "Prerequisite Need",
+    "coverageNeed": "Coverage Need",
+    "tasks": "Tasks",
+    "achievement": "Achievement",
+    "overview": "Overview"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "notifications": "Notifications",
+    "messages": "Messages",
+    "calendar": "Calendar",
+    "tasks": "Tasks",
+    "reports": "Reports",
+    "analytics": "Analytics",
+    "admin": "Admin",
+    "fields": "Fields",
+    "question": "Question",
+    "questionList": "Question List",
+    "questionGrid": "Question Grid",
+    "users": "Users",
+    "userList": "User List",
+    "userAdd": "Add User",
+    "userEdit": "Edit User",
+    "forStudents": "For Students",
+    "learning": "Learning",
+    "taskList": "Task List",
+    "recommended": "Recommended",
+    "reEnforce": "Re-enforce",
+    "forTeachers": "For Teachers",
+    "teaching": "Teaching"
+  }
+}
