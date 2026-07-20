@@ -279,33 +279,6 @@ const LandingPage = () => {
         <Container maxWidth="lg">
           <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
             <Grid item xs={12} md={7}>
-              <Box sx={{ mb: 3 }}>
-                <Typography
-                  component="span"
-                  sx={{
-                    bgcolor: "rgba(0,0,0,0.05)",
-                    color: "#000000",
-                    px: 2,
-                    py: 1,
-                    borderRadius: "50px",
-                    fontSize: "0.85rem",
-                    fontWeight: 700,
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 8,
-                      height: 8,
-                      bgcolor: "#4CAF50",
-                      borderRadius: "50%",
-                    }}
-                  />
-                  {t("hero.badge")}
-                </Typography>
-              </Box>
               <Typography
                 variant="h1"
                 sx={{
@@ -923,7 +896,6 @@ const LandingPage = () => {
               {
                 name: "Professor Fung Kwun Wing Joseph",
                 title: t("team.institution"),
-                desc: t("team.role"),
                 sub: "",
                 image: profFung,
               },
