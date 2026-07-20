@@ -888,21 +888,16 @@ const LandingPage = () => {
             {[
               {
                 name: "Dr. Lam Yat Ming Eddie (林一鳴)",
-                title: t("team.institution"),
-                desc: t("team.role"),
                 sub: "",
                 image: drLam,
               },
               {
                 name: "Professor Fung Kwun Wing Joseph",
-                title: t("team.institution"),
                 sub: "",
                 image: profFung,
               },
               {
                 name: "Professor William YEOH Ging-sun",
-                title: t("team.advisor"),
-                desc: t("team.institution"),
                 sub: "",
                 image: profWilliam,
               },
