@@ -81,7 +81,7 @@ export default makeStyles((theme) => ({
   },
   changeThemeFab: {
     position: "fixed",
-    top: theme.spacing(15),
+    top: theme.spacing(11),
     right: 0,
     zIndex: 1,
     borderRadius: 0,

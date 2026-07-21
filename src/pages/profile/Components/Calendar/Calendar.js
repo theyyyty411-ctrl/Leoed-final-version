@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { makeStyles } from "styles/mui";
 import {
   KeyboardArrowLeft as KeyboardArrowLeftIcon,
@@ -115,39 +115,26 @@ function Calendar({ items }) {
   const classes = useStyles();
   const currentDate = dayjs();
 
-  const events = items.map((item) => ({
-    itemStyle: item.color,
-    date: dayjs(item.date),
-    title: item.title,
-    info: item.submitted,
-  }));
-
   const [date, setDate] = useState({
     selectedMonth: dayjs(),
     selectedDay: dayjs().startOf("day"),
-    selectedMonthEvents: events,
-    //   selectedMonthEvents: [
-    //       {
-    //       title: "The flower bed",
-    //       info: "Contents here",
-    //       itemStyle: "#1870dc",
-    //       date: dayjs(`${currentDate.year()}-${currentDate.month() + 1}-02`, 'YYYY-M-DD'),
-    //       },
-    //       {
-    //       title: "Stop world water pollution",
-    //       info: "Have a kick off meeting with .inc company",
-    //       itemStyle: "#f0b518",
-    //       date: dayjs(`${currentDate.year()}-${currentDate.month() + 1}-05`, 'YYYY-M-DD'),
-    //       },
-    //       {
-    //       title: "Light Blue 2.2 release",
-    //       info: "Some contents here",
-    //       itemStyle: "#58d777",
-    //       date: dayjs(`${currentDate.year()}-${currentDate.month() + 1}-18`, 'YYYY-M-DD'),
-    //       },
-    //   ],
+    selectedMonthEvents: [],
     showEvents: false,
   });
+
+  useEffect(() => {
+    const events = items.map((item) => ({
+      itemStyle: item.color,
+      date: dayjs(item.date),
+      title: item.title,
+      info: item.submitted,
+    }));
+    
+    setDate((prev) => ({
+      ...prev,
+      selectedMonthEvents: events,
+    }));
+  }, [items]);
 
   const previous = () => {
     setDate((prev) => ({

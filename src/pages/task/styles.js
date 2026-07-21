@@ -25,6 +25,18 @@ export default makeStyles((theme) => ({
   },
   table: {
     minWidth: 750,
+    [theme.breakpoints.down("md")]: {
+      minWidth: 500,
+    },
+    [theme.breakpoints.down("sm")]: {
+      minWidth: 320,
+    },
+    "& .MuiTableCell-root": {
+      padding: "12px 4px",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "0.75rem",
+      },
+    },
   },
   tableWrapper: {
     overflowX: "auto",

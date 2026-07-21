@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Box,
   CircularProgress,
+  Divider,
   Grid,
   MenuItem,
   Select,
@@ -21,6 +22,7 @@ import {
 //components
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
+import RichTextEditor from "../../components/RichTextEditor";
 import config from "../../config";
 
 import useStyles from "./styles";
@@ -37,8 +39,13 @@ const CreateQuestion = () => {
     });
   };
 
+  const getQuestionById = (id) => {
+    const index = getId(id);
+    return index !== -1 ? context.questions.questions[index] : null;
+  };
+
   const [localQuestions, setLocalQuestions] = React.useState(
-    context.questions.questions[getId(id)],
+    getQuestionById(id),
   );
 
   const [newQuestion, setNewQuestion] = React.useState({
@@ -86,15 +93,23 @@ const CreateQuestion = () => {
   }, []);
 
   useEffect(() => {
-    setLocalQuestions(context.questions.questions[getId(id)]);
+    setLocalQuestions(getQuestionById(id));
   }, [context]);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const fields = JSON.parse(localStorage.getItem("fields"));
+  let fields = [];
+  try {
+    const storedFields = localStorage.getItem("fields");
+    fields = storedFields ? JSON.parse(storedFields) : [];
+  } catch (e) {
+    console.error("Failed to parse fields from localStorage:", e);
+    fields = [];
+  }
 
   const editQuestion = (e) => {
+    if (!localQuestions) return;
     setLocalQuestions({
       ...localQuestions,
       [e.target.id]: e.currentTarget.value,
@@ -122,7 +137,7 @@ const CreateQuestion = () => {
   const changeField = (e, field) => {
     if (isCreateQuestion) {
       setNewQuestion({ ...newQuestion, [field]: e.target.value });
-    } else {
+    } else if (localQuestions) {
       setLocalQuestions({ ...localQuestions, [field]: e.target.value });
     }
   };
@@ -170,24 +185,25 @@ const CreateQuestion = () => {
               <Box display={"flex"} flexDirection="column">
                 <Box display={"flex"} alignItems={"center"}>
                   <Box width={120}>
-                    <Typography variant={"h6"}>Subject</Typography>
+                    <Typography variant={"body2"}>Subject</Typography>
                   </Box>
-                  <Box width={280}>
-                    <Select
-                      id="subject"
-                      style={{ alignSelf: "flex-end" }}
-                      value={
-                        isCreateQuestion
-                          ? newQuestion.subject
-                          : localQuestions.subject
-                      }
-                      onChange={(e) => changeField(e, "subject")}
-                    >
+                    <Box width={280}>
+                     <Select
+                       id="subject"
+                       style={{ alignSelf: "flex-end" }}
+                       value={
+                         isCreateQuestion
+                           ? newQuestion.subject
+                           : localQuestions.subject
+                       }
+                       onChange={(e) => changeField(e, "subject")}
+                       size="small"
+                     >
                       {fields.subject.map((c) =>
                         c.type === "divider" ? (
                           <Divider key={c.value} />
                         ) : (
-                          <MenuItem value={c.value} key={c.value}>
+                          <MenuItem value={c.value} key={c.value} sx={{ fontSize: "0.8rem" }}>
                             {c.label}
                           </MenuItem>
                         ),
@@ -195,7 +211,7 @@ const CreateQuestion = () => {
                     </Select>
                   </Box>
                   <Box width={120} sx={{ pl: 2 }}>
-                    <Typography variant={"h6"}>Type</Typography>
+                    <Typography variant={"body2"}>Type</Typography>
                   </Box>
                   <Box width={280}>
                     <Select
@@ -207,12 +223,13 @@ const CreateQuestion = () => {
                           : localQuestions.type
                       }
                       onChange={(e) => changeField(e, "type")}
+                      size="small"
                     >
                       {fields.type.map((c) =>
                         c.type === "divider" ? (
                           <Divider key={c.value} />
                         ) : (
-                          <MenuItem value={c.value} key={c.value}>
+                          <MenuItem value={c.value} key={c.value} sx={{ fontSize: "0.8rem" }}>
                             {c.label}
                           </MenuItem>
                         ),
@@ -220,7 +237,7 @@ const CreateQuestion = () => {
                     </Select>
                   </Box>
                   <Box width={120}>
-                    <Typography variant={"h6"}>Difficulty</Typography>
+                    <Typography variant={"body2"}>Difficulty</Typography>
                   </Box>
                   <Box width={90}>
                     <Input
@@ -235,6 +252,7 @@ const CreateQuestion = () => {
                       onChange={(e) =>
                         isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
                       }
+                      size="small"
                     />
                   </Box>
                   {/* <Box width={120} sx={{ pl: 2 }}>
@@ -258,7 +276,7 @@ const CreateQuestion = () => {
                 </Box>
                 <Box display={"flex"} alignItems={"center"}>
                   <Box width={120}>
-                    <Typography variant={"h6"}>Topic</Typography>
+                    <Typography variant={"body2"}>Topic</Typography>
                   </Box>
                   {/* <Input
                     id="outlined-basic"
@@ -286,10 +304,11 @@ const CreateQuestion = () => {
                       onChange={(e) =>
                         isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
                       }
+                      size="small"
                     />
                   </Box>
                   <Box width={120} sx={{ pl: 2 }}>
-                    <Typography variant={"h6"}>Subtopic</Typography>
+                    <Typography variant={"body2"}>Subtopic</Typography>
                   </Box>
                   <Box width={600}>
                     <Input
@@ -305,6 +324,7 @@ const CreateQuestion = () => {
                       onChange={(e) =>
                         isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
                       }
+                      size="small"
                     />
                   </Box>
                 </Box>
@@ -365,56 +385,47 @@ const CreateQuestion = () => {
                   
                   </Box>                                
                 </Box>                 */}
-                <Box display={"flex"} alignItems={"center"}>
+                {/* <Box sx={{ mb: 1 }}>
+                  <Typography variant={"body2"} sx={{ mb: 1 }}>Question</Typography>
+                </Box> */}
+                <RichTextEditor
+                  label="Question"
+                  value={isCreateQuestion ? newQuestion.question : (localQuestions ? localQuestions.question : "")}
+                  onChange={(html) => {
+                    if (isCreateQuestion) {
+                      setNewQuestion({ ...newQuestion, question: html });
+                    } else if (localQuestions) {
+                      setLocalQuestions({ ...localQuestions, question: html });
+                    }
+                  }}
+                  minRows={6}
+                  maxRows={9}
+                />
+                <RichTextEditor
+                  label="Answer"
+                  value={isCreateQuestion ? newQuestion.answer : (localQuestions ? localQuestions.answer : "")}
+                  onChange={(html) => {
+                    if (isCreateQuestion) {
+                      setNewQuestion({ ...newQuestion, answer: html });
+                    } else if (localQuestions) {
+                      setLocalQuestions({ ...localQuestions, answer: html });
+                    }
+                  }}
+                  minRows={6}
+                  maxRows={9}
+                />                
+                {/* <Box display={"flex"} alignItems={"center"}>
                   <Box width={120}>
-                    <Typography variant={"h6"}>Question</Typography>
-                  </Box>
-                  <Box width={500} sx={{ pr: 1 }}>
-                    <Input
-                      id="question"
-                      margin="normal"
-                      variant="outlined"
-                      multiline
-                      minRows={3}
-                      maxRows={6}
-                      value={
-                        isCreateQuestion
-                          ? newQuestion.question
-                          : localQuestions.question
-                      }
-                      fullWidth
-                      onChange={(e) =>
-                        isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
-                      }
-                    />
-                  </Box>
-                  <Box width={500}>
-                    <Box
-                      sx={{
-                        p: 1,
-                        fontFamily:
-                          '"Cambria Math", "Latin Modern Math", "STIX"',
-                        border: "1px dashed",
-                        borderColor: "primary.main",
-                        borderRadius: 1,
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: isCreateQuestion
-                          ? newQuestion.question
-                          : localQuestions.question,
-                      }}
-                    />
-                  </Box>
-                </Box>
-                <Box display={"flex"} alignItems={"center"}>
-                  <Box width={120}>
-                    <Typography variant={"h6"}>Answer</Typography>
+                    <Typography variant={"body2"}>Answer</Typography>
                   </Box>
                   <Box width={500} sx={{ pr: 1 }}>
                     <Input
                       id="answer"
                       margin="normal"
                       variant="outlined"
+                      multiline
+                      minRows={2}
+                      maxRows={4}
                       value={
                         isCreateQuestion
                           ? newQuestion.answer
@@ -443,7 +454,7 @@ const CreateQuestion = () => {
                       }}
                     />
                   </Box>
-                </Box>
+                </Box> */}
                 {/* <Box display={"flex"} alignItems={"center"}>
                   <Box width={120}>
                     <Typography variant={"h6"}>Rubric</Typography>
@@ -481,7 +492,7 @@ const CreateQuestion = () => {
                   
                   </Box>
                 </Box> */}
-                <Box display={"flex"} alignItems={"center"}>
+                <Box display={"flex"} alignItems={"center"} pt={2}>
                   <Button
                     variant={"contained"}
                     color={"success"}

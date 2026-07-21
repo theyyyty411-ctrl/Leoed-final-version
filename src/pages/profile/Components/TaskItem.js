@@ -29,14 +29,14 @@ const styles = (theme) => ({
     paddingLeft: 30,
     "& p": {
       margin: 0,
-      fontSize: 15,
+      fontSize: 14,
       fontWeight: theme.typography.fontWeightMedium,
       width: 210,
       overflow: "hidden",
     },
   },
   date: {
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: 500,
   },
   menuItem: {

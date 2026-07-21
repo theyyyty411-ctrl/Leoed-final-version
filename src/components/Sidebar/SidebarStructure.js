@@ -110,7 +110,7 @@ export function getStructure() {
           link: "/app/learning",
           icon: <UIElementsIcon />,
           children: [
-            { labelKey: "sidebar.taskList", link: "/app/learning/tasks" },
+            { labelKey: "sidebar.taskList", link: "/app/learning/task" },
             {
               labelKey: "sidebar.recommended",
               // link: '/app/learning/recommended'
@@ -193,7 +193,7 @@ export function getStructure() {
           link: "/app/learning",
           icon: <UIElementsIcon />,
           children: [
-            { labelKey: "sidebar.taskList", link: "/app/learning/tasks" },
+            { labelKey: "sidebar.taskList", link: "/app/learning/task" },
             {
               labelKey: "sidebar.recommended",
               // link: '/app/learning/recommended'

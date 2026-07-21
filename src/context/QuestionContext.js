@@ -101,10 +101,11 @@ export function deleteQuestionRequest({ id, navigate, pathname, dispatch }) {
 export function getQuestionInfo(id) {
   // We check if app runs with backend mode
   if (config.isBackend) {
-    axios.get("/questions/" + id).then((res) => {
+    return axios.get("/questions/" + id).then((res) => {
       return res.data;
     });
   }
+  return Promise.resolve(null);
 }
 
 // export function getQuestionInfo({ id, dispatch }) {

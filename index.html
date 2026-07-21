@@ -19,6 +19,21 @@
   <body style="font-family: 'Roboto', sans-serif">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <!-- <script>
+      window.MathJax = {
+        loader: { load: ['[tex]/html'] }, // Load extensions if needed
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        },
+        startup: {
+          ready: () => {
+            console.log('MathJax is ready');
+            window.MathJax.startup.defaultReady();
+          }
+        }
+      };
+    </script> -->
     <script type="module" src="/src/index.js"></script>
   </body>
 </html>

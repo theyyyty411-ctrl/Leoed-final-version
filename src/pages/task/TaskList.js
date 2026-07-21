@@ -115,6 +115,12 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
     "&:focus": {
       color: theme.palette.text.primary,
     },
+    [theme.breakpoints.down("sm")]: {
+      minWidth: 40,
+      fontSize: "0.75rem",
+      marginRight: theme.spacing(1),
+      padding: theme.spacing(0.5, 1),
+    },
   }),
 );
 
@@ -232,12 +238,12 @@ const Task = () => {
               <AntTab label={`Overdue (${overdueTasks.length})`} />
               <AntTab label={`Submitted (${submittedTasks.length})`} />
             </AntTabs>
-            <div className={classes.tableWrapper}>
-              <Table
-                className={classes.table}
-                aria-labelledby="tableTitle"
-                aria-label="tasks table"
-              >
+              <div className={classes.tableWrapper}>
+                <Table
+                  className={classes.table}
+                  aria-labelledby="tableTitle"
+                  aria-label="tasks table"
+                >
                 <EnhancedTableHead
                   order={order}
                   orderBy={orderBy}

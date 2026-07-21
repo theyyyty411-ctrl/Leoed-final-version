@@ -6,6 +6,7 @@ import App from "./components/App";
 import { LayoutProvider } from "./context/LayoutContext";
 import { UserProvider } from "./context/UserContext";
 import { ManagementProvider } from "./context/ManagementContext";
+import { TasksProvider } from "./context/TaskContext";
 import {
   ThemeProvider as ThemeChangeProvider,
   ThemeStateContext,
@@ -36,8 +37,10 @@ root.render(
             {(theme) => (
               <ThemeProviderV5 theme={theme}>
                 <ManagementProvider>
-                  <CssBaseline />
-                  <App />
+                  <TasksProvider>
+                    <CssBaseline />
+                    <App />
+                  </TasksProvider>
                 </ManagementProvider>
               </ThemeProviderV5>
             )}

@@ -272,14 +272,6 @@ function Layout() {
           <Route path="user/:id/edit" element={<UsersFormPage />} />
 
           <Route
-            path="learning/task"
-            element={
-              <TasksProvider>
-                <Task />
-              </TasksProvider>
-            }
-          />
-          <Route
             path="learning/task/:id"
             element={
               <TasksProvider>
@@ -288,7 +280,7 @@ function Layout() {
             }
           />
           <Route
-            path="learning/tasks"
+            path="learning/task"
             element={
               <TasksProvider>
                 <TaskList />

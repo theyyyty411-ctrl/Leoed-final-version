@@ -20,13 +20,34 @@ const Task = () => {
   const taskId = Number(id);
   const classes = useStyles();
   const [isUploading, setIsUploading] = useState(false);
+  const [result, setResult] = useState(null);
   const [row, setRow] = React.useState({ qlist: [] });
+  const [initialSubmit, setInitialSubmit] = useState(null);
+  const [initialResult, setInitialResult] = useState(null);
 
   useEffect(() => {
     if (taskId) {
       getTaskInfo(taskId).then((data) => {
         if (data) {
           setRow(data);
+          // Parse submit and result from JSON strings
+          if (data.submit) {
+            try {
+              const submitData = JSON.parse(data.submit);
+              setInitialSubmit(submitData);
+            } catch (e) {
+              console.error("Failed to parse submit JSON:", e);
+              setInitialSubmit(data.submit);
+            }
+          }
+          if (data.result) {
+            try {
+              setInitialResult(JSON.parse(data.result));
+            } catch (e) {
+              console.error("Failed to parse result JSON:", e);
+              setInitialResult(data.result);
+            }
+          }
         }
       });
     }
@@ -35,20 +56,16 @@ const Task = () => {
 
   const canvasRef = useRef(null);
 
-  const handleUploadJson = async () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
+  const handleUploadJson = async (images = [], textInput = "", from = "input") => {
     setIsUploading(true);
 
     try {
-      const base64DataUrl = canvas.toDataURL("image/png");
-      const rawBase64String = base64DataUrl.split(",")[1];
-
       const jsonPayload = {
-        title: "User Sketch Pad Artwork",
-        format: "png",
-        image_data: rawBase64String,
+        from: from,
+        type: "task",
+        id: taskId,
+        images,
+        text_input: textInput,
         timestamp: new Date().toISOString(),
       };
 
@@ -57,36 +74,9 @@ const Task = () => {
         jsonPayload,
       );
 
-      alert("Base64 image uploaded successfully!");
-      console.log("Server response data package:", response.data);
-    } catch (error) {
-      console.error("Axios transmission processing error:", error);
-      const serverMessage = error.response?.data?.message || error.message;
-      alert(`Upload failed: ${serverMessage}`);
-    } finally {
-      setIsUploading(false);
-    }
-  };
-
-  const handleUploadFiles = async (files) => {
-    const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-      formData.append("Image", files[i]);
-    }
-    formData.append("title", "User Sketch Pad Artwork");
-    formData.append("format", "png");
-    formData.append("timestamp", new Date().toISOString());
-
-    setIsUploading(true);
-
-    try {
-      const response = await axios.post(
-        `${config.baseURLApi}/execute/diagnostic`,
-        formData,
-      );
-
-      alert("form image uploaded successfully!");
-      console.log("Server response data package:", response.data);
+      alert("Submission success!");
+      // console.log("Server response data package:", response.data);
+      setResult(response.data);
     } catch (error) {
       console.error("Axios transmission processing error:", error);
       const serverMessage = error.response?.data?.message || error.message;
@@ -129,7 +119,9 @@ const Task = () => {
               canvasRef={canvasRef}
               isUploading={isUploading}
               onUploadJson={handleUploadJson}
-              onUploadFiles={handleUploadFiles}
+              result={result}
+              initialSubmit={initialSubmit}
+              initialResult={initialResult}
             />
           </Widget>
         </Grid>

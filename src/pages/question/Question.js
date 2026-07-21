@@ -25,10 +25,7 @@ import InputUploadTabs from "../../components/InputUploadTabs";
 import { Typography, Button } from "../../components/Wrappers";
 
 //context
-import {
-  useQuestionsState,
-  getQuestionsRequest,
-} from "../../context/QuestionContext";
+import { getQuestionInfo } from "../../context/QuestionContext";
 
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -37,92 +34,37 @@ const Question = () => {
   const questionId = Number(id);
   const classes = useStyles();
   const navigate = useNavigate();
+  const [isUploading, setIsUploading] = useState(false);
+  const [result, setResult] = useState(null);
+  const [row, setRow] = React.useState({ qlist: [] });
+  const [initialSubmit, setInitialSubmit] = useState(null);
+  const [initialResult, setInitialResult] = useState(null);
 
-  const context = useQuestionsState();
-  const [backQuestions, setBackQuestions] = React.useState(
-    context.questions.questions,
-  );
-
-  useEffect(() => {
-    getQuestionsRequest(context.setQuestions);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
-    setBackQuestions(context.questions.questions);
-  }, [context.questions]);
-
-  const row = React.useMemo(() => {
-    if (!Number.isNaN(questionId)) {
-      const rowfind = backQuestions.find((c) => c.id === questionId);
-      if (rowfind) {
-        return rowfind;
-      }
+    if (questionId) {
+      getQuestionInfo(questionId).then((data) => {
+        if (data) {
+          setRow(data);
+        }
+      });
     }
-    return {
-      id: 2,
-      subject: "Math",
-      topic: "Topic",
-      subtopic: "Subtopic",
-      grade: "1",
-      type: "op",
-      question: "",
-      question_ml: "",
-      options: null,
-      answer: "",
-      answer_ml: "",
-      difficulty: "1",
-      rating: "",
-      preview: "",
-      stat: "",
-    };
-  }, [backQuestions, questionId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questionId]);
 
   const canvasRef = useRef(null);
-  const [isUploading, setIsUploading] = useState(false);
 
-  const handleUploadFiles = async (files) => {
-    const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-      formData.append("Image", files[i]);
-    }
-    formData.append("title", "User Sketch Pad Artwork");
-    formData.append("format", "png");
-    formData.append("timestamp", new Date().toISOString());
 
+  const handleUploadJson = async (images = [], textInput = "", from = "input") => {
     setIsUploading(true);
 
     try {
-      const response = await axios.post(
-        `${config.baseURLApi}/execute/diagnostic`,
-        formData,
-      );
-
-      alert("form image uploaded successfully!");
-      console.log("Server response data package:", response.data);
-    } catch (error) {
-      console.error("Axios transmission processing error:", error);
-      const serverMessage = error.response?.data?.message || error.message;
-      alert(`Upload failed: ${serverMessage}`);
-    } finally {
-      setIsUploading(false);
-    }
-  };
-
-  const handleUploadJson = async () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    setIsUploading(true);
-
-    try {
-      const base64DataUrl = canvas.toDataURL("image/png");
-      const rawBase64String = base64DataUrl.split(",")[1];
-
       const jsonPayload = {
-        title: "User Sketch Pad Artwork",
-        format: "png",
-        image_data: rawBase64String,
+        from: from,
+        type: "question",
+        id: questionId,
+        images,
+        text_input: textInput,
         timestamp: new Date().toISOString(),
       };
 
@@ -131,8 +73,9 @@ const Question = () => {
         jsonPayload,
       );
 
-      alert("Base64 image uploaded successfully!");
-      console.log("Server response data package:", response.data);
+      alert("Submission success!");
+      // console.log("Server response data package:", response.data);
+      setResult(response.data);
     } catch (error) {
       console.error("Axios transmission processing error:", error);
       const serverMessage = error.response?.data?.message || error.message;
@@ -153,7 +96,21 @@ const Question = () => {
         <Grid size={{ xs: 12, md: 12, lg: 6 }}>
           {/* <Widget disableWidgetMenu title="Question" size={12} noBodyPadding></Widget> */}
           <Card className={classes.card}>
-            <CardContent>
+            <CardContent sx={{ position: "relative" }}>
+              <Button
+                color="success"
+                size="small"
+                variant="contained"
+                onClick={(e) => openQuestionEdit(e, row.id)}
+                sx={{
+                  position: "absolute",
+                  top: 8,
+                  right: 8,
+                  zIndex: 1,
+                }}
+              >
+                Edit
+              </Button>
               <Box
                 sx={{
                   fontFamily: '"Cambria Math", "Latin Modern Math", "STIX"',
@@ -185,8 +142,9 @@ const Question = () => {
                   canvasRef={canvasRef}
                   isUploading={isUploading}
                   onUploadJson={handleUploadJson}
-                  onUploadFiles={handleUploadFiles}
-                  textFieldDefaultValue=""
+                  result={result}
+                  initialSubmit={initialSubmit}
+                  initialResult={initialResult}
                 />
               </AccordionDetails>
             </Accordion>
@@ -236,15 +194,6 @@ const Question = () => {
         <Grid size={12}>
           {/* <Widget disableWidgetMenu title="Info"> */}
           <Widget disableWidgetMenu>
-            <Button
-              color="success"
-              size="small"
-              style={{ marginRight: 16 }}
-              variant="contained"
-              onClick={(e) => openQuestionEdit(e, row.id)}
-            >
-              Edit
-            </Button>
             <Grid container>
               <Grid size={12}>
                 <Grid container spacing={2}>
@@ -307,58 +256,6 @@ const Question = () => {
                         />
                       </div>
                     </Box>
-                    {/* <Box display="flex" alignItems={"center"}>
-
-                      <FormControl
-                        variant="outlined"
-                        className={classes.form}
-                        style={{ marginRight: 15 }}>                      
-                        <InputLabel htmlFor="difficulty-simple">
-                          Difficulty
-                        </InputLabel>
-                        <Select
-                          value={difficulty}
-                          onChange={handleChangeDifficulty}
-                          label="Select difficulty"
-                          inputProps={{
-                            name: "difficulty",
-                            id: "difficulty-simple"
-                          }}
-                          className={classes.denseSelect}>
-                          
-                          <MenuItem value={1}>1</MenuItem>
-                          <MenuItem value={2}>2</MenuItem>
-                          <MenuItem value={3}>3</MenuItem>
-                          <MenuItem value={4}>4</MenuItem>
-                          <MenuItem value={5}>5</MenuItem>
-                        </Select>
-                      </FormControl>
-                      <FormControl
-                        variant="outlined"
-                        className={classes.form}
-                        style={{ marginRight: 15 }}>
-                        
-                        <InputLabel htmlFor="rating-simple">
-                          Rating
-                        </InputLabel>
-                        <Select
-                          value={rating}
-                          onChange={handleChangeRating}
-                          label="Select rating"
-                          inputProps={{
-                            name: "rating",
-                            id: "rating-simple"
-                          }}
-                          className={classes.denseSelect}>
-                          
-                          <MenuItem value={1}>1</MenuItem>
-                          <MenuItem value={2}>2</MenuItem>
-                          <MenuItem value={3}>3</MenuItem>
-                          <MenuItem value={4}>4</MenuItem>
-                          <MenuItem value={5}>5</MenuItem>
-                        </Select>
-                      </FormControl>                
-                    </Box> */}
                   </Grid>
                 </Grid>
               </Grid>
