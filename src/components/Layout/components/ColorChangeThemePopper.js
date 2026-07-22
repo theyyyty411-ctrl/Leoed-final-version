@@ -16,6 +16,7 @@ import Widget from "../../Widget";
 import { Typography } from "../../Wrappers";
 import Themes from "../../../themes";
 import { useThemeDispatch } from "../../../context/ThemeContext";
+import LanguageSwitcher from "../../LanguageSwitcher";
 
 function ColorChangeThemePopper({ open, id, anchorEl }) {
   const classes = useStyles();
@@ -76,6 +77,13 @@ function ColorChangeThemePopper({ open, id, anchorEl }) {
               checked={localStorage.getItem("theme") === "dark"}
               onChange={() => toggleDarkTheme()}
             />
+          </>
+          <Divider style={{ width: "100%", margin: "8px 0 16px 0" }} />
+          <>
+            <Typography variant="body2" weight={"bold"} uppercase>
+              language
+            </Typography>
+            <LanguageSwitcher />
           </>
         </Box>
       </Widget>

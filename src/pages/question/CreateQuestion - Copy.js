@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   CircularProgress,
@@ -18,22 +18,18 @@ import {
   // getQuestionsImages
 } from "../../context/QuestionContext";
 
-// import {
-//   getFieldsRequest,
-//   useFieldsState,
-//  } from
-// "../../context/AdminContext";
-
 //components
 import Widget from "../../components/Widget";
 import { Typography, Button } from "../../components/Wrappers";
 import config from "../../config";
 
+import useStyles from "./styles";
+
 const CreateQuestion = () => {
+  const classes = useStyles();
+  const fileInput = React.useRef(null);
   const { id } = useParams();
   const context = useQuestionsState();
-  // const fieldcontext = useFieldsState();
-  // console.log(fieldcontext);
 
   const getId = (id) => {
     return context.questions.questions.findIndex((c) => {
@@ -49,16 +45,16 @@ const CreateQuestion = () => {
     subject: "math",
     topic: "Topic",
     subtopic: "Subtopic",
-    grade: "1",
+    // grade: "y1",
     type: "op",
     question: "",
     answer: "",
-    rubric: "",
-    description: "",
+    // rubric: "",
+    // description: "",
     difficulty: 1,
-    rating: 1,
-    hashtag: "",
-    stat: "",
+    // rating: 1,
+    // hashtag: "",
+    // stat: ""
   });
 
   // function sendNotification() {
@@ -84,10 +80,10 @@ const CreateQuestion = () => {
   //   );
   // }
 
-  // useEffect(() => {
-  //   getQuestionsRequest(context.setQuestions);
-  //   getFieldsRequest(fieldcontext.setFields);
-  // }, []);
+  useEffect(() => {
+    getQuestionsRequest(context.setQuestions);
+    // getQuestionsImages(context.setQuestions);
+  }, []);
 
   useEffect(() => {
     setLocalQuestions(context.questions.questions[getId(id)]);
@@ -95,6 +91,8 @@ const CreateQuestion = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  const fields = JSON.parse(localStorage.getItem("fields"));
 
   const editQuestion = (e) => {
     setLocalQuestions({
@@ -121,55 +119,28 @@ const CreateQuestion = () => {
     navigate("/app/question");
   };
 
-  const changeSubject = (e) => {
+  const changeField = (e, field) => {
     if (isCreateQuestion) {
-      setNewQuestion({ ...newQuestion, subject: e.target.value });
+      setNewQuestion({ ...newQuestion, [field]: e.target.value });
     } else {
-      setLocalQuestions({ ...localQuestions, subject: e.target.value });
+      setLocalQuestions({ ...localQuestions, [field]: e.target.value });
     }
   };
-
-  const subjects = [
-    {
-      id: 0,
-      value: "math",
-      label: "Mathematics",
-    },
-    {
-      id: 1,
-      value: "other",
-      label: "Another subject",
-    },
-  ];
-
-  const changeType = (e) => {
-    if (isCreateQuestion) {
-      setNewQuestion({ ...newQuestion, type: e.target.value });
-    } else {
-      setLocalQuestions({ ...localQuestions, type: e.target.value });
-    }
-  };
-  const types = [
-    {
-      id: 0,
-      value: "mc",
-      label: "Multiple choice",
-    },
-    {
-      id: 1,
-      value: "fb",
-      label: "Fill in the blank",
-    },
-    {
-      id: 2,
-      value: "op",
-      label: "Open question",
-    },
-  ];
 
   const isCreateQuestion = location.pathname === "/app/question/create";
 
-  // console.log(context);
+  const handleFile = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const result = reader.result;
+      createQuestion({ ...newQuestion, file: result }, context.setQuestions);
+      navigate("/app/question");
+    };
+    reader.readAsDataURL(file);
+    return null;
+  };
 
   return (
     <>
@@ -210,13 +181,13 @@ const CreateQuestion = () => {
                           ? newQuestion.subject
                           : localQuestions.subject
                       }
-                      onChange={(e) => changeSubject(e)}
+                      onChange={(e) => changeField(e, "subject")}
                     >
-                      {subjects.map((c) =>
+                      {fields.subject.map((c) =>
                         c.type === "divider" ? (
-                          <Divider key={c.id} />
+                          <Divider key={c.value} />
                         ) : (
-                          <MenuItem value={c.value} key={c.id}>
+                          <MenuItem value={c.value} key={c.value}>
                             {c.label}
                           </MenuItem>
                         ),
@@ -235,38 +206,55 @@ const CreateQuestion = () => {
                           ? newQuestion.type
                           : localQuestions.type
                       }
-                      onChange={(e) => changeType(e)}
+                      onChange={(e) => changeField(e, "type")}
                     >
-                      {types.map((c) =>
+                      {fields.type.map((c) =>
                         c.type === "divider" ? (
-                          <Divider key={c.id} />
+                          <Divider key={c.value} />
                         ) : (
-                          <MenuItem value={c.value} key={c.id}>
+                          <MenuItem value={c.value} key={c.value}>
                             {c.label}
                           </MenuItem>
                         ),
                       )}
                     </Select>
                   </Box>
-                  <Box width={120} sx={{ pl: 2 }}>
-                    <Typography variant={"h6"}>Grade</Typography>
+                  <Box width={120}>
+                    <Typography variant={"h6"}>Difficulty</Typography>
                   </Box>
-                  <Box width={200}>
+                  <Box width={90}>
                     <Input
-                      id="grade"
-                      margin="normal"
-                      variant="outlined"
+                      id="difficulty"
                       value={
                         isCreateQuestion
-                          ? newQuestion.grade
-                          : localQuestions.grade
+                          ? newQuestion.difficulty
+                          : localQuestions.difficulty
                       }
+                      type={"number"}
                       fullWidth
                       onChange={(e) =>
                         isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
                       }
                     />
                   </Box>
+                  {/* <Box width={120} sx={{ pl: 2 }}>
+                    <Typography variant={"h6"}>Grade</Typography>
+                  </Box>
+                  <Box width={200}>
+                    <Select
+                      id="grade"
+                      style={{ alignSelf: 'flex-end' }}
+                      value={
+                      isCreateQuestion ? newQuestion.grade : localQuestions.grade
+                      }
+                      onChange={(e) => changeField(e, 'grade')}>                      
+                      {fields.grade.map((c) =>
+                      c.type === "divider" ?
+                      <Divider key={c.value} /> :
+                      <MenuItem value={c.value} key={c.value}>{c.label}</MenuItem>
+                      )}
+                    </Select>
+                  </Box>                                     */}
                 </Box>
                 <Box display={"flex"} alignItems={"center"}>
                   <Box width={120}>
@@ -320,67 +308,63 @@ const CreateQuestion = () => {
                     />
                   </Box>
                 </Box>
-                <Box display={"flex"} alignItems={"center"}>
-                  <Box width={120}>
+                {/* <Box display={"flex"} alignItems={"center"}>
+                  <Box width={120} >
                     <Typography variant={"h6"}>Difficulty</Typography>
                   </Box>
                   <Box width={90}>
                     <Input
-                      id="difficulty"
-                      margin="normal"
-                      variant="outlined"
-                      value={
-                        isCreateQuestion
-                          ? newQuestion.difficulty
-                          : localQuestions.difficulty
-                      }
-                      type={"number"}
-                      fullWidth
-                      onChange={(e) =>
-                        isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
-                      }
-                    />
+                    id="difficulty"
+                    margin="normal"
+                    variant="outlined"
+                    value={
+                    isCreateQuestion ? newQuestion.difficulty : localQuestions.difficulty
+                    }
+                    type={"number"}
+                    fullWidth
+                    onChange={(e) =>
+                    isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
+                    } />
+                  
                   </Box>
                   <Box width={100} sx={{ pl: 2 }}>
                     <Typography variant={"h6"}>Rating</Typography>
-                  </Box>
+                  </Box>                  
                   <Box width={90}>
                     <Input
-                      id="rating"
-                      margin="normal"
-                      variant="outlined"
-                      value={
-                        isCreateQuestion
-                          ? newQuestion.rating
-                          : localQuestions.rating
-                      }
-                      type={"number"}
-                      fullWidth
-                      onChange={(e) =>
-                        isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
-                      }
-                    />
-                  </Box>
+                    id="rating"
+                    margin="normal"
+                    variant="outlined"
+                    value={
+                    isCreateQuestion ? newQuestion.rating : localQuestions.rating
+                    }
+                    type={"number"}
+                    fullWidth
+                    onChange={(e) =>
+                    isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
+                    } />
+                  
+                  </Box>    
                   <Box width={120} sx={{ pl: 2 }}>
                     <Typography variant={"h6"}>Hashtag</Typography>
                   </Box>
                   <Box width={600}>
                     <Input
-                      id="hashtag"
-                      margin="normal"
-                      variant="outlined"
-                      value={
-                        isCreateQuestion
-                          ? newQuestion.hashtag
-                          : localQuestions.hashtag
-                      }
-                      fullWidth
-                      onChange={(e) =>
-                        isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
-                      }
-                    />
-                  </Box>
-                </Box>
+                    id="hashtag"
+                    margin="normal"
+                    variant="outlined"
+                    value={
+                    isCreateQuestion ?
+                    newQuestion.hashtag :
+                    localQuestions.hashtag
+                    }
+                    fullWidth
+                    onChange={(e) =>
+                    isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
+                    } />
+                  
+                  </Box>                                
+                </Box>                 */}
                 <Box display={"flex"} alignItems={"center"}>
                   <Box width={120}>
                     <Typography variant={"h6"}>Question</Typography>
@@ -431,6 +415,9 @@ const CreateQuestion = () => {
                       id="answer"
                       margin="normal"
                       variant="outlined"
+                      multiline
+                      minRows={2}
+                      maxRows={4}
                       value={
                         isCreateQuestion
                           ? newQuestion.answer
@@ -460,25 +447,22 @@ const CreateQuestion = () => {
                     />
                   </Box>
                 </Box>
-                <Box display={"flex"} alignItems={"center"}>
+                {/* <Box display={"flex"} alignItems={"center"}>
                   <Box width={120}>
                     <Typography variant={"h6"}>Rubric</Typography>
                   </Box>
                   <Box width={1000}>
                     <Input
-                      id="rubric"
-                      margin="normal"
-                      variant="outlined"
-                      value={
-                        isCreateQuestion
-                          ? newQuestion.rubric
-                          : localQuestions.rubric
-                      }
-                      fullWidth
-                      onChange={(e) =>
-                        isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
-                      }
-                    />
+                    id="rubric"
+                    margin="normal"
+                    variant="outlined"
+                    value={
+                    isCreateQuestion ? newQuestion.rubric : localQuestions.rubric
+                    }
+                    fullWidth
+                    onChange={(e) =>
+                    isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
+                    } />
                   </Box>
                 </Box>
                 <Box display={"flex"} alignItems={"center"}>
@@ -487,21 +471,19 @@ const CreateQuestion = () => {
                   </Box>
                   <Box width={1000}>
                     <Input
-                      id="description"
-                      margin="normal"
-                      variant="outlined"
-                      value={
-                        isCreateQuestion
-                          ? newQuestion.description
-                          : localQuestions.description
-                      }
-                      fullWidth
-                      onChange={(e) =>
-                        isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
-                      }
-                    />
+                    id="description"
+                    margin="normal"
+                    variant="outlined"
+                    value={
+                    isCreateQuestion ? newQuestion.description : localQuestions.description
+                    }
+                    fullWidth
+                    onChange={(e) =>
+                    isCreateQuestion ? editNewQuestion(e) : editQuestion(e)
+                    } />
+                  
                   </Box>
-                </Box>
+                </Box> */}
                 <Box display={"flex"} alignItems={"center"}>
                   <Button
                     variant={"contained"}
@@ -515,10 +497,28 @@ const CreateQuestion = () => {
                   </Button>
                   <Button
                     variant={"contained"}
+                    style={{ marginRight: 8 }}
                     onClick={() => navigate("/app/question")}
                   >
                     Back
                   </Button>
+                  {isCreateQuestion ? (
+                    <label
+                      className={classes.uploadLabel}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {"Batch Create"}
+                      <input
+                        style={{ display: "none" }}
+                        accept=".xls,.xlsx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet/*"
+                        type="file"
+                        ref={fileInput}
+                        onChange={handleFile}
+                      />
+                    </label>
+                  ) : (
+                    <></>
+                  )}
                 </Box>
               </Box>
             )}

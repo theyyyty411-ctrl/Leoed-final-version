@@ -1,5 +1,13 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Grid, Box, Card, CardContent } from "@mui/material";
+import React, { useRef, useState, useEffect, useCallback } from "react";
+import {
+  Grid,
+  Box,
+  Card,
+  CardContent,
+  Collapse,
+  IconButton,
+} from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
 import useStyles from "./styles";
 
 import axios from "axios";
@@ -14,7 +22,6 @@ import { Typography } from "../../components/Wrappers";
 import { getTaskInfo } from "../../context/TaskContext";
 
 import { useParams } from "react-router-dom";
-import { executeGeminiDiagnostic } from "../../utils/gemini";
 
 const Task = () => {
   const { id } = useParams();
@@ -25,6 +32,14 @@ const Task = () => {
   const [row, setRow] = React.useState({ qlist: [] });
   const [initialSubmit, setInitialSubmit] = useState(null);
   const [initialResult, setInitialResult] = useState(null);
+  const [expandedCards, setExpandedCards] = useState({});
+
+  const handleToggleExpand = useCallback((index) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  }, []);
 
   useEffect(() => {
     if (taskId) {
@@ -70,14 +85,18 @@ const Task = () => {
         timestamp: new Date().toISOString(),
       };
 
-      const contextQuestions = row.qlist.map(q => q.question_ml);
-      const data = await executeGeminiDiagnostic(jsonPayload, contextQuestions);
+      const response = await axios.post(
+        `${config.baseURLApi}/execute/diagnostic`,
+        jsonPayload,
+      );
 
       alert("Submission success!");
-      setResult(data);
+      // console.log("Server response data package:", response.data);
+      setResult(response.data);
     } catch (error) {
-      console.error("Gemini transmission processing error:", error);
-      alert(`Upload failed: ${error.message}`);
+      console.error("Axios transmission processing error:", error);
+      const serverMessage = error.response?.data?.message || error.message;
+      alert(`Upload failed: ${serverMessage}`);
     } finally {
       setIsUploading(false);
     }
@@ -87,27 +106,63 @@ const Task = () => {
     <>
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, md: 12, lg: 6 }}>
-          {row.qlist.map((c, index) => (
-            <Card className={classes.card} key={index}>
-              <CardContent>
-                <Typography variant="h5" style={{ marginBottom: 16 }}>
-                  {index + 1}.
-                </Typography>
-                <Box
+          {row.qlist.map((c, index) => {
+            const isExpanded =
+              expandedCards[index] !== undefined ? expandedCards[index] : true;
+            return (
+              <Card className={classes.card} key={index}>
+                <CardContent
                   sx={{
-                    fontFamily: '"Cambria Math", "Latin Modern Math", "STIX"',
-                    fontSize: {
-                      xs: "0.8rem",
-                      sm: "1rem",
-                    },
+                    py: 0,
+                    "&:last-child": { pb: 0 },
+                    borderRadius: 0,
+                    px: 0,
                   }}
-                  dangerouslySetInnerHTML={{
-                    __html: c.question_ml,
-                  }}
-                />
-              </CardContent>
-            </Card>
-          ))}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      cursor: "pointer",
+                      bgcolor: "action.hover",
+                      px: { xs: 1, sm: 2 },
+                    }}
+                    onClick={() => handleToggleExpand(index)}
+                  >
+                    <Typography variant="body1">{index + 1}.</Typography>
+                    <IconButton
+                      size="small"
+                      sx={{
+                        transform: isExpanded
+                          ? "rotate(180deg)"
+                          : "rotate(0deg)",
+                        transition: "transform 0.3s",
+                      }}
+                    >
+                      <ExpandMore />
+                    </IconButton>
+                  </Box>
+                  <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+                    <Box
+                      sx={{
+                        fontFamily:
+                          '"Cambria Math", "Latin Modern Math", "STIX"',
+                        fontSize: {
+                          xs: "0.8rem",
+                          sm: "1rem",
+                        },
+                        px: { xs: 1, sm: 2 },
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: c.question_ml,
+                      }}
+                    />
+                  </Collapse>
+                </CardContent>
+              </Card>
+            );
+          })}
         </Grid>
 
         <Grid size={{ xs: 12, lg: 6 }}>

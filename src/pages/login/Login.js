@@ -8,11 +8,12 @@ import {
   TextField as Input,
   Typography,
   Box,
+  IconButton,
 } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
 import classnames from "classnames";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "../../components/LanguageSwitcher";
 
 // styles
 import useStyles from "./styles";
@@ -100,20 +101,26 @@ function Login() {
 
   return (
     <Grid container className={classes.container}>
+      <Box
+        sx={{
+          position: "absolute",
+          top: { xs: 4, md: 8 },
+          left: { xs: 4, md: 8 },
+          zIndex: 10,
+        }}
+      >
+        <IconButton
+          onClick={() => navigate("/")}
+          sx={{ color: "#fff" }}
+          size="small"
+        >
+          <ArrowBack />
+        </IconButton>
+      </Box>
       <div
         className={classes.logotypeContainer}
         style={{ position: "relative" }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            top: { xs: 4, md: 8 },
-            right: { xs: 4, md: 8 },
-            zIndex: 1,
-          }}
-        >
-          <LanguageSwitcher />
-        </Box>
         <img src={logo} alt="logo" className={classes.logotypeImage} />
       </div>
       <div

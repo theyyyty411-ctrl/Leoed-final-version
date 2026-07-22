@@ -16,7 +16,6 @@ import {
 } from "@mui/icons-material";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "../LanguageSwitcher";
 
 //images
 import profile from "../../images/logo.jpeg";
@@ -126,9 +125,6 @@ export default function Header() {
           LeoEd
         </Typography>
         <div className={classes.grow} />
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <LanguageSwitcher textColor="#FFFFFF" />
-        </Box>
         <IconButton
           aria-haspopup="true"
           color="inherit"

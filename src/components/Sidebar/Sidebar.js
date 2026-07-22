@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
-import { ArrowBack as ArrowBackIcon } from "@mui/icons-material";
-import { Drawer, IconButton, List } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { ArrowBack as ArrowBackIcon, Home as HomeIcon } from "@mui/icons-material";
+import { Drawer, IconButton, List, Box } from "@mui/material";
 import { useTheme } from "@mui/material";
 import classNames from "classnames";
 import { useLocation } from "react-router-dom";
@@ -22,6 +23,7 @@ function Sidebar({ structure }) {
   let classes = useStyles();
   let theme = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleDrawer = (value) => (event) => {
     if (
@@ -94,6 +96,16 @@ function Sidebar({ structure }) {
           />
         ))}
       </List>
+      <Box sx={{ mt: "auto", p: 1, textAlign: "center" }}>
+        <IconButton
+          onClick={() => navigate("/landing")}
+          size="small"
+          sx={{ color: "text.secondary" }}
+          title="Back to landing page"
+        >
+          <HomeIcon />
+        </IconButton>
+      </Box>
     </Drawer>
   );
 

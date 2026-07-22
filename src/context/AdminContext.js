@@ -84,7 +84,7 @@ export function getFieldsRequest(dispatch) {
     });
   }
 
-  dispatch({ type: "UPDATE_FIELDS", payload: [] });
+  dispatch({ type: "UPDATE_FIELDS", payload: mockFields });
 }
 
 export function deleteFieldRequest({ id, navigate, pathname, dispatch }) {

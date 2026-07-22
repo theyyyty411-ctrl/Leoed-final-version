@@ -63,6 +63,12 @@ export default function App() {
               }
             />
             <Route
+              path="/landing"
+              element={
+                  <Landing />
+              }
+            />            
+            <Route
               path="/verify-email"
               element={
                 <PublicRoute>

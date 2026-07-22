@@ -13,6 +13,7 @@ import {
   Tabs,
   Tab,
   Paper,
+  TextField,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import useStyles from "./styles";
@@ -140,6 +141,7 @@ const Task = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
   const [tabIndex, setTabIndex] = useState(0);
+  const [quickTaskCount, setQuickTaskCount] = useState(3);
 
   useEffect(() => {
     getTasksRequest(context.setTasks);
@@ -186,7 +188,7 @@ const Task = () => {
   const currentItems = tabItems[tabIndex] || [];
 
   const handleQuickTask = () => {
-    createQuickTask(context.setTasks);
+    createQuickTask(context.setTasks, quickTaskCount);
   };
 
   return (
@@ -220,15 +222,29 @@ const Task = () => {
                       {backTasks.length} total
                     </Typography>
                   </Box>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    size="small"
-                    onClick={handleQuickTask}
-                    sx={{ ml: "auto" }}
-                  >
-                    Quick Task
-                  </Button>
+                  <Box display="flex" alignItems="center" gap={1} ml="auto">
+                    <Button
+                      variant="contained"
+                      color="success"
+                      size="small"
+                      onClick={handleQuickTask}
+                    >
+                      Quick Task
+                    </Button>
+                    <TextField
+                      type="number"
+                      size="small"
+                      value={quickTaskCount}
+                      onChange={(e) => {
+                        const val = parseInt(e.target.value, 10);
+                        if (val >= 1 && val <= 50) {
+                          setQuickTaskCount(val);
+                        }
+                      }}
+                      inputProps={{ min: 1, max: 50, style: { width: 40, textAlign: "center" } }}
+                      sx={{ "& .MuiOutlinedInput-input": { py: 0.5, px: 1 } }}
+                    />
+                  </Box>
                 </Box>
               </Box>
             }

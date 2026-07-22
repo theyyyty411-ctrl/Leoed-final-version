@@ -73,7 +73,7 @@ export function getTasksRequest(dispatch) {
     });
   }
 
-  dispatch({ type: "UPDATE_TASKS", payload: [] });
+  dispatch({ type: "UPDATE_TASKS", payload: mockTasks });
 }
 
 export function deleteTaskRequest({ id, navigate, pathname, dispatch }) {
@@ -124,9 +124,9 @@ export function createTask(task, dispatch) {
   });
 }
 
-export function createQuickTask(dispatch) {
+export function createQuickTask(dispatch, count = 5) {
   if (config.isBackend) {
-    return axios.post("/tasks/quick").then((res) => {
+    return axios.post("/tasks/quick", { count }).then((res) => {
       dispatch({ type: "CREATE_TASK", payload: res.data });
     });
   }

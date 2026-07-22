@@ -28,7 +28,6 @@ import { Typography, Button } from "../../components/Wrappers";
 import { getQuestionInfo } from "../../context/QuestionContext";
 
 import { useParams, useNavigate } from "react-router-dom";
-import { executeGeminiDiagnostic } from "../../utils/gemini";
 
 const Question = () => {
   const { id } = useParams();
@@ -69,14 +68,18 @@ const Question = () => {
         timestamp: new Date().toISOString(),
       };
 
-      const contextQuestions = [row.question_ml];
-      const data = await executeGeminiDiagnostic(jsonPayload, contextQuestions);
+      const response = await axios.post(
+        `${config.baseURLApi}/execute/diagnostic`,
+        jsonPayload,
+      );
 
       alert("Submission success!");
-      setResult(data);
+      // console.log("Server response data package:", response.data);
+      setResult(response.data);
     } catch (error) {
-      console.error("Gemini transmission processing error:", error);
-      alert(`Upload failed: ${error.message}`);
+      console.error("Axios transmission processing error:", error);
+      const serverMessage = error.response?.data?.message || error.message;
+      alert(`Upload failed: ${serverMessage}`);
     } finally {
       setIsUploading(false);
     }
