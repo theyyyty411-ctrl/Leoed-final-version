@@ -73,7 +73,7 @@ export function getTasksRequest(dispatch) {
     });
   }
 
-  dispatch({ type: "UPDATE_TASKS", payload: mockTasks });
+  dispatch({ type: "UPDATE_TASKS", payload: [] });
 }
 
 export function deleteTaskRequest({ id, navigate, pathname, dispatch }) {

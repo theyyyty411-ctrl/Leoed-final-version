@@ -452,7 +452,11 @@ const LandingPage = () => {
             </Typography>
           </Box>
           <Grid container spacing={{ xs: 3, md: 6 }} justifyContent="center">
-            {[ t("team.member1"), t("team.member2"), t("team.member3") ].map((member, idx) => (
+            {[ 
+              t("team.member1", { returnObjects: true }), 
+              t("team.member2", { returnObjects: true }), 
+              t("team.member3", { returnObjects: true }) 
+            ].map((member, idx) => (
               <Grid item xs={12} md={4} key={idx}>
                 <Box sx={{ textAlign: "center" }}>
                   <Avatar
@@ -470,19 +474,19 @@ const LandingPage = () => {
                     <PersonIcon sx={{ fontSize: { xs: 50, md: 90 }, color: "#EEE" }} />
                   </Avatar>
                   <Typography variant="h5" sx={{ fontWeight: 800, fontSize: { xs: "1rem", md: "1.25rem" } }}>
-                    {member.name}
+                    {member?.name || ""}
                   </Typography>
                   <Typography
                     variant="subtitle1"
                     sx={{ color: "#2196f3", fontWeight: 700, mt: 0.5, fontSize: { xs: "0.85rem", md: "1rem" } }}
                   >
-                    {member.title}
+                    {member?.title || ""}
                   </Typography>
                   <Typography
                     variant="body2"
                     sx={{ color: "text.secondary", mt: 0.5, fontWeight: 500, fontSize: { xs: "0.75rem", md: "0.875rem" }, whiteSpace: "pre-line" }}
                   >
-                    {member.role}
+                    {member?.role || ""}
                   </Typography>
                 </Box>
               </Grid>
