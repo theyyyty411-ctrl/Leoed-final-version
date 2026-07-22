@@ -18,6 +18,8 @@ const appConfig = {
   redirectUrl,
   remote: "https://leoedai.com",
   isBackend,
+  geminiApiKey: import.meta.env.VITE_GEMINI_API_KEY,
+  geminiModel: import.meta.env.VITE_GEMINI_MODEL || "gemini-2.5-flash",
   auth: {
     email: 'test@test.com',
     password: 'password',

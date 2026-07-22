@@ -8,39 +8,14 @@ import {
   Grid,
   Box,
   Card,
-  CardContent,
   IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
   Avatar,
-  Divider,
 } from "@mui/material";
 import {
-  CheckCircle as CheckCircleIcon,
   PlayArrow as PlayArrowIcon,
-  FlashOn as LightningIcon,
-  CenterFocusStrong as TargetIcon,
-  AllInclusive as InfinityIcon,
-  School as SchoolIcon,
   Person as PersonIcon,
-  Group as GroupIcon,
-  Description as DescriptionIcon,
-  VideoLibrary as VideoLibraryIcon,
-  Analytics as AnalyticsIcon,
   WhatsApp as WhatsAppIcon,
-  Phone as PhoneIcon,
   Email as EmailIcon,
-  LocationOn as LocationIcon,
-  ArrowForward as ArrowForwardIcon,
   ExpandMore as ExpandMoreIcon,
   Facebook as FacebookIcon,
   Instagram as InstagramIcon,
@@ -53,44 +28,8 @@ import logo from "../../images/logo.jpeg";
 import profFung from "../../images/prof_fung.jpg";
 import profWilliam from "../../images/prof_william.jpg";
 import drLam from "../../images/dr_lam.jpg";
-
-// Mock icons for the features section if specific ones aren't available
-const FastIcon = () => (
-  <Box
-    sx={{
-      backgroundColor: "#F5F5F5",
-      p: 1,
-      borderRadius: "50%",
-      display: "inline-flex",
-    }}
-  >
-    <LightningIcon sx={{ color: "#000000" }} />
-  </Box>
-);
-const ReliableIcon = () => (
-  <Box
-    sx={{
-      backgroundColor: "#F5F5F5",
-      p: 1,
-      borderRadius: "50%",
-      display: "inline-flex",
-    }}
-  >
-    <TargetIcon sx={{ color: "#000000" }} />
-  </Box>
-);
-const UnlimitedIcon = () => (
-  <Box
-    sx={{
-      backgroundColor: "#F5F5F5",
-      p: 1,
-      borderRadius: "50%",
-      display: "inline-flex",
-    }}
-  >
-    <InfinityIcon sx={{ color: "#000000" }} />
-  </Box>
-);
+import alsDiagram from "../../images/als_diagram.png";
+import leoCycle from "../../images/leo_cycle.png";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -188,16 +127,7 @@ const LandingPage = () => {
               <Box sx={{ display: { xs: "none", lg: "flex" }, ml: 6 }}>
                 {[
                   { text: "nav.home", path: "/" },
-                  // { text: "nav.subjects", path: "/subjects" },
-                  // { text: "nav.partners", path: "/partners" },
-                  // { text: "nav.pricing", path: "/pricing" },
-                  // { text: "nav.educators", path: "/educators" },
-                  // { text: "nav.contact", path: "/contact" },
                   { text: "nav.subjects", path: "/" },
-                  { text: "nav.partners", path: "/" },
-                  { text: "nav.pricing", path: "/" },
-                  { text: "nav.educators", path: "/" },
-                  { text: "nav.contact", path: "/" },
                 ].map((item) => (
                   <Button
                     key={item.text}
@@ -312,186 +242,22 @@ const LandingPage = () => {
               >
                 {t("hero.subtitle")}
               </Typography>
-              <Box sx={{ mb: 3, display: "flex", flexWrap: "wrap", gap: 1.5 }}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                  <Typography
-                    sx={{
-                      color: "#000000",
-                      fontWeight: 700,
-                      fontSize: "0.85rem",
-                    }}
-                  >
-                    {t("hero.feature1")}
-                  </Typography>
-                </Box>
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  sx={{ display: { xs: "none", sm: "block" } }}
-                />
-                <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                  <Typography
-                    sx={{
-                      color: "#000000",
-                      fontWeight: 700,
-                      fontSize: "0.85rem",
-                    }}
-                  >
-                    {t("hero.feature2")}
-                  </Typography>
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  gap: 1.5,
-                  flexDirection: { xs: "column", sm: "row" },
-                }}
-              >
-                <Button
-                  variant="contained"
-                  size="large"
-                  onClick={handleExplore}
-                  sx={{
-                    px: { xs: 3, md: 5 },
-                    py: { xs: 1.5, md: 2 },
-                    borderRadius: "14px",
-                    bgcolor: "#000000",
-                    color: "#FFFFFF",
-                    fontWeight: 700,
-                    textTransform: "none",
-                    fontSize: { xs: "1rem", md: "1.1rem" },
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.15)",
-                    "&:hover": {
-                      bgcolor: "#222222",
-                      transform: "translateY(-2px)",
-                    },
-                  }}
-                >
-                  {t("hero.explore")}
-                </Button>
-                <Button
-                  variant="contained"
-                  size="large"
-                  onClick={handleLogin}
-                  sx={{
-                    px: { xs: 3, md: 5 },
-                    py: { xs: 1.5, md: 2 },
-                    borderRadius: "14px",
-                    bgcolor: "#2196f3",
-                    color: "white",
-                    fontWeight: 700,
-                    textTransform: "none",
-                    fontSize: { xs: "1rem", md: "1.1rem" },
-                    boxShadow: "0 10px 20px rgba(33,150,243,0.2)",
-                    "&:hover": {
-                      bgcolor: "#1976d2",
-                      transform: "translateY(-2px)",
-                    },
-                  }}
-                >
-                  {t("hero.contact")}
-                </Button>
-              </Box>
-              <Box
-                sx={{
-                  mt: 4,
-                  display: "flex",
-                  flexWrap: "wrap",
-                  alignItems: "center",
-                  gap: 2,
-                }}
-              >
-                <Typography
-                  variant="subtitle2"
-                  sx={{ color: "text.secondary", fontWeight: 700, fontSize: "0.85rem" }}
-                >
-                  {t("hero.subjects")}
-                </Typography>
-                {Array.isArray(t("hero.subjectsList"))
-                  ? t("hero.subjectsList").map((subject) => (
-                      <Box
-                        key={subject}
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 0.5,
-                          bgcolor: "rgba(0,0,0,0.03)",
-                          px: 1.5,
-                          py: 0.5,
-                          borderRadius: 2,
-                        }}
-                      >
-                        <CheckCircleIcon
-                          sx={{ color: "#4CAF50", fontSize: 14 }}
-                        />
-                        <Typography variant="caption" sx={{ fontWeight: 600, fontSize: "0.75rem" }}>
-                          {subject}
-                        </Typography>
-                      </Box>
-                    ))
-                  : null}
-              </Box>
-
-              <Box
-                sx={{
-                  mt: 3,
-                  width: "100%",
-                  maxWidth: { xs: "100%", sm: 560 },
-                  borderRadius: 4,
-                  overflow: "hidden",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-                  border: "1px solid #EEE",
-                }}
-              >
-                <Box
-                  component="iframe"
-                  sx={{
-                    width: "100%",
-                    aspectRatio: "16/9",
-                    border: "none",
-                    display: "block",
-                  }}
-                  src="https://www.youtube.com/embed/_75n1GeAUsQ"
-                  title="LeoEd Intro Video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </Box>
             </Grid>
             <Grid item xs={12} md={5}>
-              <Box sx={{ position: "relative" }}>
-                <Box
-                  sx={{
-                    width: "100%",
-                    aspectRatio: "1/1",
-                    bgcolor: "#f8f9fa",
-                    borderRadius: "32px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    boxShadow: "0 30px 60px rgba(0,0,0,0.12)",
-                    border: "8px solid #FFFFFF",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      position: "relative",
-                      width: "100%",
-                      height: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <PlayArrowIcon
-                      sx={{ fontSize: 100, color: "rgba(0,0,0,0.1)" }}
-                    />
-                  </Box>
-                </Box>
-              </Box>
+              <Box
+                component="img"
+                src={alsDiagram}
+                sx={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "16px",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                }}
+              />
             </Grid>
+          </Grid>
+        </Container>
+      </Box>
           </Grid>
         </Container>
       </Box>
@@ -522,40 +288,27 @@ const LandingPage = () => {
               {t("philosophy.description")}
             </Typography>
           </Box>
-          <Grid container spacing={{ xs: 2, md: 4 }}>
-            {[
-              {
-                icon: <FastIcon />,
-                title: t("philosophy.learn"),
-                desc: t("philosophy.learnDesc"),
-              },
-              {
-                icon: <ReliableIcon />,
-                title: t("philosophy.evolve"),
-                desc: t("philosophy.evolveDesc"),
-              },
-              {
-                icon: <UnlimitedIcon />,
-                title: t("philosophy.optimize"),
-                desc: t("philosophy.optimizeDesc"),
-              },
-            ].map((feature, idx) => (
-              <Grid item xs={12} md={4} key={idx}>
-                <Card sx={cardStyles}>
-                  <Box sx={{ mb: 3 }}>{feature.icon}</Box>
-                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
-                    {feature.title}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ color: "#4A4A4A", fontWeight: 500, lineHeight: 1.6 }}
-                  >
-                    {feature.desc}
-                  </Typography>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mt: 4,
+            }}
+          >
+            <Box
+              component="img"
+              src={leoCycle}
+              sx={{
+                width: "100%",
+                maxWidth: 800,
+                height: "auto",
+                borderRadius: "16px",
+                // boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+              }}
+            />
+          </Box>
+        </Container>
+      </Box>
         </Container>
       </Box>
 
@@ -715,158 +468,6 @@ const LandingPage = () => {
                     </Button>
                   </Box>
                 </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Partners Section */}
-      <Box sx={{ ...sectionStyles, bgcolor: "#FFFFFF" }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: "center", mb: { xs: 6, md: 8 } }}>
-            <Box
-              component="span"
-              sx={{
-                bgcolor: "rgba(33,150,243,0.1)",
-                color: "#2196f3",
-                px: 2.5,
-                py: 0.8,
-                borderRadius: 10,
-                fontSize: "0.85rem",
-                fontWeight: 800,
-                mb: 3,
-                display: "inline-block",
-              }}
-            >
-              {t("partners.label")}
-            </Box>
-            <Typography variant="h2" sx={{ ...titleStyles, fontSize: { xs: "1.5rem", md: "2.5rem" } }}>
-              {t("partners.title")}
-            </Typography>
-            <Typography variant="body1" sx={{ color: "text.secondary", fontSize: { xs: "0.85rem", md: "1rem" } }}>
-              {t("partners.description")}
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              height: { xs: "120px", md: "200px" },
-              border: "1px dashed #EEE",
-              borderRadius: 4,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Typography sx={{ color: "text.disabled", fontWeight: 600, fontSize: { xs: "0.85rem", md: "1rem" } }}>
-              {t("partners.updating")}
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
-
-      {/* Pricing Section */}
-      <Box sx={{ ...sectionStyles, bgcolor: "#FBFBFC" }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: "center", mb: { xs: 6, md: 10 } }}>
-            <Typography
-              variant="overline"
-              sx={{ color: "#2196f3", fontWeight: 800, letterSpacing: 2, fontSize: "0.75rem" }}
-            >
-              {t("pricing.label")}
-            </Typography>
-            <Typography variant="h2" sx={{ ...titleStyles, fontSize: { xs: "1.5rem", md: "2.5rem" } }}>
-              {t("pricing.title")}
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              height: { xs: "180px", md: "300px" },
-              border: "1px dashed #EEE",
-              borderRadius: 4,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Typography sx={{ color: "text.disabled", fontWeight: 600, fontSize: { xs: "0.85rem", md: "1rem" } }}>
-              {t("pricing.updating")}
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
-
-      {/* Educator & Institution Section */}
-      <Box sx={sectionStyles}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: "center", mb: { xs: 6, md: 8 } }}>
-            <Typography
-              variant="overline"
-              sx={{ color: "#2196f3", fontWeight: 800, letterSpacing: 2, fontSize: "0.75rem" }}
-            >
-              {t("educators.label")}
-            </Typography>
-            <Typography variant="h2" sx={{ ...titleStyles, mt: 1, fontSize: { xs: "1.5rem", md: "2.5rem" } }}>
-              {t("educators.title")}
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                color: "text.secondary",
-                maxWidth: 800,
-                mx: "auto",
-                fontSize: { xs: "0.9rem", md: "1.1rem" },
-              }}
-            >
-              {t("educators.description")}
-            </Typography>
-          </Box>
-          <Grid container spacing={{ xs: 2, md: 4 }}>
-            {[
-              {
-                title: t("educators.insights"),
-                desc: t("educators.insightsDesc"),
-                icon: "📊",
-                color: "#2196f3",
-              },
-              {
-                title: t("educators.timeSaving"),
-                desc: t("educators.timeSavingDesc"),
-                icon: "⏰",
-                color: "#4CAF50",
-              },
-              {
-                title: t("educators.dataDriven"),
-                desc: t("educators.dataDrivenDesc"),
-                icon: "🎯",
-                color: "#1A1A1A",
-              },
-            ].map((item, idx) => (
-              <Grid item xs={12} md={4} key={idx}>
-                <Box
-                  sx={{
-                    p: { xs: 3, md: 5 },
-                    borderRadius: 6,
-                    bgcolor: "#FBFBFC",
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    border: "1px solid #EEE",
-                    transition: "transform 0.3s ease",
-                    "&:hover": { transform: "translateY(-5px)" },
-                  }}
-                >
-                  <Box sx={{ fontSize: { xs: "2.5rem", md: "3rem" }, mb: 2 }}>{item.icon}</Box>
-                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 1.5, fontSize: { xs: "1.1rem", md: "1.5rem" } }}>
-                    {item.title}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ color: "text.secondary", lineHeight: 1.8, fontSize: { xs: "0.85rem", md: "1rem" } }}
-                  >
-                    {item.desc}
-                  </Typography>
-                </Box>
               </Grid>
             ))}
           </Grid>

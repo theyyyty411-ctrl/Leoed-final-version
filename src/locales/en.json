@@ -13,58 +13,52 @@
     "trial": "Free Trial"
   },
   "hero": {
-    "badge": "DSE • TSA • HKAT • IELTS Professional Assessment",
-    "title": "LeoEd AI:",
-    "titleGradient": "Leading the Future of Adaptive Learning",
-    "subtitle": "Breaking the traditional 'one-size-fits-all' teaching model. LeoEd AI is a dynamic learning environment that continuously collects student performance data to personalize learning content, adjust difficulty, and provide immediate, targeted feedback.",
-    "feature1": "Reliable AI Navigator",
-    "feature2": "Personalized Learning Journey",
-    "explore": "Explore Platform 🚀",
-    "contact": "Contact Us 🎓",
-    "subjects": "Supported Subjects:",
-    "subjectsList": ["English", "Chinese", "Math", "History"]
+    "badge": "Adaptive Learning System (ALS)",
+    "title": "LeoEd AI: Personalizing",
+    "titleGradient": "Education at Scale",
+    "subtitle": "An Adaptive Learning System (ALS) that bridges the gap between standardized teaching and individualized mastery."
   },
   "philosophy": {
     "label": "CORE PHILOSOPHY",
-    "title": "Learn, Evolve, Optimize (學習、進化、優化)",
-    "description": "LeoEd AI is not just a static content library. We are an AI-powered education system designed to be a reliable navigator, guiding students through complex learning journeys.",
-    "learn": "Learn (學習)",
-    "learnDesc": "Through highly personalized content and active engagement, help students master new concepts.",
-    "evolve": "Evolve (進化)",
-    "evolveDesc": "The system dynamically adjusts tasks, quiz difficulty, and learning pace based on your real-time learning progress.",
-    "optimize": "Optimize (優化)",
-    "optimizeDesc": "The system continuously refines its recommendations, fills learning gaps, and consolidates weak areas to help you achieve true mastery."
+    "title": "Learn, Evolve, Optimize",
+    "description": "LEO captures the full learning cycle that the system is designed to support.",
+    "learn": "Learn",
+    "learnDesc": "Students learn new concepts through a personalized sequence of activities.",
+    "evolve": "Evolve",
+    "evolveDesc": "The platform continually updates its database and learner model based on the student’s performance and progress.",
+    "optimize": "Optimize",
+    "optimizeDesc": "The system finetunes its recommendations to close the learning gaps and strengthen mastery."
   },
   "features": {
-    "label": "POWERFUL TOOLS",
-    "title": "Powerful AI Tools Transforming Modern Education",
-    "adaptiveQuiz": "Adaptive Quiz Generation",
-    "adaptiveQuizDesc": "Enjoy low-risk, high-frequency quizzes tailored for you. Our topic priority engine selects the most appropriate questions and calibrates difficulty based on student mastery, recent error rates, and forgetting risk.",
-    "aiGrading": "Intelligent AI Grading",
-    "aiGradingDesc": "Get more than just a score. Our AI engine evaluates answers based on precise scoring criteria, providing detailed comments to explain scores, point out missing steps and conceptual misunderstandings, and offer specific improvement suggestions.",
-    "multiModal": "Multi-Modal Answer Submission",
-    "multiModalDesc": "Submit assignments in the way that best suits the subject. Students can type text directly in the interface, use built-in tools to draw graphs and charts, or take photos of handwritten answers on paper and upload them.",
-    "feedbackLoop": "Continuous Feedback Loop",
-    "feedbackLoopDesc": "Assessment results directly shape students' subsequent learning paths. Quiz results automatically update student profiles to recommend targeted review videos and adjust future quiz combinations."
+    "label": "CORE CAPABILITIES",
+    "title": "Powered by Gemini 2.5 Flash for Advanced Learning",
+    "adaptiveQuiz": "Adaptive Quiz Generation (Powered by Gemini 2.5 Flash)",
+    "adaptiveQuizDesc": "Tailored questions that evolve with progress, ensuring optimal challenge and mastery.",
+    "aiGrading": "Instant AI Grading & Detailed Explanations",
+    "aiGradingDesc": "Detailed, step-by-step feedback on student responses within seconds.",
+    "multiModal": "Multi-modal Support (Images & Multi-lingual Text)",
+    "multiModalDesc": "Seamlessly process handwritten images and multi-lingual text for a richer learning experience.",
+    "feedbackLoop": "Real-time Feedback Loop",
+    "feedbackLoopDesc": "A continuous cycle of assessment and correction that drives rapid improvement."
   },
   "solutions": {
-    "label": "SOLUTIONS & PIONEER SUBJECTS",
-    "title": "Built for Core Subjects and High-Stakes Exams",
-    "description": "LeoEd AI is designed to support high-quality education across different subject areas through phased implementation.",
+    "label": "ROADMAP",
+    "title": "Phased Implementation and Market Expansion",
+    "description": "LeoEd AI is designed to support high-quality education across various disciplines.",
     "accounting": {
-      "subject": "University Accounting",
-      "subtitle": "Rule-Based AI Grading",
-      "desc": "Our first pilot project uses rule-based AI grading for procedural calculations and structured steps, aiming to support competency expectations aligned with professional certification standards."
+      "subject": "HKMU University Course",
+      "subtitle": "Proof-of-Concept Pilot",
+      "desc": "Initial validation of rule-based precision grading and student mastery tracking."
     },
     "math": {
       "subject": "HKDSE Mathematics",
-      "subtitle": "Exam Preparation and Topic Mastery",
-      "desc": "A scalable exam preparation environment designed to help Hong Kong high school students build topic-by-topic mastery and receive feedback tailored to their specific learning levels."
+      "subtitle": "Secondary Education Market",
+      "desc": "Scaling to support the massive HKDSE exam preparation market."
     },
     "future": {
-      "subject": "Future Expansion",
-      "subtitle": "Large-Scale Exam Market Support",
-      "desc": "The proven system will eventually expand to support highly structured, large-scale exam markets such as China's National College Entrance Examination."
+      "subject": "Mainland China Market",
+      "subtitle": "Future Strategic Growth",
+      "desc": "Expanding to support the Gaokao exam market with over 13 million candidates."
     },
     "learnMore": "Learn More"
   },
@@ -102,7 +96,7 @@
     "aiSection": "AI Zone",
     "aiLinks": ["English AI", "Chinese AI", "Math AI", "History AI"],
     "resources": "Resources",
-    "resourceLinks": ["Free Demo", "Platform Login", "Pricing", "Funding"],
+    "resourceLinks": ["Free Demo", "Platform Login", "Funding"],
     "contact": "Contact Us",
     "phone": "(852) 5601 0992",
     "email": "Hello@leoed.ai",
