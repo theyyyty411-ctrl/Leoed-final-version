@@ -10,6 +10,7 @@ import {
   Card,
   IconButton,
   Avatar,
+  Divider,
 } from "@mui/material";
 import {
   PlayArrow as PlayArrowIcon,
