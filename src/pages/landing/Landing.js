@@ -258,9 +258,6 @@ const LandingPage = () => {
           </Grid>
         </Container>
       </Box>
-          </Grid>
-        </Container>
-      </Box>
 
       {/* LEO Philosophy Section */}
       <Box sx={{ ...sectionStyles, bgcolor: "#FBFBFC" }}>
@@ -307,8 +304,6 @@ const LandingPage = () => {
               }}
             />
           </Box>
-        </Container>
-      </Box>
         </Container>
       </Box>
 
