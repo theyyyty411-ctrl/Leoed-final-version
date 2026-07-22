@@ -260,6 +260,29 @@ const LandingPage = () => {
         </Container>
       </Box>
 
+      {/* ALS Description Section */}
+      <Box sx={{ ...sectionStyles, bgcolor: "#FFFFFF" }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: "center" }}>
+            <Typography variant="h2" sx={{ ...titleStyles, mb: 2, fontSize: { xs: "1.5rem", md: "2.5rem" } }}>
+              {t("als.title")}
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: "auto",
+                fontSize: { xs: "0.9rem", md: "1.1rem" },
+                lineHeight: 1.8,
+              }}
+            >
+              {t("als.description")}
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
+
       {/* LEO Philosophy Section */}
       <Box sx={{ ...sectionStyles, bgcolor: "#FBFBFC" }}>
         <Container maxWidth="lg">
@@ -286,11 +309,38 @@ const LandingPage = () => {
               {t("philosophy.description")}
             </Typography>
           </Box>
+          <Grid container spacing={{ xs: 2, md: 4 }} sx={{ mt: 4 }}>
+            {[
+              {
+                title: t("philosophy.learn"),
+                desc: t("philosophy.learnDesc"),
+              },
+              {
+                title: t("philosophy.evolve"),
+                desc: t("philosophy.evolveDesc"),
+              },
+              {
+                title: t("philosophy.optimize"),
+                desc: t("philosophy.optimizeDesc"),
+              },
+            ].map((item, idx) => (
+              <Grid item xs={12} md={4} key={idx}>
+                <Box sx={{ textAlign: "center", p: 2 }}>
+                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 1.5 }}>
+                    {item.title}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.6 }}>
+                    {item.desc}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
-              mt: 4,
+              mt: 6,
             }}
           >
             <Box
@@ -301,70 +351,9 @@ const LandingPage = () => {
                 maxWidth: 800,
                 height: "auto",
                 borderRadius: "16px",
-                // boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
               }}
             />
           </Box>
-        </Container>
-      </Box>
-
-      {/* Key Features Section */}
-      <Box sx={sectionStyles}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: "center", mb: { xs: 6, md: 10 } }}>
-            <Typography
-              variant="overline"
-              sx={{ color: "#2196f3", fontWeight: 800, letterSpacing: 2, fontSize: "0.75rem" }}
-            >
-              {t("features.label")}
-            </Typography>
-            <Typography variant="h2" sx={{ ...titleStyles, mt: 1, fontSize: { xs: "1.5rem", md: "2.5rem" } }}>
-              {t("features.title")}
-            </Typography>
-          </Box>
-          <Grid container spacing={{ xs: 2, md: 4 }}>
-            {[
-              {
-                title: t("features.adaptiveQuiz"),
-                desc: t("features.adaptiveQuizDesc"),
-              },
-              {
-                title: t("features.aiGrading"),
-                desc: t("features.aiGradingDesc"),
-              },
-              {
-                title: t("features.multiModal"),
-                desc: t("features.multiModalDesc"),
-              },
-              {
-                title: t("features.feedbackLoop"),
-                desc: t("features.feedbackLoopDesc"),
-              },
-            ].map((tool, idx) => (
-              <Grid item xs={12} md={6} key={idx}>
-                <Box
-                  sx={{
-                    p: 4,
-                    borderRadius: 4,
-                    border: "1px solid #EEE",
-                    height: "100%",
-                    bgcolor:
-                      idx % 2 === 0 ? "rgba(33,150,243,0.02)" : "transparent",
-                  }}
-                >
-                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
-                    {tool.title}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ color: "text.secondary", lineHeight: 1.8 }}
-                  >
-                    {tool.desc}
-                  </Typography>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
         </Container>
       </Box>
 
@@ -444,25 +433,6 @@ const LandingPage = () => {
                   >
                     {item.desc}
                   </Typography>
-                  <Box sx={{ mt: "auto" }}>
-                    <Button
-                      fullWidth
-                      variant="contained"
-                      onClick={() => handleLearnMore(item.subject)}
-                      sx={{
-                        bgcolor: item.color,
-                        color: "white",
-                        py: 1.5,
-                        borderRadius: 3,
-                        textTransform: "none",
-                        fontWeight: 700,
-                        "&:hover": { bgcolor: item.color, opacity: 0.9 },
-                        boxShadow: "none",
-                      }}
-                    >
-                      {t("solutions.learnMore")}
-                    </Button>
-                  </Box>
                 </Card>
               </Grid>
             ))}
@@ -482,27 +452,11 @@ const LandingPage = () => {
             </Typography>
           </Box>
           <Grid container spacing={{ xs: 3, md: 6 }} justifyContent="center">
-            {[
-              {
-                name: "Dr. Lam Yat Ming Eddie (林一鳴)",
-                sub: "",
-                image: drLam,
-              },
-              {
-                name: "Professor Fung Kwun Wing Joseph",
-                sub: "",
-                image: profFung,
-              },
-              {
-                name: "Professor William YEOH Ging-sun",
-                sub: "",
-                image: profWilliam,
-              },
-            ].map((member) => (
-              <Grid item xs={12} md={4} key={member.name}>
+            {[ t("team.member1"), t("team.member2"), t("team.member3") ].map((member, idx) => (
+              <Grid item xs={12} md={4} key={idx}>
                 <Box sx={{ textAlign: "center" }}>
                   <Avatar
-                    src={member.image}
+                    src={[drLam, profFung, profWilliam][idx]}
                     sx={{
                       width: { xs: 100, md: 160 },
                       height: { xs: 100, md: 160 },
@@ -513,9 +467,7 @@ const LandingPage = () => {
                       border: "4px solid #FFF",
                     }}
                   >
-                    {!member.image && (
-                      <PersonIcon sx={{ fontSize: { xs: 50, md: 90 }, color: "#EEE" }} />
-                    )}
+                    <PersonIcon sx={{ fontSize: { xs: 50, md: 90 }, color: "#EEE" }} />
                   </Avatar>
                   <Typography variant="h5" sx={{ fontWeight: 800, fontSize: { xs: "1rem", md: "1.25rem" } }}>
                     {member.name}
@@ -528,15 +480,9 @@ const LandingPage = () => {
                   </Typography>
                   <Typography
                     variant="body2"
-                    sx={{ color: "text.secondary", mt: 0.5, fontWeight: 500, fontSize: { xs: "0.75rem", md: "0.875rem" } }}
+                    sx={{ color: "text.secondary", mt: 0.5, fontWeight: 500, fontSize: { xs: "0.75rem", md: "0.875rem" }, whiteSpace: "pre-line" }}
                   >
-                    {member.desc}
-                  </Typography>
-                  <Typography
-                    variant="caption"
-                    sx={{ color: "text.disabled", display: "block", mt: 0.5, fontSize: { xs: "0.7rem", md: "0.75rem" } }}
-                  >
-                    {member.sub}
+                    {member.role}
                   </Typography>
                 </Box>
               </Grid>
@@ -580,57 +526,11 @@ const LandingPage = () => {
                   maxWidth: 300,
                   fontSize: { xs: "0.85rem", md: "0.875rem" },
                 }}
-                dangerouslySetInnerHTML={{ __html: t("footer.tagline") }}
-              ></Typography>
-              <Box sx={{ display: "flex", gap: 1.5 }}>
-                {[<FacebookIcon />, <InstagramIcon />, <LinkedInIcon />].map(
-                  (icon, i) => (
-                    <IconButton
-                      key={i}
-                      sx={{
-                        border: "1px solid #EEE",
-                        p: { xs: 0.5, md: 1 },
-                        "&:hover": { bgcolor: "rgba(0,0,0,0.02)" },
-                      }}
-                    >
-                      {icon}
-                    </IconButton>
-                  ),
-                )}
-              </Box>
-            </Grid>
-            <Grid item xs={6} md={2}>
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  fontWeight: 800,
-                  mb: { xs: 2, md: 4 },
-                  textTransform: "uppercase",
-                  letterSpacing: 1,
-                  fontSize: { xs: "0.75rem", md: "0.875rem" },
-                }}
               >
-                {t("footer.aiSection")}
+                {t("footer.tagline")}
               </Typography>
-              {Array.isArray(t("footer.aiLinks"))
-                ? t("footer.aiLinks").map((item) => (
-                    <Typography
-                      key={item}
-                      variant="body2"
-                      sx={{
-                        color: "text.secondary",
-                        mb: { xs: 1, md: 2 },
-                        cursor: "pointer",
-                        fontSize: { xs: "0.8rem", md: "0.875rem" },
-                        "&:hover": { color: "#000" },
-                      }}
-                    >
-                      {item}
-                    </Typography>
-                  ))
-                : null}
             </Grid>
-            <Grid item xs={6} md={2}>
+            <Grid item xs={12} md={6}>
               <Typography
                 variant="subtitle2"
                 sx={{
@@ -641,48 +541,9 @@ const LandingPage = () => {
                   fontSize: { xs: "0.75rem", md: "0.875rem" },
                 }}
               >
-                {t("footer.resources")}
-              </Typography>
-              {Array.isArray(t("footer.resourceLinks"))
-                ? t("footer.resourceLinks").map((item) => (
-                    <Typography
-                      key={item}
-                      variant="body2"
-                      sx={{
-                        color: "text.secondary",
-                        mb: { xs: 1, md: 2 },
-                        cursor: "pointer",
-                        fontSize: { xs: "0.8rem", md: "0.875rem" },
-                        "&:hover": { color: "#000" },
-                      }}
-                    >
-                      {item}
-                    </Typography>
-                  ))
-                : null}
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  fontWeight: 800,
-                  mb: { xs: 2, md: 4 },
-                  textTransform: "uppercase",
-                  letterSpacing: 1,
-                  fontSize: { xs: "0.75rem", md: "0.875rem" },
-                }}
-              >
-                {t("footer.contact")}
+                Contact
               </Typography>
               <Box sx={{ mb: { xs: 3, md: 4 } }}>
-                <Box
-                  sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: { xs: 1.5, md: 2 } }}
-                >
-                  <WhatsAppIcon sx={{ color: "#4CAF50", fontSize: { xs: 18, md: 20 } }} />
-                  <Typography variant="body2" sx={{ fontWeight: 700, fontSize: { xs: "0.85rem", md: "0.875rem" } }}>
-                    {t("footer.phone")}
-                  </Typography>
-                </Box>
                 <Box
                   sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: { xs: 1.5, md: 2 } }}
                 >
@@ -692,52 +553,13 @@ const LandingPage = () => {
                   </Typography>
                 </Box>
               </Box>
-              <Button
-                fullWidth
-                variant="contained"
-                onClick={handleBookAppointment}
-                sx={{
-                  bgcolor: "#000",
-                  color: "#FFF",
-                  py: { xs: 1.5, md: 2 },
-                  borderRadius: 3,
-                  fontWeight: 700,
-                  textTransform: "none",
-                  fontSize: { xs: "0.9rem", md: "0.875rem" },
-                  "&:hover": { bgcolor: "#222" },
-                }}
-              >
-                {t("footer.appointment")}
-              </Button>
             </Grid>
           </Grid>
           <Divider sx={{ my: { xs: 4, md: 8 }, borderColor: "#EEE" }} />
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: 1.5,
-            }}
-          >
+          <Box sx={{ textAlign: "center" }}>
             <Typography variant="caption" sx={{ color: "text.disabled", fontSize: { xs: "0.7rem", md: "0.75rem" } }}>
-              {t("footer.copyright")}
+              © {new Date().getFullYear()} LeoEd. All rights reserved.
             </Typography>
-            <Box sx={{ display: "flex", gap: { xs: 2, md: 4 } }}>
-              <Typography
-                variant="caption"
-                sx={{ color: "text.disabled", cursor: "pointer", fontSize: { xs: "0.7rem", md: "0.75rem" } }}
-              >
-                {t("footer.privacy")}
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{ color: "text.disabled", cursor: "pointer", fontSize: { xs: "0.7rem", md: "0.75rem" } }}
-              >
-                {t("footer.terms")}
-              </Typography>
-            </Box>
           </Box>
         </Container>
       </Box>

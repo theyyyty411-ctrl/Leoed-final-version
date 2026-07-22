@@ -48,6 +48,15 @@ jspm_packages/
 web_modules/
 
 # TypeScript cache
+.tsx-cache
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 *.tsbuildinfo
 
 # Optional npm cache directory
