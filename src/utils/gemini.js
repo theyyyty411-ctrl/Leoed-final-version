@@ -13,7 +13,7 @@ const genAI = new GoogleGenerativeAI(config.geminiApiKey);
  * @returns {Promise<Object>}
  */
 export const executeGeminiDiagnostic = async (payload, contextQuestions = []) => {
-  const model = genAI.getGenerativeModel({ model: config.geminiModel || "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: config.geminiModel || "gemini-3.5-flash-lite" });
   
   // Construct the prompt
   let prompt = `You are an AI diagnostic tool for education. 

@@ -77,8 +77,8 @@ function Login() {
     Number.isFinite(parsedTab) ? parsedTab : 0,
   );
   let [nameValue, setNameValue] = useState("");
-  let [studentValue, setStudentValue] = useState("student@leoedai.com");
-  let [loginValue, setLoginValue] = useState("admin@leoedai.com");
+  let [studentValue, setStudentValue] = useState("student@leo-education.com");
+  let [loginValue, setLoginValue] = useState("admin@leo-education.com");
   let [passwordValue, setPasswordValue] = useState("password");
   let [forgotEmail, setForgotEmail] = useState("");
   let [isForgot, setIsForgot] = useState(false);
@@ -551,11 +551,11 @@ function Login() {
           2026-{new Date().getFullYear()}{" "}
           <a
             style={{ textDecoration: "none", color: "inherit" }}
-            href="https://leoedai.com"
+            href="https://leo-education.onrender.com"
             rel="noopener noreferrer"
             target="_blank"
           >
-            LeoEdAI
+            LeoEd
           </a>
           . All rights reserved.
         </Typography>

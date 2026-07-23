@@ -12,6 +12,7 @@ import useStyles from "./styles";
 
 import axios from "axios";
 import config from "../../config";
+import { executeGeminiDiagnostic } from "../../utils/gemini";
 
 //components
 import Widget from "../../components/Widget";
@@ -85,17 +86,15 @@ const Task = () => {
         timestamp: new Date().toISOString(),
       };
 
-      const response = await axios.post(
-        `${config.baseURLApi}/execute/diagnostic`,
-        jsonPayload,
-      );
+      const contextQuestions = row.qlist.map(c => c.question_ml || "");
+      const responseData = await executeGeminiDiagnostic(jsonPayload, contextQuestions);
 
       alert("Submission success!");
-      // console.log("Server response data package:", response.data);
-      setResult(response.data);
+      // console.log("Server response data package:", responseData);
+      setResult(responseData);
     } catch (error) {
-      console.error("Axios transmission processing error:", error);
-      const serverMessage = error.response?.data?.message || error.message;
+      console.error("Gemini API processing error:", error);
+      const serverMessage = error.message;
       alert(`Upload failed: ${serverMessage}`);
     } finally {
       setIsUploading(false);

@@ -1,14 +1,14 @@
 const isDevelopment = import.meta.env.DEV;
 const hostApi = isDevelopment
-  ? "https://leoedai.com"
-  : "https://leoedai.com";
+  ? "https://leo-education.onrender.com"
+  : "https://leo-education.onrender.com";
 const portApi = isDevelopment ? "" : "";
 const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}/api`;
 const redirectUrl = isDevelopment
-  ? "https://leoedai.com"
+  ? "https://leo-education.onrender.com"
   : typeof window !== "undefined"
     ? window.location.origin
-    : "https://leoedai.com";
+    : "https://leo-education.onrender.com";
 const isBackend = String(import.meta.env.VITE_BACKEND).toLowerCase() === "true";
 
 const appConfig = {
@@ -16,10 +16,10 @@ const appConfig = {
   portApi,
   baseURLApi,
   redirectUrl,
-  remote: "https://leoedai.com",
+  remote: "https://leo-education.onrender.com",
   isBackend,
   geminiApiKey: import.meta.env.VITE_GEMINI_API_KEY,
-  geminiModel: import.meta.env.VITE_GEMINI_MODEL || "gemini-2.5-flash",
+  geminiModel: import.meta.env.VITE_GEMINI_MODEL || "gemini-3.5-flash-lite",
   auth: {
     email: 'test@test.com',
     password: 'password',
