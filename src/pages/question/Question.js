@@ -15,8 +15,6 @@ import {
 import useStyles from "./styles";
 import { yellow } from "@mui/material/colors";
 
-import axios from "axios";
-import config from "../../config";
 import { executeGeminiDiagnostic } from "../../utils/gemini";
 
 //components
@@ -68,7 +66,8 @@ const Question = () => {
         text_input: textInput,
         timestamp: new Date().toISOString(),
       };
-contextQuestions = [row.question_ml || ""];
+
+      const contextQuestions = [row.question_ml || ""];
       const responseData = await executeGeminiDiagnostic(jsonPayload, contextQuestions);
 
       alert("Submission success!");
