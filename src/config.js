@@ -1,6 +1,6 @@
 const isDevelopment = import.meta.env.DEV;
 const localApiUrl = import.meta.env.VITE_LOCAL_API_URL || "http://localhost:3000";
-const productionApiUrl = import.meta.env.VITE_API_URL || "https://leo-education.onrender.com";
+const productionApiUrl = import.meta.env.VITE_API_URL || "https://leoed-final-version.onrender.com";
 const localAppUrl = import.meta.env.VITE_LOCAL_APP_URL || "http://localhost:5173";
 const hostApi = isDevelopment
   ? localApiUrl

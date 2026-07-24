@@ -551,7 +551,7 @@ function Login() {
           2026-{new Date().getFullYear()}{" "}
           <a
             style={{ textDecoration: "none", color: "inherit" }}
-            href="https://leo-education.onrender.com"
+            href="https://leoed-final-version.onrender.com"
             rel="noopener noreferrer"
             target="_blank"
           >

@@ -3,6 +3,8 @@ import axios from "axios";
 
 import config from "../config";
 
+const mockTasks = [];
+
 const TasksContext = React.createContext();
 
 const rootReducer = (state, action) => {
