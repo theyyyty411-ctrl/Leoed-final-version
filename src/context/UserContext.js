@@ -128,16 +128,21 @@ function loginUser(
         config.redirectUrl;
     } else if (login.length > 0 && password.length > 0) {
       axios
-        .post("/auth/signin/local", { email: login, password })
+        .post(
+          "/auth/signin/local",
+          { email: login, password },
+          { timeout: 10000 },
+        )
         .then((res) => {
           const token = res.data;
           setError(null);
-          setIsLoading(false);
           receiveToken(token, dispatch);
           doInit()(dispatch);
         })
         .catch(() => {
           setError(true);
+        })
+        .finally(() => {
           setIsLoading(false);
         });
     } else {
@@ -246,7 +251,11 @@ function setFileds(f) {
 }
 
 export function doInit() {
-  getFieldsRequest(setFileds);
+  try {
+    getFieldsRequest(setFileds);
+  } catch (error) {
+    console.log(error);
+  }
   return async (dispatch) => {
     let currentUser = null;
     if (!config.isBackend) {

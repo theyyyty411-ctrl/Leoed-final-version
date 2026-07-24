@@ -1,14 +1,17 @@
 const isDevelopment = import.meta.env.DEV;
+const localApiUrl = import.meta.env.VITE_LOCAL_API_URL || "http://localhost:3000";
+const productionApiUrl = import.meta.env.VITE_API_URL || "https://leo-education.onrender.com";
+const localAppUrl = import.meta.env.VITE_LOCAL_APP_URL || "http://localhost:5173";
 const hostApi = isDevelopment
-  ? "https://leo-education.onrender.com"
-  : "https://leo-education.onrender.com";
+  ? localApiUrl
+  : productionApiUrl;
 const portApi = isDevelopment ? "" : "";
 const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}/api`;
 const redirectUrl = isDevelopment
-  ? "https://leo-education.onrender.com"
+  ? localAppUrl
   : typeof window !== "undefined"
     ? window.location.origin
-    : "https://leo-education.onrender.com";
+    : productionApiUrl;
 const isBackend = String(import.meta.env.VITE_BACKEND).toLowerCase() === "true";
 
 const appConfig = {
@@ -16,7 +19,7 @@ const appConfig = {
   portApi,
   baseURLApi,
   redirectUrl,
-  remote: "https://leo-education.onrender.com",
+  remote: productionApiUrl,
   isBackend,
   geminiApiKey: import.meta.env.VITE_GEMINI_API_KEY,
   geminiModel: import.meta.env.VITE_GEMINI_MODEL || "gemini-3.5-flash-lite",
